@@ -90,15 +90,6 @@ class AdminController extends Controller
         return redirect()->route('admin.investors');
     }
 
-// Function to Update Investor Status 
-
-    public function updateInvestorStatus(Request $request)
-    {  
-        User::where('id', $request->id)->update(['status' => $request->status ,
-                                                'reason' => $request->reason]);
-        return redirect()->route('admin.investors');
-    }
-
 // Fucntion To View All Providers in Admin 
 
     public function viewProviders()
