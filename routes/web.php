@@ -47,8 +47,7 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::get('/deleteInvestor', [App\Http\Controllers\AdminController::class, 'deleteInvestor'])->name('admin.deleteInvestor');
         Route::get('/updateInvestor/{id}', [App\Http\Controllers\AdminController::class, 'updateInvestor'])->name('admin.updateInvestor');
         Route::post('/editInvestor', [App\Http\Controllers\AdminController::class, 'editInvestor'])->name('admin.editInvestor');
-        Route::post('/updateInvestorStatus', [App\Http\Controllers\AdminController::class, 'updateInvestorStatus'])->name('admin.updateInvestorStatus');
-
+      
         Route::get('/providers', [App\Http\Controllers\AdminController::class, 'viewProviders'])->name('admin.providers');
         Route::get('/deleteProvider', [App\Http\Controllers\AdminController::class, 'deleteProvider'])->name('admin.deleteProvider');
         Route::get('/updateProvider/{id}', [App\Http\Controllers\AdminController::class, 'updateProvider'])->name('admin.updateProvider');
