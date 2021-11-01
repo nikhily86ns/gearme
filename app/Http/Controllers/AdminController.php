@@ -29,8 +29,6 @@ class AdminController extends Controller
         return redirect()->route('admin.owners');
     }
 
-<<<<<<< HEAD
-=======
 // Funstion to view Update Owner Page
 
     public function updateOwner($id)
@@ -52,7 +50,6 @@ class AdminController extends Controller
         return redirect()->route('admin.owners');
     }
 
->>>>>>> 8fec82c9c3e575992e0ebcc21fdd996a4400e70d
 // Fucntion To View All Investors in Admin 
 
     public function viewInvestors()
@@ -69,8 +66,7 @@ class AdminController extends Controller
         return redirect()->route('admin.investors');
     }
 
-<<<<<<< HEAD
-=======
+
 // Funstion to view Update Investor Page
 
     public function updateInvestor($id)
@@ -92,7 +88,6 @@ class AdminController extends Controller
         return redirect()->route('admin.investors');
     }
 
->>>>>>> 8fec82c9c3e575992e0ebcc21fdd996a4400e70d
 // Fucntion To View All Providers in Admin 
 
     public function viewProviders()
@@ -101,11 +96,8 @@ class AdminController extends Controller
         return view('admin.provider', compact('data'));
     }
 
-<<<<<<< HEAD
-// Function to Delete Property Owner
-=======
+
 // Function to Delete Capital Provider
->>>>>>> 8fec82c9c3e575992e0ebcc21fdd996a4400e70d
 
     public function deleteProvider($id)
     {
@@ -113,8 +105,6 @@ class AdminController extends Controller
         return redirect()->route('admin.providers');
     }
 
-<<<<<<< HEAD
-=======
 // Funstion to view Update Provider Page
 
     public function updateProvider($id)
@@ -136,6 +126,5 @@ class AdminController extends Controller
         return redirect()->route('admin.providers');
     }
 
->>>>>>> 8fec82c9c3e575992e0ebcc21fdd996a4400e70d
 
 }
