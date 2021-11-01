@@ -1,15 +1,10 @@
-@extends('layouts.app')
+@extends('admin.master')
 
 @section('title')
-	Capital Provider
+	Update Owner Details
 @endsection
 
 @section('extra-css')
-<style>
-	#planTable_filter{
-		float:right;
-	}
-</style>
 @endsection
 
 @section('content')                      

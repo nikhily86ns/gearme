@@ -34,24 +34,26 @@ Route::get('/registerInvestorPage', [App\Http\Controllers\UserController::class,
 Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, 'registerInvestor'])->name('registerInvestor');
 
 // Route::group(['middleware' => 'isAdmin'], function(){
-Route::middleware(['isAdmin'])->group(function () {
+    Route::middleware(['isAdmin'])->group(function () {
 
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'adminLogin'])->name('admin.dashboard');
-    Route::get('/owners', [App\Http\Controllers\AdminController::class, 'viewOwners'])->name('admin.owners');
-    Route::get('/deleteOwner', [App\Http\Controllers\AdminController::class, 'deleteOwner'])->name('admin.deleteOwner');
-    Route::get('/updateOwner/{id}', [App\Http\Controllers\AdminController::class, 'updateOwner'])->name('admin.updateOwner');
-    Route::post('/editOwner', [App\Http\Controllers\AdminController::class, 'editOwner'])->name('admin.editOwner');
+        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'adminLogin'])->name('admin.dashboard');
 
-    Route::get('/investors', [App\Http\Controllers\AdminController::class, 'viewInvestors'])->name('admin.investors');
-    Route::get('/deleteInvestor', [App\Http\Controllers\AdminController::class, 'deleteInvestor'])->name('admin.deleteInvestor');
-    Route::get('/updateInvestor/{id}', [App\Http\Controllers\AdminController::class, 'updateInvestor'])->name('admin.updateInvestor');
-    Route::post('/editInvestor', [App\Http\Controllers\AdminController::class, 'editInvestor'])->name('admin.editInvestor');
+        Route::get('/owners', [App\Http\Controllers\AdminController::class, 'viewOwners'])->name('admin.owners');
+        Route::get('/deleteOwner', [App\Http\Controllers\AdminController::class, 'deleteOwner'])->name('admin.deleteOwner');
+        Route::get('/updateOwner/{id}', [App\Http\Controllers\AdminController::class, 'updateOwner'])->name('admin.updateOwner');
+        Route::post('/editOwner', [App\Http\Controllers\AdminController::class, 'editOwner'])->name('admin.editOwner');
 
-    Route::get('/providers', [App\Http\Controllers\AdminController::class, 'viewProviders'])->name('admin.providers');
-    Route::get('/deleteProvider', [App\Http\Controllers\AdminController::class, 'deleteProvider'])->name('admin.deleteProvider');
-    Route::get('/updateProvider/{id}', [App\Http\Controllers\AdminController::class, 'updateProvider'])->name('admin.updateProvider');
-    Route::post('/editProvider', [App\Http\Controllers\AdminController::class, 'editProvider'])->name('admin.editProvider');
-});
+        Route::get('/investors', [App\Http\Controllers\AdminController::class, 'viewInvestors'])->name('admin.investors');
+        Route::get('/deleteInvestor', [App\Http\Controllers\AdminController::class, 'deleteInvestor'])->name('admin.deleteInvestor');
+        Route::get('/updateInvestor/{id}', [App\Http\Controllers\AdminController::class, 'updateInvestor'])->name('admin.updateInvestor');
+        Route::post('/editInvestor', [App\Http\Controllers\AdminController::class, 'editInvestor'])->name('admin.editInvestor');
+        Route::post('/updateInvestorStatus', [App\Http\Controllers\AdminController::class, 'updateInvestorStatus'])->name('admin.updateInvestorStatus');
+
+        Route::get('/providers', [App\Http\Controllers\AdminController::class, 'viewProviders'])->name('admin.providers');
+        Route::get('/deleteProvider', [App\Http\Controllers\AdminController::class, 'deleteProvider'])->name('admin.deleteProvider');
+        Route::get('/updateProvider/{id}', [App\Http\Controllers\AdminController::class, 'updateProvider'])->name('admin.updateProvider');
+        Route::post('/editProvider', [App\Http\Controllers\AdminController::class, 'editProvider'])->name('admin.editProvider');
+    });
 
 // Route::group(['middleware' => 'isOwner'], function(){
     Route::middleware(['isOwner'])->group(function () {
@@ -87,3 +89,5 @@ Route::middleware(['isAdmin'])->group(function () {
         Route::get('/investorDetail/{id}', [App\Http\Controllers\UserController::class, 'investorDetail'])->name('provider.investorDetail');
 
     });
+
+
