@@ -34,17 +34,17 @@ Route::get('/registerInvestorPage', [App\Http\Controllers\UserController::class,
 Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, 'registerInvestor'])->name('registerInvestor');
 
 // Route::group(['middleware' => 'isAdmin'], function(){
-Route::middleware(['isAdmin'])->group(function () {
+    Route::middleware(['isAdmin'])->group(function () {
 
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'adminLogin'])->name('admin.dashboard');
-    Route::get('/owners', [App\Http\Controllers\AdminController::class, 'viewOwners'])->name('admin.owners');
-    Route::get('/deleteOwner', [App\Http\Controllers\AdminController::class, 'deleteOwner'])->name('admin.deleteOwner');
-    Route::get('/investors', [App\Http\Controllers\AdminController::class, 'viewInvestors'])->name('admin.investors');
-    Route::get('/deleteInvestor', [App\Http\Controllers\AdminController::class, 'deleteInvestor'])->name('admin.deleteInvestor');
-    Route::get('/providers', [App\Http\Controllers\AdminController::class, 'viewProviders'])->name('admin.providers');
-    Route::get('/deleteProvider', [App\Http\Controllers\AdminController::class, 'deleteProvider'])->name('admin.deleteProvider');
+        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'adminLogin'])->name('admin.dashboard');
+        Route::get('/owners', [App\Http\Controllers\AdminController::class, 'viewOwners'])->name('admin.owners');
+        Route::get('/deleteOwner', [App\Http\Controllers\AdminController::class, 'deleteOwner'])->name('admin.deleteOwner');
+        Route::get('/investors', [App\Http\Controllers\AdminController::class, 'viewInvestors'])->name('admin.investors');
+        Route::get('/deleteInvestor', [App\Http\Controllers\AdminController::class, 'deleteInvestor'])->name('admin.deleteInvestor');
+        Route::get('/providers', [App\Http\Controllers\AdminController::class, 'viewProviders'])->name('admin.providers');
+        Route::get('/deleteProvider', [App\Http\Controllers\AdminController::class, 'deleteProvider'])->name('admin.deleteProvider');
 
-});
+    });
 
 // Route::group(['middleware' => 'isOwner'], function(){
     Route::middleware(['isOwner'])->group(function () {
