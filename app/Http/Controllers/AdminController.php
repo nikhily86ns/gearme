@@ -83,8 +83,19 @@ class AdminController extends Controller
         User::where('id', $request->id)->update(['name' => $request->name ,
         'phone' => $request->phone ,
         'country' => $request->country,
+        'status' => $request->status ,
+        'reason' => $request->reason,
        ]);
 
+        return redirect()->route('admin.investors');
+    }
+
+// Function to Update Investor Status 
+
+    public function updateInvestorStatus(Request $request)
+    {  
+        User::where('id', $request->id)->update(['status' => $request->status ,
+                                                'reason' => $request->reason]);
         return redirect()->route('admin.investors');
     }
 
@@ -121,6 +132,8 @@ class AdminController extends Controller
         User::where('id', $request->id)->update(['name' => $request->name ,
         'phone' => $request->phone ,
         'country' => $request->country,
+        'status' => $request->status ,
+        'reason' => $request->reason,
        ]);
 
         return redirect()->route('admin.providers');

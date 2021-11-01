@@ -32,6 +32,7 @@
                         <th class="border-top-0">Email</th>
                         <th class="border-top-0">Phone</th>
                         <th class="border-top-0">Country</th>
+                        <th class="border-top-0">Status</th>
                         <th class="border-top-0">Action</th>
                     </tr>
                 </thead>
@@ -43,6 +44,7 @@
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->phone }}</td>
                             <td>{{ $row->country }}</td>
+                            <td>{{ $row->status }}</td>
                             <td> 
                                 <form method="POST" action="{{ route('admin.deleteInvestor', $row->id) }}">
                                     @csrf

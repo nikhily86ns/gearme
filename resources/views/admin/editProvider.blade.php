@@ -1,15 +1,10 @@
-@extends('layouts.app')
+@extends('admin.master')
 
 @section('title')
-	Capital Provider
+	Update Provider
 @endsection
 
 @section('extra-css')
-<style>
-	#planTable_filter{
-		float:right;
-	}
-</style>
 @endsection
 
 @section('content')                      
@@ -81,6 +76,36 @@
                                             @endforeach
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="status" class="col-md-4 col-form-label text-md-right">Change Status</label>
+                                <div class="form-check col-md-2">
+                                    <input class="form-check-input" type="radio" name="status" id="investorA" value="Approved" {{ $data->status == 'Approved' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                    Approve
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-2">
+                                    <input class="form-check-input" type="radio" name="status" id="investorR" value="Reject" {{ $data->status == 'Reject' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                    Reject
+                                    </label>
+                                </div>
+                                <div class="form-check col-md-4">
+                                    <input class="form-check-input" type="radio" name="status" id="investorH" value="Hold" {{ $data->status == 'Hold' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="exampleRadios3">
+                                    Hold
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                    <label class="col-md-4 col-form-label text-md-right" for="exampleRadios3">
+                                     Reason
+                                    </label>
+                                    <div class="col-md-6">
+                                        ​<textarea id="txtArea" class="form-control" name="reason" rows="2" cols="25">{{ $data->reason }}</textarea>
+                                    </div>
                             </div>
 
                             <div class="form-group row mb-0">
