@@ -46,7 +46,9 @@
                             <td> 
                                 <form method="POST" action="{{ route('admin.deleteProvider', $row->id) }}">
                                     @csrf
-                                    <a href="" class="show_confirm"><i class="fa fa-trash-alt"></i></a>
+                                    <a href="" class="show_confirm"><i class="fa fa-trash-alt"></i></a>&nbsp;&nbsp;
+                                    <a href="/updateProvider/{{ $row->id }}"><i class="fas fa-edit"></i></a>
+
                                 </form>
                             </td>
                             </tr>

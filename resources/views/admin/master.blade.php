@@ -230,7 +230,11 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+<<<<<<< HEAD
             <ul class="nav nav-treeview pl-4 {{ Request::is('owners','investors','providers') ? 'd-block;' : '' }}">
+=======
+            <ul class="nav nav-treeview pl-4">
+>>>>>>> 8fec82c9c3e575992e0ebcc21fdd996a4400e70d
               <li class="nav-item {{ Request::is('owners') ? 'active' : '' }}">
                 <a href="{{ route('admin.owners') }}" class="nav-link">
                  <i class="fas fa-user-tie"></i>&nbsp;&nbsp;
