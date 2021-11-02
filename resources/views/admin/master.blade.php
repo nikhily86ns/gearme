@@ -251,6 +251,13 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-item {{ Request::is('properties') ? 'active' : '' }}">
+            <a href="{{ route('admin.properties') }}" class="nav-link">
+              <i class="fas fa-landmark"></i>&nbsp;&nbsp;
+              <p class="text-white fw-bold">Properties</p>
+            </a>
+          </li>
         
 
           <!-- <li class="nav-item {{ Request::is('owners') ? 'active' : '' }}" >

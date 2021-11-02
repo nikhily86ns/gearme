@@ -52,6 +52,12 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::get('/deleteProvider', [App\Http\Controllers\AdminController::class, 'deleteProvider'])->name('admin.deleteProvider');
         Route::get('/updateProvider/{id}', [App\Http\Controllers\AdminController::class, 'updateProvider'])->name('admin.updateProvider');
         Route::post('/editProvider', [App\Http\Controllers\AdminController::class, 'editProvider'])->name('admin.editProvider');
+
+        Route::get('/properties', [App\Http\Controllers\AdminController::class, 'viewProperties'])->name('admin.properties');
+        Route::get('/deleteProperty', [App\Http\Controllers\AdminController::class, 'deleteProperty'])->name('admin.deleteProperty');
+        Route::get('/updateProperty/{id}', [App\Http\Controllers\AdminController::class, 'updateProperty'])->name('admin.updateProperty');
+        Route::post('/editProperty', [App\Http\Controllers\AdminController::class, 'editProperty'])->name('admin.editProperty');
+
     });
 
 // Route::group(['middleware' => 'isOwner'], function(){

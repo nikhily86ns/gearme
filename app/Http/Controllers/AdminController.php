@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Country;
+use App\Models\Property;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -126,6 +127,41 @@ class AdminController extends Controller
        ]);
 
         return redirect()->route('admin.providers');
+    }
+
+// Function to View All Property Page
+
+    public function viewProperties()
+    {
+        $data = Property::all();
+        return view('admin.property', compact('data'));
+    }
+
+// Function to Delete Property 
+
+    public function deleteProperty($id)
+    {
+        User::find($id)->delete();
+        return redirect()->route('admin.properties');
+    }
+
+// Funstion to view Update Property Page
+
+    public function updateProperty($id)
+    {
+        $data = Property::where('id','=',$id)->get();
+        return view('admin.editProperty',compact('data'));
+    }
+
+// Function to Update Property  Details
+
+    public function editProperty(Request $request)
+    {
+        Property::where('id', $request->id)->update([
+        'status' => $request->status ,
+       ]);
+
+        return redirect()->route('admin.properties');
     }
 
 
