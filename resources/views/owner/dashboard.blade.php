@@ -88,7 +88,7 @@
 									<hr>
 									<h5>Tell us about your property</h5>
 									<form action="{{ route('owner.property') }}" method="POST" enctype="multipart/form-data">
-									@csrf
+									  @csrf
 										<div class="form-group">
 											<label for="exampleFormControlInput1" class="mb-3">List property for*</label> <br>
 											<div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -389,6 +389,18 @@
 											<button class="btn btn-primary" type="submit">Post Ad Now</button>
 										</div>
 									</form>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 mt-3">
+							<div class="d-flex justify-content-center">
+								<div>
+									<h3 class="mt-4">View Your Properties</h3>
+								</div>
+							</div>
+							<div class="d-flex justify-content-center">
+								<div>
+									<a href="/viewOwnerProperty/{{ Auth::user()->id }}" class="btn btn-info mt-3">Click Here</a>
 								</div>
 							</div>
 						</div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusToProperties extends Migration
+class AddReasonToProperties extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddStatusToProperties extends Migration
     public function up()
     {
         Schema::table('properties', function (Blueprint $table) {
-            $table->string('status')->nullable();
+            $table->string('reason')->nullable();
         });
     }
 

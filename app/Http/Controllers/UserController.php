@@ -124,7 +124,7 @@ class UserController extends Controller
    
     }
 
-// Function to Save Property Details in Database
+// Function to Save Property Details in Database by Propert Owner
 
     public function postProperty(Request $request)
     {
@@ -199,6 +199,92 @@ class UserController extends Controller
                 $property->save();
 
         return redirect()->route('owner.dashboard');
+    }
+
+// Function to View All Posted Property By Property Owner
+
+    public function viewProperty($id)
+    {
+        $data = Property::where('uid','=',$id)->get();
+        return view('owner.property', compact('data'));
+    }
+
+// Function to Delete Property 
+
+    public function deleteProperty($id)
+    {
+        User::find($id)->delete();
+        return redirect()->route('owner.property');
+    }
+
+// Funstion to view Update Property Page
+
+    public function updateProperty($id)
+    {
+        $data = Property::where('id','=',$id)->get();
+        return view('owner.editProperty',compact('data'));
+    }
+
+// Function to Update Property  Details
+
+    public function editProperties(Request $request)
+    {
+        
+        $id = Auth::user()->id;
+        $image = array();
+        if($file = $request->file('images')){
+            foreach($file as $file){
+                $image_name = md5(rand(1000,10000));
+                $ext = strtolower($file->getClientOriginalExtension());
+                $image_full_name = $image_name.'.'.$ext;
+                $destinationPath =  public_path('/property');
+                $image_url = $destinationPath.$image_full_name;
+                $file->move($destinationPath,$image_full_name);
+                $image[] = $image_full_name;
+
+                Property::where('id', $request->id)->update([
+                    'image' => json_encode($image),
+                    'propertyFor' => $request->propertyFor,
+                    'propertyType' => $request->propertyType,
+                    'city' => $request->city,
+                    'locality' => $request->locality,
+                    'unitType' => $request->unitType,
+                    'area' => $request->area,
+                    'price' => $request->price,
+                    'bathroom' => $request->bathroom,
+                    'about' => $request->about,
+                    'furnishing' => $request->furnishing,
+                    'balconies' => $request->balconies,
+                    'balconies' => $request->balconies,
+                    'parking' => $request->parking,
+                    'lock' => $request->lock,
+                    'cafeteria' => $request->cafeteria,
+                ]);
+            }
+        }
+        else
+        {
+            Property::where('id', $request->id)->update([
+                'propertyFor' => $request->propertyFor,
+                'propertyType' => $request->propertyType,
+                'city' => $request->city,
+                'locality' => $request->locality,
+                'unitType' => $request->unitType,
+                'area' => $request->area,
+                'price' => $request->price,
+                'bathroom' => $request->bathroom,
+                'about' => $request->about,
+                'furnishing' => $request->furnishing,
+                'balconies' => $request->balconies,
+                'balconies' => $request->balconies,
+                'parking' => $request->parking,
+                'lock' => $request->lock,
+                'cafeteria' => $request->cafeteria,
+            ]);            
+        }
+
+        // return redirect()->route('owner.dashboard');
+        return redirect()->route('owner.viewProperty', ['id' => $id]);
     }
 
 // Function to view Property Detail on Investor Dashboard 

@@ -9,7 +9,7 @@
 				<div class="container">
 					<nav id="navigation" class="navigation navigation-landscape">
 						<div class="nav-header">
-							<a class="nav-brand" href="/">
+							<a class="nav-brand" href="#">
 								<img src="{{ asset('img/logo-light.png') }}" class="logo" alt="" />
 							</a>
 							<div class="nav-toggle"></div>

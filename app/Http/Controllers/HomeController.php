@@ -70,7 +70,7 @@ class HomeController extends Controller
 
     public function investorLogin()
     {
-        $data = Property::paginate(6);
+        $data = Property::where('status','=','Approved')->paginate(6);
         $currentDate = date('Y-m-d');
         $finance = User::where('roles','2')->get();
         foreach($finance as $key => $value)

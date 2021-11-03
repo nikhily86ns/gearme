@@ -1,4 +1,4 @@
-@extends('admin.master')
+@extends('layouts.app')
 
 @section('title')
 	All properties
@@ -15,8 +15,8 @@
 @section('content')
 
     <div class="d-flex justify-content-center py-4">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-10">
-            <h4 class="page-title">All Property</h4>
+        <div>
+            <h2 >All Property</h2>
         </div>
     </div>
     <div class="container">
@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
             
-                         @foreach($data as $key=>$row)
+                        @foreach($data as $key=>$row)
                             <tr>
                             <td>{{ $key+1 }}</td>
                             <td>
@@ -54,7 +54,7 @@
                             <td>{{ $row->price }}</td>
                             <td>{{ $row->status }}</td>
                             <td> 
-                                <form method="POST" action="{{ route('admin.deleteProperty', $row->id) }}">
+                                <form method="POST" action="{{ route('owner.deleteProperty', $row->id) }}">
                                     @csrf
                                     <a href="" class="show_confirm"><i class="fa fa-trash-alt"></i></a>&nbsp;&nbsp;
                                     <a href="/updateProperty/{{ $row->id }}"><i class="fas fa-edit"></i></a>

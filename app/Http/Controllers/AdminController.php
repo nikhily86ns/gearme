@@ -161,6 +161,7 @@ class AdminController extends Controller
     {
         Property::where('id', $request->id)->update([
         'status' => $request->status ,
+        'reason' => $request->reason ,
        ]);
 
         return redirect()->route('admin.properties');

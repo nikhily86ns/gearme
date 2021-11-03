@@ -67,6 +67,10 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
 
         Route::get('/dashboardOwner', [App\Http\Controllers\HomeController::class, 'ownerLogin'])->name('owner.dashboard');
         Route::post('/postProperty', [App\Http\Controllers\UserController::class, 'postProperty'])->name('owner.property');
+        Route::get('/viewOwnerProperty/{id}', [App\Http\Controllers\UserController::class, 'viewProperty'])->name('owner.viewProperty');
+        Route::get('/deleteProperty', [App\Http\Controllers\UserController::class, 'deleteProperty'])->name('owner.deleteProperty');
+        Route::get('/updateProperty/{id}', [App\Http\Controllers\UserController::class, 'updateProperty'])->name('owner.updateProperty');
+        Route::post('/editProperties', [App\Http\Controllers\UserController::class, 'editProperties'])->name('owner.editProperties');
 
     });
 
