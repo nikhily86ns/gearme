@@ -20,6 +20,177 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 
+// Function To View Owners Profile
+
+    public function ownerProfile()
+    {
+        $data = User::where('id','=' ,Auth::user()->id)->get();
+        return view('owner.profile', compact('data'));
+    }
+
+// Function to Update Owner Profile
+
+    public function updateOwnerProfile(Request $request)
+    {  
+
+        $validator = Validator::make($request->all(), [
+            "name" => "regex:/^[a-zA-Z]+$/u|max:255",
+            "phone" => "min:10|numeric",
+            "file" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $destinationPath = public_path('/profile');
+        if($request->hasfile('file')){
+            $image = $request->file('file');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $filename);
+            
+        User::where('email', $request->email)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                            'profileimage' =>  $filename
+                                           ]);
+        }
+        else{
+            User::where('email', $request->email)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                           ]);
+        }
+                                        //    dd(DB::getQueryLog());
+        
+        return redirect()->route('owner.profile'); 
+    }
+
+// Function to Reset Owner Password
+
+    public function resetOwnerPassword(Request $request)
+    {
+        $request->validate([
+            "password" => "min:6 | max:18", 
+        ]);
+   
+        User::where('email', $request->email)->first()->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect()->route('owner.profile');
+    }
+
+// Function To View Investor Profile
+
+    public function InvestorProfile()
+    {
+        $data = User::where('id','=' ,Auth::user()->id)->get();
+        return view('investor.profile', compact('data'));
+    }
+
+// Function to Update Investor Profile
+
+    public function updateInvestorProfile(Request $request)
+    {  
+
+        $validator = Validator::make($request->all(), [
+            "name" => "regex:/^[a-zA-Z]+$/u|max:255",
+            "phone" => "min:10|numeric",
+            "file" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $destinationPath = public_path('/profile');
+        if($request->hasfile('file')){
+            $image = $request->file('file');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $filename);
+            
+        User::where('email', $request->email)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                            'profileimage' =>  $filename
+                                           ]);
+        }
+        else{
+            User::where('email', $request->email)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                           ]);
+        }
+                                        //    dd(DB::getQueryLog());
+        
+        return redirect()->route('investor.profile'); 
+    }
+
+// Function to Reset Investor Password
+
+    public function resetInvestorPassword(Request $request)
+    {
+        $request->validate([
+            "password" => "min:6 | max:18", 
+        ]);
+   
+        User::where('email', $request->email)->first()->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect()->route('investor.profile');
+    }
+
+// Function To View Provider Profile
+
+    public function ProviderProfile()
+    {
+        $data = User::where('id','=' ,Auth::user()->id)->get();
+        return view('provider.profile', compact('data'));
+    }
+
+// Function to Update Provider Profile
+
+    public function updateProviderProfile(Request $request)
+    {  
+
+        $validator = Validator::make($request->all(), [
+            "name" => "regex:/^[a-zA-Z]+$/u|max:255",
+            "phone" => "min:10|numeric",
+            "file" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $destinationPath = public_path('/profile');
+        if($request->hasfile('file')){
+            $image = $request->file('file');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $filename);
+            
+        User::where('email', $request->email)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                            'profileimage' =>  $filename
+                                           ]);
+        }
+        else{
+            User::where('email', $request->email)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                           ]);
+        }
+                                        //    dd(DB::getQueryLog());
+        
+        return redirect()->route('provider.profile'); 
+    }
+
+// Function to Reset Provider Password
+
+    public function resetProviderPassword(Request $request)
+    {
+        $request->validate([
+            "password" => "min:6 | max:18", 
+        ]);
+   
+        User::where('email', $request->email)->first()->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect()->route('provider.profile');
+    }
+
 // Function to view Registration Form
 
     // public function showRegistrationForm()

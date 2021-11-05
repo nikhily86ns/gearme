@@ -54,10 +54,10 @@
                             <td>{{ $row->price }}</td>
                             <td>{{ $row->status }}</td>
                             <td> 
-                                <form method="POST" action="{{ route('admin.deleteProperty', $row->id) }}">
+                                <form method="POST" action="{{ route('admin.deleteProperties', $row->id) }}">
                                     @csrf
                                     <a href="" class="show_confirm"><i class="fa fa-trash-alt"></i></a>&nbsp;&nbsp;
-                                    <a href="/updateProperty/{{ $row->id }}"><i class="fas fa-edit"></i></a>
+                                    <a href="/updateProperties/{{ $row->id }}"><i class="fas fa-edit"></i></a>
                                 </form>
                             </td>
                             </tr>

@@ -5,6 +5,13 @@
 @endsection
 
 @section('extra-css')
+<style>
+    .preview-image img
+    {
+          padding: 10px;
+          max-width: 150px;
+    }
+  </style>
 @endsection
 
 @section('content')                      

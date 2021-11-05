@@ -172,11 +172,13 @@
 									<div class="list-img-slide">
 										<div class="click">
 											<div>
+												@if($row->image)
 												@foreach(json_decode($row->image) as $key=>$res)
 												@if($key == 0)
 													<img class='img-size img-responsive' src="{{ asset('property/'. $res) }}" />
 												@endif
 												@endforeach
+												@endif
 											</div>
 											<!-- <div><a href="single-property-1.html"><img src="{{ asset('img/p-9.jpg') }}" class="img-fluid mx-auto" alt="" /></a></div>
 											<div><a href="single-property-1.html"><img src="{{ asset('img/p-10.jpg') }}" class="img-fluid mx-auto" alt="" /></a></div> -->

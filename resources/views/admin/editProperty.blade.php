@@ -12,6 +12,32 @@
     <div class="container">     
         <div class="row justify-content-center">
             <div class="col-md-8">
+                <div id="carouselExampleIndicators" class="carousel slide my-5" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @if($data->image)
+                            @foreach(json_decode($data->image) as $key=>$res)
+                                @if($key == 0)
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100"  src="{{ asset('property/'. $res) }}"/>
+                                    </div>
+                                @else
+                                <div class="carousel-item">
+                                    <img class="d-block w-100"  src="{{ asset('property/'. $res) }}"/>
+                                </div>
+                                @endif
+                            @endforeach
+                        @else
+                        @endif
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
                 <div class="card">
                     <div class="card-header text-center"><h3>{{ __('Update Property') }}</h3></div>
 

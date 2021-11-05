@@ -14,7 +14,64 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
 
-// Fucntion To View All Owners in Admin 
+// Function To View Admins Profile
+
+    public function viewProfile()
+    {
+        $data = User::where('is_admin','=' ,1)->get();
+        return view('admin.profile', compact('data'));
+    }
+
+// Function to Update Admin Profile
+
+    public function updateProfile(Request $request)
+    {  
+
+        $validator = Validator::make($request->all(), [
+            "name" => "regex:/^[a-zA-Z]+$/u|max:255",
+            "phone" => "min:10|numeric",
+            "file" => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $destinationPath = public_path('/profile');
+        if($request->hasfile('file')){
+            $image = $request->file('file');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $filename);
+            
+        User::where('is_admin', 1)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                            'profileimage' =>  $filename
+                                           ]);
+        }
+        else{
+            User::where('is_admin', 1)->update(['name' => $request->name ,
+                                            'email' => $request->email,
+                                            'phone' => $request->phone ,
+                                            'country' => $request->country ,
+                                           ]);
+        }
+                                        //    dd(DB::getQueryLog());
+        
+        return redirect()->route('admin.profile'); 
+    }
+
+// Function to Reset Admin Password
+
+    public function resetAdminPassword(Request $request)
+    {
+        $request->validate([
+            "password" => "min:6 | max:18", 
+        ]);
+   
+        User::where('email', $request->email)->first()->update([
+            'password' => Hash::make($request->password)
+        ]);
+        return redirect()->route('admin.profile');
+    }
+
+// Function To View All Owners in Admin 
 
     public function viewOwners()
     {
@@ -141,15 +198,15 @@ class AdminController extends Controller
 
 // Function to Delete Property 
 
-    public function deleteProperty($id)
+    public function deleteProperties($id)
     {
-        User::find($id)->delete();
+        Property::find($id)->delete();
         return redirect()->route('admin.properties');
     }
 
 // Funstion to view Update Property Page
 
-    public function updateProperty($id)
+    public function updateProperties($id)
     {
         $data = Property::where('id','=',$id)->get();
         return view('admin.editProperty',compact('data'));

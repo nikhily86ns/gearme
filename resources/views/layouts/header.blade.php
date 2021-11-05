@@ -131,6 +131,15 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+											@if(Auth::check() && Auth::user()->roles == '1')
+												<a href="{{ route('owner.profile') }}" class="dropdown-item">Profile</a>
+											@elseif(Auth::check() && Auth::user()->roles == '2')
+												<a href="{{ route('provider.profile') }}" class="dropdown-item">Profile</a>
+											@elseif(Auth::check() && Auth::user()->roles == '3')
+												<a href="{{ route('investor.profile') }}" class="dropdown-item">Profile</a>
+											@else
+												<a href="#" class="dropdown-item">Profile</a>
+											@endif
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
