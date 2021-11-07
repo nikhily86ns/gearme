@@ -10,6 +10,8 @@ use App\Models\Property;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Excel;
+use Maatwebsite\Excel\Concerns\FromCollection;
 
 class AdminController extends Controller
 {
@@ -224,5 +226,51 @@ class AdminController extends Controller
         return redirect()->route('admin.properties');
     }
 
+// Function to Export Excel Of Owners 
 
+    public function exportOwner()
+    {
+        return Excel::download(new OwnerExport, 'ownerdata.xlsx');
+    }
+
+// Function to Export Excel Of Providers 
+
+    public function exportProvider()
+    {
+        return Excel::download(new ProviderExport, 'providerdata.xlsx');
+    }
+
+// Function to Export Excel Of Owners 
+
+    public function exportInvestor()
+    {
+        return Excel::download(new InvestorExport, 'investordata.xlsx');
+    }
+
+
+
+}
+
+class OwnerExport implements FromCollection
+{
+    public function collection()
+    {
+        return User::where('roles','=',1)->get();
+    }
+}
+
+class ProviderExport implements FromCollection
+{
+    public function collection()
+    {
+        return User::where('roles','=',3)->get();
+    }
+}
+
+class InvestorExport implements FromCollection
+{
+    public function collection()
+    {
+        return User::where('roles','=',3)->get();
+    }
 }

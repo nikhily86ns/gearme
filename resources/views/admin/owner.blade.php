@@ -19,7 +19,12 @@
             <h4 class="page-title">All Property Owners</h4>
         </div>
     </div>
+
     <div class="container">
+
+        <div class="d-flex justify-content-end">
+            <a href="{{ route('admin.exportOwner') }}" class="btn btn-success btn-sm"> Export Excel</a>
+        </div>
             
 
           <table class="table text-nowrap bg-light" id="ownerTable">

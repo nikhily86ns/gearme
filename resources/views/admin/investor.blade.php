@@ -20,6 +20,10 @@
         </div>
     </div>
     <div class="container">
+
+        <div class="d-flex justify-content-end">
+            <a href="{{ route('admin.exportInvestor') }}" class="btn btn-success btn-sm"> Export Excel</a>
+        </div>
             
 
           <table class="table text-nowrap bg-light" id="investorTable">

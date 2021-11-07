@@ -46,16 +46,20 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::get('/deleteOwner', [App\Http\Controllers\AdminController::class, 'deleteOwner'])->name('admin.deleteOwner');
         Route::get('/updateOwner/{id}', [App\Http\Controllers\AdminController::class, 'updateOwner'])->name('admin.updateOwner');
         Route::post('/editOwner', [App\Http\Controllers\AdminController::class, 'editOwner'])->name('admin.editOwner');
+        Route::get('/exportOwner', [App\Http\Controllers\AdminController::class, 'exportOwner'])->name('admin.exportOwner');
 
         Route::get('/investors', [App\Http\Controllers\AdminController::class, 'viewInvestors'])->name('admin.investors');
         Route::get('/deleteInvestor', [App\Http\Controllers\AdminController::class, 'deleteInvestor'])->name('admin.deleteInvestor');
         Route::get('/updateInvestor/{id}', [App\Http\Controllers\AdminController::class, 'updateInvestor'])->name('admin.updateInvestor');
         Route::post('/editInvestor', [App\Http\Controllers\AdminController::class, 'editInvestor'])->name('admin.editInvestor');
+        Route::get('/exportInvestor', [App\Http\Controllers\AdminController::class, 'exportInvestor'])->name('admin.exportInvestor');
       
         Route::get('/providers', [App\Http\Controllers\AdminController::class, 'viewProviders'])->name('admin.providers');
         Route::get('/deleteProvider', [App\Http\Controllers\AdminController::class, 'deleteProvider'])->name('admin.deleteProvider');
         Route::get('/updateProvider/{id}', [App\Http\Controllers\AdminController::class, 'updateProvider'])->name('admin.updateProvider');
         Route::post('/editProvider', [App\Http\Controllers\AdminController::class, 'editProvider'])->name('admin.editProvider');
+        Route::get('/exportProvider', [App\Http\Controllers\AdminController::class, 'exportProvider'])->name('admin.exportProvider');
+
 
         Route::get('/properties', [App\Http\Controllers\AdminController::class, 'viewProperties'])->name('admin.properties');
         Route::get('/deleteProperties', [App\Http\Controllers\AdminController::class, 'deleteProperties'])->name('admin.deleteProperties');
