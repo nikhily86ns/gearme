@@ -1,90 +1,15 @@
-@extends('layouts.app')
+@extends('owner.master')
 
 @section('title')
-	Property Owner
+	Dashboard
 @endsection
 
 @section('extra-css')
-<style>
-    .preview-image img
-    {
-          padding: 10px;
-          max-width: 150px;
-    }
-  </style>
 @endsection
 
 @section('content')
 
-			<!-- ============================ Page Title Start================================== -->
-			<div class="page-title">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12 col-md-12">
-							
-							<h2 class="ipt-title">Welcome!</h2>
-							<span class="ipn-subtitle">Welcome To Your Account</span>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- ============================ Page Title End ================================== -->
 			
-
-  			 <!-- ============================ User Dashboard Start================================== -->
-   			<section class="bg-light">
-				<div class="container-fluid">
-				
-					<div class="row">
-						<div class="col-lg-12 col-md-12">
-							<div class="filter_search_opt">
-								<a href="javascript:void(0);" onclick="openFilterSearch()">Dashboard Navigation<i class="ml-2 ti-menu"></i></a>
-							</div>
-						</div>
-					</div>
-								
-					<div class="row">
-						
-						<div class="col-lg-3 col-md-12">
-							
-							<div class="simple-sidebar sm-sidebar" id="filter_search">
-								
-								<div class="search-sidebar_header">
-									<h4 class="ssh_heading">Close Filter</h4>
-									<button onclick="closeFilterSearch()" class="w3-bar-item w3-button w3-large"><i class="ti-close"></i></button>
-								</div>
-								
-								<div class="sidebar-widgets">
-									<div class="dashboard-navbar">
-										
-										<div class="d-user-avater">
-											<img src="{{ asset('profile/'. Auth::user()->profileimage) }}" class="img-fluid avater" alt="">
-											<h4>{{ Auth::user()->name }}</h4>
-											<span>{{ Auth::user()->country }}</span>
-										</div>
-										
-										<div class="d-navigation">
-											<ul>
-												<li class="active"><a href="dashboard.html"><i class="ti-dashboard"></i>Dashboard</a></li>
-												<li><a href="{{ route('owner.profile') }}"><i class="ti-user"></i>My Profile</a></li>
-												<!-- <li><a href="{{ route('owner.profile') }}"><i class="ti-user"></i>My Profile</a></li> -->
-												<li><a href="bookmark-list.html"><i class="ti-bookmark"></i>Bookmarked Listings</a></li>
-												<li><a href="my-property.html"><i class="ti-layers"></i>My Properties</a></li>
-												<li><a href="submit-property-dashboard.html"><i class="ti-pencil-alt"></i>Submit New Property</a></li>
-												<li><a href="change-password.html"><i class="ti-unlock"></i>Change Password</a></li>
-												<li><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
-											</ul>
-										</div>
-										
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						
-						<div class="col-lg-9 col-md-12">
-							
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12">
 									<h4>Your Current Package: <span class="pc-title theme-cl">Gold Package</span></h4>
@@ -144,7 +69,7 @@
 									<h4>My Account</h4>
 									<div class="submit-section">
 										<form action="updateOwnerProfile" method="POST" enctype="multipart/form-data">
-										@csrf
+										 @csrf
 											<div class="row">
 											
 												<div class="form-group col-md-6">
@@ -232,11 +157,7 @@
 								</div>
 								
 							</div>
-						</div>
 						
-					</div>
-				</div>
-			</section>
 			<!-- ============================ User Dashboard End ================================== -->
 
 			<!-- ============================ Post Property Form ================================== -->
@@ -574,69 +495,7 @@
 
 			<!-- ============================ Post Property Form End ================================== -->
 
-			<!-- ========================== Download App Section =============================== -->
-			<section class="bg-light">
-				<div class="container">
-					<div class="row align-items-center">
-						
-						<div class="col-lg-7 col-md-12 col-sm-12 content-column">
-							<div class="content_block_2">
-								<div class="content-box">
-									<div class="sec-title light">
-										<p class="text-blue">Download apps</p>
-										<h2>Download App Free App For Android and iPhone</h2>
-									</div>
-									<div class="text">
-										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto accusantium.</p>
-									</div>
-									<div class="btn-box clearfix mt-5">
-										<a href="index.html" class="download-btn play-store">
-											<i class="fab fa-google-play"></i>
-											<span>Download on</span>
-											<h3>Google Play</h3>
-										</a>
-										
-										<a href="index.html" class="download-btn app-store">
-											<i class="fab fa-apple"></i>
-											<span>Download on</span>
-											<h3>App Store</h3>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-5 col-md-12 col-sm-12 image-column">
-							<div class="image-box">
-								<figure class="image"><img src="{{ asset('img/app.png') }}" class="img-fluid" alt=""></figure>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- ========================== Download App Section =============================== -->
-			
-
-			<!-- ============================ Call To Action ================================== -->
-			<section class="theme-bg call-to-act-wrap">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							
-							<div class="call-to-act">
-								<div class="call-to-act-head">
-									<h3>Want to Become a Real Estate Agent?</h3>
-									<span>We'll help you to grow your career and growth.</span>
-								</div>
-								<a href="#" class="btn btn-call-to-act">SignUp Today</a>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- ============================ Call To Action End ================================== -->
-
+	
 @endsection
 
 @section('extra-script')
