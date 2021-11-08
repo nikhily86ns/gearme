@@ -220,7 +220,27 @@
 										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
 									</div>
 								</div>
-								
+								<hr>
+								<!-- <div class="liating-detail-footer">
+									<div class="footer-flex ms-4 mb-3">
+										<div class="row">
+											<div class="col-lg-6">
+												<h5>Share this to Social Media</h5>
+											</div>
+											<div class="col-lg-6" id="social-links">
+												<a href="" id="facebook-btn" ><i class="fab fa-facebook" style="color: #3b5998; font-size: 2rem"></i></a>	
+												<a href="" id="gmail-btn" ><i class="fas fa-envelope" style="color: #cf3e39; font-size: 2rem"></i></a>
+												<a href="" id="twitter-btn" ><i class="fab fa-twitter" style="color: #1da1f2; font-size: 2rem"></i></a>
+												<a href="" id="whatsapp-btn" ><i class="fab fa-whatsapp" style="color: #25d366; font-size: 2rem"></i></a>
+												<a href="" id="linkedin-btn" ><i class="fab fa-linkedin-in" style="color: #0077b5; font-size: 2rem"></i></a>
+											</div>
+											
+										</div>
+									</div>
+								</div> -->
+								<div class="col-lg-6 ms-3 my-3">
+									<button class="btn btn-primary" id="shareBtn" style="display: none"><i class="fa fa fa-share text-white" aria-hidden="true"></i> Share</button>
+								</div>
 							</div>
 						</div>
 						@endforeach
@@ -228,71 +248,17 @@
 						
 					</div>
 					
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
 							<a href="listings-list-with-sidebar.html" class="btn btn-theme-light-2 rounded">Browse More Properties</a>
 						</div>
-					</div>
+					</div> -->
 					
 				</div>	
 			</section>
 			<!-- ================================= Explore Property End =============================== -->
 
-			<!-- ================= Finance Option  ================= -->
-			<!-- <section class="bg-orange">
-					<div class="row justify-content-center">
-						<div class="col-lg-7 col-md-10 text-center">
-							<div class="sec-heading center">
-								<h2>All Finance Options Available</h2>
-								<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
-							</div>
-						</div>
-					</div>
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-							<div class="d-flex justify-content-center">
-								<div class="col-lg-10 col-md-10 col-sm-12 card p-4">
-									<table class="table text-nowrap" id="financeTable">
-										<thead>
-											<tr>
-												<th class="border-top-0">#</th>
-												<th class="border-top-0">Capital Provider</th>
-												<th class="border-top-0">Plan Amount</th>
-												<th class="border-top-0">Duration</th>
-												<th class="border-top-0">Minimun Interest</th>
-												<th class="border-top-0">Maximum Interest</th>
-												<th class="border-top-0">Processing Fee</th>
-												<th class="border-top-0">Select</th>
-											</tr>
-										</thead>
-										<tbody>
-												@foreach($plan as $key=>$row)
-													<tr>
-													<td>{{ $key+1 }}</td>
-													<td>{{ $row->name }}</td>
-													<td>${{ $row->amount }}</td>
-													<td>{{ $row->duration }}</td>
-													<td>{{ $row->interest_min }}%</td>
-													<td>{{ $row->interest_max }}%</td>
-													<td>${{ $row->processing_fee }}</td>
-													<td> 
-														<form method="POST" action="{{ route('investor.selectPlan', $row->id) }}">
-															@csrf
-															<button type="submit" class="btn btn-success"><i class="far fa-hand-pointer"></i></button>
-														</form>
-													</td>
-													</tr>
-												@endforeach
-										</tbody>											
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section> -->
-			<!-- ================= Finance Option End  ================= -->
+
 
 			<!-- ================= Finance Option Start Collapse  ================= -->
 			
@@ -371,900 +337,19 @@
 														</tbody>											
 													</table>
 												</div>
+												
 											</div>
-											
+											@endforeach
 										</div>
-										@endforeach
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 			</section>
 
 			<!-- ================= Finance Option End  ================= -->
 
-			
-			<!-- ============================ Property Location Start ================================== -->
-			<!-- <section class="bg-light">
-				<div class="container">
-					
-					<div class="row justify-content-center">
-						<div class="col-lg-7 col-md-10 text-center">
-							<div class="sec-heading center">
-								<h2>Find By Locations</h2>
-								<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-					
-						<div class="col-lg-4 col-md-4">
-							<div class="location-property-wrap">
-								<div class="location-property-thumb">
-									<a href="listings-list-with-sidebar.html"><img src="{{ asset('img/c-1.png') }}" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="location-property-content">
-									<div class="lp-content-flex">
-										<h4 class="lp-content-title">San Francisco, California</h4>
-										<span>12 Properties</span>
-									</div>
-									<div class="lp-content-right">
-										<a href="listings-list-with-sidebar.html" class="lp-property-view"><i class="ti-angle-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-4 col-md-4">
-							<div class="location-property-wrap">
-								<div class="location-property-thumb">
-									<a href="listings-list-with-sidebar.html"><img src="{{ asset('img/c-2.png') }}" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="location-property-content">
-									<div class="lp-content-flex">
-										<h4 class="lp-content-title">Dunao, California</h4>
-										<span>142 Properties</span>
-									</div>
-									<div class="lp-content-right">
-										<a href="listings-list-with-sidebar.html" class="lp-property-view"><i class="ti-angle-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-4 col-md-4">
-							<div class="location-property-wrap">
-								<div class="location-property-thumb">
-									<a href="listings-list-with-sidebar.html"><img src="{{ asset('img/c-3.png') }}" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="location-property-content">
-									<div class="lp-content-flex">
-										<h4 class="lp-content-title">Liverpool, London</h4>
-										<span>17 Properties</span>
-									</div>
-									<div class="lp-content-right">
-										<a href="listings-list-with-sidebar.html" class="lp-property-view"><i class="ti-angle-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-4 col-md-4">
-							<div class="location-property-wrap">
-								<div class="location-property-thumb">
-									<a href="listings-list-with-sidebar.html"><img src="{{ asset('img/c-4.png') }}" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="location-property-content">
-									<div class="lp-content-flex">
-										<h4 class="lp-content-title">San Francisco, New York</h4>
-										<span>72 Properties</span>
-									</div>
-									<div class="lp-content-right">
-										<a href="listings-list-with-sidebar.html" class="lp-property-view"><i class="ti-angle-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-4 col-md-4">
-							<div class="location-property-wrap">
-								<div class="location-property-thumb">
-									<a href="listings-list-with-sidebar.html"><img src="{{ asset('img/c-5.png') }}" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="location-property-content">
-									<div class="lp-content-flex">
-										<h4 class="lp-content-title">New Orleans, Louisiana</h4>
-										<span>102 Properties</span>
-									</div>
-									<div class="lp-content-right">
-										<a href="listings-list-with-sidebar.html" class="lp-property-view"><i class="ti-angle-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-4 col-md-4">
-							<div class="location-property-wrap">
-								<div class="location-property-thumb">
-									<a href="listings-list-with-sidebar.html"><img src="{{ asset('img/c-6.png') }}" class="img-fluid" alt="" /></a>
-								</div>
-								<div class="location-property-content">
-									<div class="lp-content-flex">
-										<h4 class="lp-content-title">Los Angeles</h4>
-										<span>95 Properties</span>
-									</div>
-									<div class="lp-content-right">
-										<a href="listings-list-with-sidebar.html" class="lp-property-view"><i class="ti-angle-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-					
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
-							<a href="listings-list-with-sidebar.html" class="btn btn-theme-light rounded">Browse More Locations</a>
-						</div>
-					</div>
-					
-				</div>
-			</section> -->
-			<!-- ============================ Property Location End ================================== -->
-			
-			<!-- ============================ All Property ================================== -->
-			<!-- <section>
-				<div class="container">
-				
-					<div class="row justify-content-center">
-						<div class="col-lg-7 col-md-10 text-center">
-							<div class="sec-heading center">
-								<h2>Featured Property For Sale</h2>
-								<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
-							</div>
-						</div>
-					</div>
-				
-					<div class="row list-layout">
-						
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-1.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Resort Valley Ocs</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types sale">For Sale</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$7,000</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-						
-						
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-2.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Adobe Property Advisors</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types rent">For Rent</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$6,800</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-						
-
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-3.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Bluebell Real Estate</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types rent">For Rent</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$7,000</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-						
-
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-4.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Agile Real Estate Group</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types sale">For Sale</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$8,100</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-						
-
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-5.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Nestled Real Estate</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types sale">For Sale</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$5,700</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-						
-
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-6.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Flow Group Real Estate</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types rent">For Rent</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$5,900</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-						
-
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-7.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Strive Partners Realty</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types sale">For Sale</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$6,200</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-						
-
-						
-						<div class="col-lg-6 col-md-12">
-							<div class="property-listing property-1">
-									
-								<div class="listing-img-wrapper">
-									<a href="single-property-2.html">
-										<img src="{{ asset('img/p-8.jpg') }}" class="img-fluid mx-auto" alt="" />
-									</a>
-								</div>
-								
-								<div class="listing-content">
-								
-									<div class="listing-detail-wrapper-box">
-										<div class="listing-detail-wrapper">
-											<div class="listing-short-detail">
-												<h4 class="listing-name"><a href="single-property-2.html">Black Oak Realty</a></h4>
-												<div class="fr-can-rating">
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star filled"></i>
-													<i class="fas fa-star"></i>
-													<span class="reviews_text">(42 Reviews)</span>
-												</div>
-												<span class="prt-types rent">For Rent</span>
-											</div>
-											<div class="list-price">
-												<h6 class="listing-card-info-price">$8,400</h6>
-											</div>
-										</div>
-									</div>
-									
-									<div class="price-features-wrapper">
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>3 Beds
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>1 Bath
-                                            </div>
-                                            <div class="listing-card-info-icon">
-                                                <div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>800 sqft
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="listing-detail-footer">
-                                        <div class="footer-first">
-                                            <div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />210 Zirak Road, Canada</div>
-                                        </div>
-                                        <div class="footer-flex">
-                                            <a href="property-detail.html" class="prt-view">View</a>
-                                        </div>
-                                    </div>
-									
-								</div>
-								
-							</div>
-						</div>
-														
-						
-					</div>
-							
-					
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
-							<a href="listings-list-with-sidebar.html" class="btn btn-theme-light-2 rounded">Browse More Properties</a>
-						</div>
-					</div>
-					
-				</div>		
-			</section> -->
-			<!-- ============================ All Featured Property ================================== -->
-			
-			<!-- ============================ Smart Testimonials ================================== -->
-			<!-- <section class="bg-orange">
-				<div class="container">
-				
-					<div class="row justify-content-center">
-						<div class="col-lg-7 col-md-10 text-center">
-							<div class="sec-heading center">
-								<h2>Good Reviews by Customers</h2>
-								<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row justify-content-center">
-						
-						<div class="col-lg-12 col-md-12">
-							
-							<div class="smart-textimonials smart-center" id="smart-textimonials">
-								
-								
-								<div class="item">
-									<div class="item-box">
-										<div class="smart-tes-author">
-											<div class="st-author-box">
-												<div class="st-author-thumb">
-													<div class="quotes bg-blue"><i class="ti-quote-right"></i></div>
-													<img src="{{ asset('img/user-3.jpg') }}" class="img-fluid" alt="" />
-												</div>
-											</div>
-										</div>
-										
-										<div class="smart-tes-content">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
-										</div>
-										
-										<div class="st-author-info">
-											<h4 class="st-author-title">Adam Williams</h4>
-											<span class="st-author-subtitle">CEO Of Microwoft</span>
-										</div>
-									</div>
-								</div>
-								
-								
-								<div class="item">
-									<div class="item-box">
-										<div class="smart-tes-author">
-											<div class="st-author-box">
-												<div class="st-author-thumb">
-													<div class="quotes bg-inverse"><i class="ti-quote-right"></i></div>
-													<img src="{{ asset('img/user-8.jpg') }}" class="img-fluid" alt="" />
-												</div>
-											</div>
-										</div>
-										
-										<div class="smart-tes-content">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
-										</div>
-										
-										<div class="st-author-info">
-											<h4 class="st-author-title">Retha Deowalim</h4>
-											<span class="st-author-subtitle">CEO Of Apple</span>
-										</div>
-									</div>
-								</div>
-								
-								
-								<div class="item">
-									<div class="item-box">
-										<div class="smart-tes-author">
-											<div class="st-author-box">
-												<div class="st-author-thumb">
-													<div class="quotes bg-purple"><i class="ti-quote-right"></i></div>
-													<img src="{{ asset('img/user-4.jpg') }}" class="img-fluid" alt="" />
-												</div>
-											</div>
-										</div>
-										
-										<div class="smart-tes-content">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
-										</div>
-										
-										<div class="st-author-info">
-											<h4 class="st-author-title">Sam J. Wasim</h4>
-											<span class="st-author-subtitle">Pio Founder</span>
-										</div>
-									</div>
-								</div>
-								
-								
-								<div class="item">
-									<div class="item-box">
-										<div class="smart-tes-author">
-											<div class="st-author-box">
-												<div class="st-author-thumb">
-													<div class="quotes bg-primary"><i class="ti-quote-right"></i></div>
-													<img src="{{ asset('img/user-5.jpg') }}" class="img-fluid" alt="" />
-												</div>
-											</div>
-										</div>
-										
-										<div class="smart-tes-content">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
-										</div>
-										
-										<div class="st-author-info">
-											<h4 class="st-author-title">Usan Gulwarm</h4>
-											<span class="st-author-subtitle">CEO Of Facewarm</span>
-										</div>
-									</div>
-								</div>
-								
-								
-								<div class="item">
-									<div class="item-box">
-										<div class="smart-tes-author">
-											<div class="st-author-box">
-												<div class="st-author-thumb">
-													<div class="quotes bg-success"><i class="ti-quote-right"></i></div>
-													<img src="{{ asset('img/user-6.jpg') }}" class="img-fluid" alt="" />
-												</div>
-											</div>
-										</div>
-										
-										<div class="smart-tes-content">
-											<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
-										</div>
-										
-										<div class="st-author-info">
-											<h4 class="st-author-title">Shilpa Shethy</h4>
-											<span class="st-author-subtitle">CEO Of Zapple</span>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			</section> -->
-			<!-- ============================ Smart Testimonials End ================================== -->
-			
-			<!-- ============================ Price Table Start ================================== -->
-			<!-- <section>
-				<div class="container">
-				
-					<div class="row justify-content-center">
-						<div class="col-lg-7 col-md-10 text-center">
-							<div class="sec-heading center">
-								<h2>See our packages</h2>
-								<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-					
-					
-						<div class="col-lg-4 col-md-4">
-							<div class="pricing-wrap basic-pr">
-								
-								<div class="pricing-header">
-									<h4 class="pr-value"><sup>$</sup>49</h4>
-									<h4 class="pr-title">Basic Package</h4>
-								</div>
-								<div class="pricing-body">
-									<ul>
-										<li class="available">5+ Listings</li>
-										<li class="available">Contact With Agent</li>
-										<li class="available">3 Month Validity</li>
-										<li>7x24 Fully Support</li>
-										<li>50GB Space</li>
-									</ul>
-								</div>
-								<div class="pricing-bottom">
-									<a href="#" class="btn-pricing">Choose Plan</a>
-								</div>
-								
-							</div>
-						</div>
-						
-					
-						<div class="col-lg-4 col-md-4">
-							<div class="pricing-wrap platinum-pr recommended">
-								
-								<div class="pricing-header">
-									<h4 class="pr-value"><sup>$</sup>99</h4>
-									<h4 class="pr-title">Platinum Package</h4>
-								</div>
-								<div class="pricing-body">
-									<ul>
-										<li class="available">5+ Listings</li>
-										<li class="available">Contact With Agent</li>
-										<li class="available">3 Month Validity</li>
-										<li class="available">7x24 Fully Support</li>
-										<li>50GB Space</li>
-									</ul>
-								</div>
-								<div class="pricing-bottom">
-									<a href="#" class="btn-pricing">Choose Plan</a>
-								</div>
-								
-							</div>
-						</div>
-						
-					
-						<div class="col-lg-4 col-md-4">
-							<div class="pricing-wrap standard-pr">
-								
-								<div class="pricing-header">
-									<h4 class="pr-value"><sup>$</sup>199</h4>
-									<h4 class="pr-title">Standard Package</h4>
-								</div>
-								<div class="pricing-body">
-									<ul>
-										<li class="available">5+ Listings</li>
-										<li class="available">Contact With Agent</li>
-										<li class="available">3 Month Validity</li>
-										<li class="available">7x24 Fully Support</li>
-										<li class="available">50GB Space</li>
-									</ul>
-								</div>
-								<div class="pricing-bottom">
-									<a href="#" class="btn-pricing">Choose Plan</a>
-								</div>
-								
-							</div>
-						</div>
-						
-					</div>
-					
-				</div>	
-			</section> -->
-			<!-- ============================ Price Table End ================================== -->
 			
 			<!-- ========================== Download App Section =============================== -->
 			<section class="bg-light">
@@ -1331,4 +416,39 @@
 @endsection
 
 @section('extra-script')
+<script>
+	const gmailBtn = document.getElementById('gmail-btn');
+	const facebookBtn = document.getElementById('facebook-btn');
+	const linkedinBtn = document.getElementById('linkedin-btn');
+	const whatsappBtn = document.getElementById('whatsapp-btn');
+	const twitterBtn = document.getElementById('twitter-btn');
+	const socialLinks = document.getElementById('social-links');
+
+	let postUrl = encodeURI(document.location.href);
+	let postTitle = encodeURI('Property');
+
+	facebookBtn.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}`);
+    twitterBtn.setAttribute("href", `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+    linkedinBtn.setAttribute("href", `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`);
+    whatsappBtn.setAttribute("href",`https://wa.me/?text=${postTitle} ${postUrl}`);
+    gmailBtn.setAttribute("href",`https://mail.google.com/mail/?view=cm&su=${postTitle}&body=${postUrl}`);
+
+	const shareBtn = document.getElementById('shareBtn');
+    if(!navigator.share){
+      shareBtn.style.display = 'block';
+      socialLinks.style.display = 'none';
+      shareBtn.addEventListener('click', ()=>{
+        navigator.share({
+          title: postTitle,
+          url:postUrl
+        }).then((result) => {
+          alert('Thank You for Sharing.')
+        }).catch((err) => {
+          console.log(err);
+        });;
+      });
+    }else{
+    }
+
+</script>
 @endsection

@@ -37,14 +37,29 @@ class HomeController extends Controller
         $posted_by_owner =  DB::select("SELECT
         sum(case when posted_by = 'owner' then 1 else 0 end) AS ownerPosted
         FROM properties");
+        $totalowners = DB::select("SELECT
+        sum(case when roles = 1 then 1 else 0 end) AS totalowners
+        FROM users");
+        $totalinvestors = DB::select("SELECT
+        sum(case when roles = 3 then 1 else 0 end) AS totalinvestors
+        FROM users");
+        $totalproviders = DB::select("SELECT
+        sum(case when roles = 2 then 1 else 0 end) AS totalproviders
+        FROM users");
    
-        if (isset($posted_by_owner[0])) 
+        if (isset($posted_by_owner[0]) && isset($totalowners[0])) 
         {
             $data['ownerPosted'] =  $posted_by_owner[0]->ownerPosted;
+            $data['totalowners'] =  $totalowners[0]->totalowners;
+            $data['totalinvestors'] =  $totalinvestors[0]->totalinvestors;
+            $data['totalproviders'] =  $totalproviders[0]->totalproviders;
         } 
         else 
         {
             $data['ownerPosted'] =  '00';
+            $data['totalowners'] =  '00';
+            $data['totalinvestors'] =  '00';
+            $data['totalproviders'] =  '00';
         }
 
         return view('admin.dashboard', compact('data'));

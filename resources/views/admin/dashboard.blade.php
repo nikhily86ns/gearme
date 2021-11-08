@@ -31,7 +31,7 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-shield"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Property Posted By Owner</span>
+                <span class="info-box-text">Property Posted By Owners</span>
                 <span class="info-box-number">
                     @if($data)
                       {{ $data['ownerPosted'] }}
@@ -47,11 +47,17 @@
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Likes</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-text">Total Property Owners</span>
+                <span class="info-box-number">
+                    @if($data)
+                      {{ $data['totalowners'] }}
+                    @else
+                      {{ 0 }}
+                    @endif
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -64,11 +70,17 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Total Property Investors</span>
+                <span class="info-box-number">
+                    @if($data)
+                      {{ $data['totalinvestors'] }}
+                    @else
+                      {{ 0 }}
+                    @endif
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -80,8 +92,14 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">New Members</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-text">Total Capital Providers</span>
+                <span class="info-box-number">
+                    @if($data)
+                      {{ $data['totalproviders'] }}
+                    @else
+                      {{ 0 }}
+                    @endif
+                </span>
               </div>
               <!-- /.info-box-content -->
             </div>
