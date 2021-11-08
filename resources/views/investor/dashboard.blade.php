@@ -218,6 +218,7 @@
 									</div>
 									<div class="footer-flex">
 										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
+										<a href=""><i class="fas fa-share-alt"></i></a>
 									</div>
 								</div>
 								
