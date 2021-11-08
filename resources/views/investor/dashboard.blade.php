@@ -220,7 +220,7 @@
 										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
 									</div>
 								</div>
-								<hr>
+								<!-- <hr> -->
 								<!-- <div class="liating-detail-footer">
 									<div class="footer-flex ms-4 mb-3">
 										<div class="row">
@@ -238,9 +238,9 @@
 										</div>
 									</div>
 								</div> -->
-								<div class="col-lg-6 ms-3 my-3">
+								<!-- <div class="col-lg-6 ms-3 my-3">
 									<button class="btn btn-primary" id="shareBtn" style="display: none"><i class="fa fa fa-share text-white" aria-hidden="true"></i> Share</button>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						@endforeach
