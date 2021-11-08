@@ -48,7 +48,16 @@ class UserController extends Controller
                                             'email' => $request->email,
                                             'phone' => $request->phone ,
                                             'country' => $request->country ,
-                                            'profileimage' =>  $filename
+                                            'profileimage' =>  $filename,
+                                            'address' => $request->address ,
+                                            'city' => $request->city ,
+                                            'state' => $request->state ,
+                                            'zip' => $request->zip ,
+                                            'about' => $request->about ,
+                                            'facebook' => $request->facebook ,
+                                            'twitter' => $request->twitter ,
+                                            'google' => $request->google ,
+                                            'linkedin' => $request->linkedin ,
                                            ]);
         }
         else{
@@ -56,11 +65,20 @@ class UserController extends Controller
                                             'email' => $request->email,
                                             'phone' => $request->phone ,
                                             'country' => $request->country ,
+                                            'address' => $request->address ,
+                                            'city' => $request->city ,
+                                            'state' => $request->state ,
+                                            'zip' => $request->zip ,
+                                            'about' => $request->about ,
+                                            'facebook' => $request->facebook ,
+                                            'twitter' => $request->twitter ,
+                                            'google' => $request->google ,
+                                            'linkedin' => $request->linkedin ,
                                            ]);
         }
                                         //    dd(DB::getQueryLog());
         
-        return redirect()->route('owner.profile'); 
+        return redirect()->route('owner.dashboard'); 
     }
 
 // Function to Reset Owner Password
