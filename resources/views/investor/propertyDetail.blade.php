@@ -579,6 +579,19 @@
 									<li><a href="JavaScript:Void(0);" class="btn btn-likes" data-toggle="tooltip" data-original-title="Save"><i class="fas fa-heart"></i>Save</a></li>
 								</ul>
 							</div>
+							<div class="row">
+											<div class="col-lg-6">
+												<h5>Share this to Social Media</h5>
+											</div>
+											<div class="col-lg-6" id="social-links">
+												<a href="" id="facebook-btn" ><i class="fab fa-facebook" style="color: #3b5998; font-size: 2rem"></i></a>	
+												<a href="" id="gmail-btn" ><i class="fas fa-envelope" style="color: #cf3e39; font-size: 2rem"></i></a>
+												<a href="" id="twitter-btn" ><i class="fab fa-twitter" style="color: #1da1f2; font-size: 2rem"></i></a>
+												<a href="" id="whatsapp-btn" ><i class="fab fa-whatsapp" style="color: #25d366; font-size: 2rem"></i></a>
+												<a href="" id="linkedin-btn" ><i class="fab fa-linkedin-in" style="color: #0077b5; font-size: 2rem"></i></a>
+											</div>
+											
+										</div>
 							
 							<div class="details-sidebar">
 							
@@ -706,4 +719,39 @@
 @endsection
 
 @section('extra-script')
+<script>
+	const gmailBtn = document.getElementById('gmail-btn');
+	const facebookBtn = document.getElementById('facebook-btn');
+	const linkedinBtn = document.getElementById('linkedin-btn');
+	const whatsappBtn = document.getElementById('whatsapp-btn');
+	const twitterBtn = document.getElementById('twitter-btn');
+	const socialLinks = document.getElementById('social-links');
+
+	let postUrl = encodeURI(document.location.href);
+	let postTitle = encodeURI('{{ $data->propertyType }}');
+
+	facebookBtn.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}`);
+    twitterBtn.setAttribute("href", `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+    linkedinBtn.setAttribute("href", `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`);
+    whatsappBtn.setAttribute("href",`https://wa.me/?text=${postTitle} ${postUrl}`);
+    gmailBtn.setAttribute("href",`https://mail.google.com/mail/?view=cm&su=${postTitle}&body=${postUrl}`);
+
+	const shareBtn = document.getElementById('shareBtn');
+    if(!navigator.share){
+      shareBtn.style.display = 'block';
+      socialLinks.style.display = 'none';
+      shareBtn.addEventListener('click', ()=>{
+        navigator.share({
+          title: postTitle,
+          url:postUrl
+        }).then((result) => {
+          alert('Thank You for Sharing.')
+        }).catch((err) => {
+          console.log(err);
+        });;
+      });
+    }else{
+    }
+
+</script>
 @endsection
