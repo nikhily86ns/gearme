@@ -405,7 +405,7 @@
 @endsection
 
 @section('extra-script')
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>  
 	$(function() {
 		// Multiple images preview with JavaScript
@@ -429,7 +429,8 @@
 
 
 <script>
-	$(document).ready(function(){
+	
+	jQuery(document).ready(function(){
 		$("#cafeterias").hide();
 		$("#areas").hide();
 		$("#lockin").hide();
