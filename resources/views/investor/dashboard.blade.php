@@ -337,7 +337,7 @@
 																<th class="border-top-0">Download Brochure</th>
 															</tr>
 														</thead>
-														<tbody>
+														<tbody>@if($row->plan != null)
 														@foreach($row->plan as $key => $res)
 															<tr>
 															<td>{{ $key+1 }}</td>
@@ -367,6 +367,7 @@
 															<td> <a class="btn btn-info btn-sm" href="/generatepdf/{{ $res->id }}">Download Document</a></td>
 															</tr>
 															@endforeach	
+															@endif
 														</tbody>											
 													</table>
 												</div>
