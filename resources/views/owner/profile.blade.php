@@ -105,8 +105,6 @@
 								
 							</div>
 
-
-
 @endsection
 
 @section('extra-script')
