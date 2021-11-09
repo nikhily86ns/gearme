@@ -20,7 +20,7 @@
 								<div class="prt-detail-title-desc">
 									<span class="prt-types sale">For {{ $data->propertyFor }}</span>
 									<h3>{{ $data->title }} </h3>
-									<span><i class="lni-map-marker"></i>  {{ $data->state }} {{ $data->city }}</span>
+									<span><i class="lni-map-marker"></i>  {{ $data->state }} ,{{ $data->city }}</span>
 									<h3 class="prt-price-fix">$ {{ $data->price }}</sub></h3>
 									<div class="list-fx-features">
 										<div class="listing-card-info-icon">
@@ -591,7 +591,7 @@
 								<!-- Featured Property -->
 								<div class="sidebar-widgets">
 									
-									<h4>Featured Property</h4>
+									<h4>Your Properties</h4>
 									
 									<div class="sidebar_featured_property">
 										
