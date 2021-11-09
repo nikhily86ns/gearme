@@ -17,6 +17,12 @@
 									<div class="submit-section">
 										<form action="updateOwnerProfile" method="POST" enctype="multipart/form-data">
 										@csrf
+											<div class="image-upload d-flex flex-column align-items-center text-center p-3 py-5">
+												<label for="file-input">
+													<img class="rounded-circle mt-5" width="200px" height="200px" src="{{ asset('profile/'. Auth::user()->profileimage) }}"/>
+												</label>
+												<input id="file-input" class="mt-3" name="file" style="display:none;" type="file" />
+											</div>
 											<div class="row">
 											
 												<div class="form-group col-md-6">

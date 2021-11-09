@@ -158,9 +158,9 @@
                                     @endif  
                                 @else
                                     <li class="nav-item dropdown" style="float:right;">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        <a class="show_sure" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
+                                                            ">
                                                             <img src="{{ asset('img/off.svg') }}" class="mr-2" width="17" alt="" />
                                                 {{ __('Sign Out') }}
                                             </a>
@@ -258,11 +258,13 @@
 											<ul>
 												<li class="{{ Request::is('dashboardOwner') ? 'active' : '' }}"><a href="{{ route('owner.dashboard') }}"><i class="ti-dashboard"></i>Dashboard</a></li>
 												<li class="{{ Request::is('ownerProfile') ? 'active' : '' }}"><a href="{{ route('owner.profile') }}"><i class="ti-user"></i>My Profile</a></li>
-												<li><a href="bookmark-list.html"><i class="ti-bookmark"></i>Bookmarked Listings</a></li>
-												<li><a href="my-property.html"><i class="ti-layers"></i>My Properties</a></li>
-												<li><a href="submit-property-dashboard.html"><i class="ti-pencil-alt"></i>Submit New Property</a></li>
-												<li><a href="change-password.html"><i class="ti-unlock"></i>Change Password</a></li>
-												<li><a href="#"><i class="ti-power-off"></i>Log Out</a></li>
+												<!-- s<li><a href="bookmark-list.html"><i class="ti-bookmark"></i>Bookmarked Listings</a></li> -->
+												<li class="{{ Request::is('viewOwnerProperty*') ? 'active' : '' }}"><a href="/viewOwnerProperty/{{ Auth::user()->id }}"><i class="ti-layers"></i>My Properties</a></li>
+												<!-- <li><a href="submit-property-dashboard.html"><i class="ti-pencil-alt"></i>Submit New Property</a></li> -->
+												<li class="{{ Request::is('submitProperty') ? 'active' : '' }}"><a href="{{ route('owner.submitProperty') }}"><i class="ti-pencil-alt"></i>Submit New Property</a></li>
+												
+												<li class="{{ Request::is('changeOwnerPassword') ? 'active' : '' }}"><a href="{{ route('owner.changeOwnerPassword') }}"><i class="ti-unlock"></i>Change Password</a></li>
+												<!-- <li><a href="#"><i class="ti-power-off"></i>Log Out</a></li> -->
 											</ul>
 										</div>
 										
@@ -598,7 +600,42 @@
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->
-		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+		<script type="text/javascript">
+
+		$('.show_confirm').click(function(event) {
+			var form =  $(this).closest("form");
+			var name = $(this).data("name");
+			event.preventDefault();
+			swal({
+				title: `Are you sure you want to delete this record?`,
+                text: "If you delete this, it will be gone forever.",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+				form.submit();
+				}
+			});
+		});
+
+		$('.show_sure').click(function() {
+			swal({
+				title: `Are you sure ?`,
+				text: "",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			}).then((result) => { 
+				if (result.value===true) { 
+					document.getElementById('logout-form').submit();
+				} 
+			});
+		});
+
+		</script>
 		<script>
 			function openFilterSearch() {
 				document.getElementById("filter_search").style.display = "block";

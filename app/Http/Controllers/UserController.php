@@ -12,6 +12,7 @@ use App\Models\Notification;
 use DB;
 use PDF;
 use Auth;
+use Redirect;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -78,10 +79,37 @@ class UserController extends Controller
         }
                                         //    dd(DB::getQueryLog());
         
-        return redirect()->route('owner.dashboard'); 
+        return redirect()->route('owner.profile'); 
+    }
+
+// Function to View Change PassWord Page
+
+    public function changeOwnerPassword()
+    {
+        return view('owner.changePassword');
     }
 
 // Function to Reset Owner Password
+
+    // public function resetOwnerPassword(Request $request) {
+     
+    //     $request->validate([
+    //         'current_password' => 'required|min:3',
+    //         'password' => 'required|min:6|confirmed'
+    //     ]);
+    //     $user = User::where('email', auth()->user()->email)->first();
+        
+    //     if(!Hash::check($request->current_password, $user->password)) {
+    //         $request->session()->flash('error', 'Invalid Current Password');
+    //         return redirect()->route('owner.changePassword');
+    //     } else {
+    //         User::where('email', auth()->user()->email)->update([
+    //             'password' => Hash::make($request->password)
+    //         ]);
+    //         $request->session()->flash('success', 'User Password Reset Successfully');
+    //         return redirect()->route('owner.changePassword');
+    //     }
+    // }
 
     public function resetOwnerPassword(Request $request)
     {
@@ -92,7 +120,8 @@ class UserController extends Controller
         User::where('email', $request->email)->first()->update([
             'password' => Hash::make($request->password)
         ]);
-        return redirect()->route('owner.profile');
+        $request->session()->flash('success', 'User Password Reset Successfully');
+        return redirect()->route('owner.changeOwnerPassword');
     }
 
 // Function To View Investor Profile
@@ -313,25 +342,24 @@ class UserController extends Controller
    
     }
 
+// Function to view Submit Property Page
+
+    public function submitProperty()
+    {
+        return view('owner.postProperty');
+    }
+
 // Function to Save Property Details in Database by Propert Owner
 
     public function postProperty(Request $request)
     {
+        $id = Auth::user()->id;
         $request->validate([
             "propertyFor" => "required",
-            // "propertyType" => "required",
+            "propertyType" => "required",
             "city" => "required",
-            "locality" => 'required', 
-            // "area" => "required",
+            "area" => "required",
             "price" => "required",
-            // "images" => 'image|mimes:jpeg,png,jpg,jfif,gif,svg',
-            // "unitType" => "required",
-            // "bathroom" => "required",
-            // "about" => "required",
-            // "furnishing" => "required",
-            // "balconies" => 'required', 
-            // "parking" => "required",
-            // "postedBy" => "required",
         ]);
 
         $image = array();
@@ -346,33 +374,11 @@ class UserController extends Controller
                 $image[] = $image_full_name;
             }
         }
-
-        // $data = [
-        //     'propertyFor' => $request->propertyFor,
-        //     'propertyType' => $request->propertyType,
-        //     'city' => $request->city,
-        //     'locality' => $request->locality,
-        //     'unitType' => $request->unitType,
-        //     'area' => $request->area,
-        //     'price' => $request->price,
-        //     'bathroom' => $request->bathroom,
-        //     'about' => $request->about,
-        //     'furnishing' => $request->furnishing,
-        //     'balconies' => $request->balconies,
-        //     'balconies' => $request->balconies,
-        //     'parking' => $request->parking,
-        //     'lock' => $request->lock,
-        //     'cafeteria' => $request->cafeteria,
-        // ];
-
-        // $arr = json_encode($data);
-
                 $property = new Property();
-                $property->image = json_encode($image);
+                // $property->image = json_encode($image);
                 $property->propertyFor = $request->propertyFor;
                 $property->propertyType = $request->propertyType;
                 $property->city = $request->city;
-                $property->locality = $request->locality;
                 $property->unitType = $request->unitType;
                 $property->area = $request->area;
                 $property->price = $request->price;
@@ -385,9 +391,14 @@ class UserController extends Controller
                 $property->cafeteria = $request->cafeteria;
                 $property->posted_by = $request->postedBy;
                 $property->uid = $request->uid;
+                $property->address = $request->address;
+                $property->title = $request->title;
+                $property->state = $request->state;
+                $property->zip = $request->zip;
+                $property->feature = json_encode($request->input('features'));
                 $property->save();
 
-        return redirect()->route('owner.dashboard');
+        return redirect()->route('owner.viewProperty', ['id' => $id]);
     }
 
 // Function to View All Posted Property By Property Owner
@@ -402,8 +413,9 @@ class UserController extends Controller
 
     public function deleteProperty($id)
     {
-        User::find($id)->delete();
-        return redirect()->route('owner.property');
+        $userId = Auth::user()->id;
+        Property::find($id)->delete();
+        return redirect()->route('owner.viewProperty', ['id' => $userId]);
     }
 
 // Funstion to view Update Property Page
@@ -419,7 +431,8 @@ class UserController extends Controller
     public function editProperties(Request $request)
     {
         
-        $id = Auth::user()->id;
+        $userId = Auth::user()->id;
+        // dd($request->id);
         $image = array();
         if($file = $request->file('images')){
             foreach($file as $file){
@@ -436,7 +449,6 @@ class UserController extends Controller
                     'propertyFor' => $request->propertyFor,
                     'propertyType' => $request->propertyType,
                     'city' => $request->city,
-                    'locality' => $request->locality,
                     'unitType' => $request->unitType,
                     'area' => $request->area,
                     'price' => $request->price,
@@ -444,10 +456,14 @@ class UserController extends Controller
                     'about' => $request->about,
                     'furnishing' => $request->furnishing,
                     'balconies' => $request->balconies,
-                    'balconies' => $request->balconies,
                     'parking' => $request->parking,
                     'lock' => $request->lock,
                     'cafeteria' => $request->cafeteria,
+                    'address' => $request->address,
+                    'title' => $request->title,
+                    'state' => $request->state,
+                    'zip' => $request->zip,
+                    'feature' => json_encode($request->input('features')),
                 ]);
             }
         }
@@ -458,22 +474,39 @@ class UserController extends Controller
                 'propertyType' => $request->propertyType,
                 'city' => $request->city,
                 'locality' => $request->locality,
-                'unitType' => $request->unitType,
                 'area' => $request->area,
                 'price' => $request->price,
                 'bathroom' => $request->bathroom,
                 'about' => $request->about,
                 'furnishing' => $request->furnishing,
                 'balconies' => $request->balconies,
-                'balconies' => $request->balconies,
                 'parking' => $request->parking,
                 'lock' => $request->lock,
                 'cafeteria' => $request->cafeteria,
+                'address' => $request->address,
+                'title' => $request->title,
+                'state' => $request->state,
+                'zip' => $request->zip,
+                'feature' => json_encode($request->input('features')),
             ]);            
         }
 
         // return redirect()->route('owner.dashboard');
-        return redirect()->route('owner.viewProperty', ['id' => $id]);
+        return redirect()->route('owner.viewProperty', ['id' => $userId]);
+    }
+
+// Function to view Property Detail on Owner Dashboard 
+
+    public function propertyDetailOwner($id)
+    {
+        // $data = Property::where('id','=',$id)->first();
+        $data = DB::table('properties')
+              ->join('users', 'properties.uid','=', 'users.id')
+              ->where('properties.id','=',$id)
+              ->select('users.name','users.phone','properties.*')->first();
+        $property = Property::all();
+            //   print_r($data); die;
+        return view('owner.propertyDetails', compact('data','property'));
     }
 
 // Function to view Property Detail on Investor Dashboard 
