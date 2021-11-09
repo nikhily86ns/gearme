@@ -73,14 +73,18 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
     Route::middleware(['isOwner'])->group(function () {
 
         Route::get('/dashboardOwner', [App\Http\Controllers\HomeController::class, 'ownerLogin'])->name('owner.dashboard');
+        Route::get('/submitProperty', [App\Http\Controllers\UserController::class, 'submitProperty'])->name('owner.submitProperty');
         Route::post('/postProperty', [App\Http\Controllers\UserController::class, 'postProperty'])->name('owner.property');
         Route::get('/viewOwnerProperty/{id}', [App\Http\Controllers\UserController::class, 'viewProperty'])->name('owner.viewProperty');
-        Route::get('/deleteProperty', [App\Http\Controllers\UserController::class, 'deleteProperty'])->name('owner.deleteProperty');
+        Route::post('/deleteProperty/{id}', [App\Http\Controllers\UserController::class, 'deleteProperty'])->name('owner.deleteProperty');
         Route::get('/updateProperty/{id}', [App\Http\Controllers\UserController::class, 'updateProperty'])->name('owner.updateProperty');
         Route::post('/editProperties', [App\Http\Controllers\UserController::class, 'editProperties'])->name('owner.editProperties');
+        Route::get('/propertyDetailOwner/{id}', [App\Http\Controllers\UserController::class, 'propertyDetailOwner'])->name('investor.propertyDetailOwner');
+
         Route::get('/ownerProfile', [App\Http\Controllers\UserController::class, 'ownerProfile'])->name('owner.profile');
         Route::post('/updateOwnerProfile', [App\Http\Controllers\UserController::class, 'updateOwnerProfile'])->name('owner.updateProfile');
-        Route::post('/resetOwnerPassword', [App\Http\Controllers\UserController::class, 'resetOwnerPassword'])->name('admin.resetOwnerPassword');
+        Route::get('/changeOwnerPassword', [App\Http\Controllers\UserController::class, 'changeOwnerPassword'])->name('owner.changeOwnerPassword');
+        Route::post('/resetOwnerPassword', [App\Http\Controllers\UserController::class, 'resetOwnerPassword'])->name('owner.resetOwnerPassword');
 
     });
 
@@ -96,7 +100,7 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::post('/requestProvider', [App\Http\Controllers\UserController::class, 'requestProvider'])->name('investor.requestProvider');
         Route::get('/investorProfile', [App\Http\Controllers\UserController::class, 'investorProfile'])->name('investor.profile');
         Route::post('/updateInvestorProfile', [App\Http\Controllers\UserController::class, 'updateInvestorProfile'])->name('investor.updateProfile');
-        Route::post('/resetInvestorPassword', [App\Http\Controllers\UserController::class, 'resetInvestorPassword'])->name('admin.resetInvestorPassword');
+        Route::post('/resetInvestorPassword', [App\Http\Controllers\UserController::class, 'resetInvestorPassword'])->name('investor.resetInvestorPassword');
     });
 
 
@@ -113,7 +117,7 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::get('/investorDetail/{id}', [App\Http\Controllers\UserController::class, 'investorDetail'])->name('provider.investorDetail');
         Route::get('/providerProfile', [App\Http\Controllers\UserController::class, 'providerProfile'])->name('provider.profile');
         Route::post('/updateProviderProfile', [App\Http\Controllers\UserController::class, 'updateProviderProfile'])->name('provider.updateProfile');
-        Route::post('/resetProviderPassword', [App\Http\Controllers\UserController::class, 'resetProviderPassword'])->name('admin.resetProviderPassword');
+        Route::post('/resetProviderPassword', [App\Http\Controllers\UserController::class, 'resetProviderPassword'])->name('provider.resetProviderPassword');
 
     });
 

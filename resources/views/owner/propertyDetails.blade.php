@@ -1,79 +1,40 @@
-@extends('layouts.app')
+@extends('owner.master')
 
 @section('title')
-	Selected Property
+	Property Detail
 @endsection
 
 @section('extra-css')
-
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
 @endsection
 
 @section('content')
 
 
-            <!-- ============================ Hero Banner  Start================================== -->
-            <div class="featured_slick_gallery gray">
-				<div class="featured_slick_gallery-slide">
-					@foreach(json_decode($data->image) as $key=>$res)
-							<div class="featured_slick_padd"><a href="#" class="mfp-gallery"><img src="{{ asset('property/'. $res) }}" class="img-fluid mx-auto" alt="" /></a></div>
-					@endforeach
-				</div>
-			</div>
-			<!-- ============================ Hero Banner End ================================== -->
-			
-			<!-- ============================ Property Header Info Start================================== -->
-			<section class="gray-simple rtl p-0">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-11 col-md-12">
-					
-							<div class="property_block_wrap style-3">
-							
-								<div class="pbw-flex-1">
-									<div class="pbw-flex-thumb">
-										<img src="{{ asset('img/agency-1.png') }}" class="img-fluid" alt="" />
-									</div>
-								</div>
-								
-								<div class="pbw-flex">
-									<div class="prt-detail-title-desc">
-										<span class="prt-types sale">{{ $data->propertyFor }}</span>
-										<h3>{{ $data->propertyType }},{{ $data->city }}</h3>
-										<span><i class="lni-map-marker"></i>  {{ $data->locality }}</span>
-										<h3 class="prt-price-fix">$ {{ $data->price }}<sub>/month</sub></h3>
-										<div class="list-fx-features">
-											<div class="listing-card-info-icon">
-												<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt=""></div> {{ $data->unitType }}
-											</div>
-											<div class="listing-card-info-icon">
-												<div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt=""></div> {{ $data->bathroom }} bath
-											</div>
-											<div class="listing-card-info-icon">
-												<div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt=""></div> {{ $data->area }}
-											</div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-							
-						</div>	
-					</div>
-				</div>
-			</section>
-			<!-- ============================ Property Header Info Start================================== -->
-
-
-			<!-- ============================ Property Detail Start ================================== -->
-			<section class="gray-simple min">
 				<div class="container">
 					<div class="row">
 						
 						<!-- property main detail -->
 						<div class="col-lg-8 col-md-12 col-sm-12">
+						
+							<div class="property_block_wrap style-2 p-4">
+								<div class="prt-detail-title-desc">
+									<span class="prt-types sale">For {{ $data->propertyFor }}</span>
+									<h3>{{ $data->title }} </h3>
+									<span><i class="lni-map-marker"></i>  {{ $data->state }} {{ $data->city }}</span>
+									<h3 class="prt-price-fix">$ {{ $data->price }}</sub></h3>
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt=""></div>{{ $data->unitType }} Beds
+										</div>
+										<div class="listing-card-info-icon">
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt=""></div>{{ $data->bathroom }} Bath
+										</div>
+										<div class="listing-card-info-icon">
+											<div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt=""></div>{{ $data->area }} sqft
+										</div>
+									</div>
+								</div>
+							</div>
 							
 							<!-- Single Block Wrap -->
 							<div class="property_block_wrap style-2">
@@ -84,21 +45,20 @@
 								<div id="clOne" class="panel-collapse collapse show" aria-labelledby="clOne">
 									<div class="block-body">
 										<ul class="deatil_features">
-											<li><strong>Bedrooms:</strong>{{ $data->unitType }}</li>
-											<li><strong>Bathrooms:</strong>{{ $data->bathroom }} bath</li>
+											<li><strong>Bedrooms:</strong>{{ $data->unitType }} Beds</li>
+											<li><strong>Bathrooms:</strong>{{ $data->bathroom }} Bath</li>
 											<li><strong>Areas:</strong>{{ $data->area }} sq ft</li>
-											<li><strong>Garage</strong>{{ $data->parking }}</li>
+											<li><strong>Parking:</strong>{{ $data->parking }}</li>
 											<li><strong>Property Type:</strong>{{ $data->propertyType }}</li>
-											<li><strong>Year:</strong>Built1982</li>
-											<li><strong>Status:</strong>Active</li>
-											<li><strong>Cooling:</strong>Central A/C</li>
-											<li><strong>Heating Type:</strong>Forced Air</li>
-											<li><strong>Kitchen Features:</strong>Kitchen Facilities</li>
-											<li><strong>Exterior:</strong>FinishBrick</li>
+											<li><strong>Status:</strong>{{ $data->status }}</li>
+											<li><strong>Furnishing:</strong>{{ $data->furnishing }}</li>
+											<li><strong>Balconies:</strong> {{ $data->balconies }} </li>
+											<li><strong>Lock In Period:</strong>{{ $data->lock }} Years</li>
+											<!-- <li><strong>Exterior:</strong>FinishBrick</li>
 											<li><strong>Swimming Pool:</strong>Yes</li>
 											<li><strong>Elevetor:</strong>Yes</li>
 											<li><strong>Fireplace:</strong>Yes</li>
-											<li><strong>Free WiFi:</strong>No</li>
+											<li><strong>Free WiFi:</strong>No</li> -->
 											
 										</ul>
 									</div>
@@ -114,9 +74,9 @@
 								</div>
 								<div id="clTwo" class="panel-collapse collapse show">
 									<div class="block-body">
-										<p>{{ $data->about }}</p>
-										<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
-										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                        {{ $data->about }}
+										<!-- <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p> -->
+										<!-- <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> -->
 									</div>
 								</div>
 							</div>
@@ -131,7 +91,39 @@
 								<div id="clThree" class="panel-collapse collapse show">
 									<div class="block-body">
 										<ul class="avl-features third color">
-											<li>Air Conditioning</li>
+                                        @if($data->feature != '' && $data->feature != null && $data->feature != 'null' && $data->feature != NULL && is_array(json_decode($data->feature)))
+                                   									
+                                                <li>
+                                                    <input id="a-1" class="checkbox-custom " {{ in_array("AC", json_decode($data->feature)) ? 'checked' : '' }} value="AC" name="features[]" type="checkbox">
+                                                    <label for="a-1" class="checkbox-custom-label">Air Condition</label>
+                                                </li>
+                                                <li>
+                                                    <input id="a-3" class="checkbox-custom" {{ in_array("Heating", json_decode($data->feature)) ? 'checked' : '' }} value="Heating" name="features[]" type="checkbox">
+                                                    <label for="a-3" class="checkbox-custom-label">Heating</label>
+                                                </li>
+                                                <li>
+                                                    <input id="a-4" class="checkbox-custom" {{ in_array("Internet", json_decode($data->feature))  ? 'checked' : '' }} value="Internet" name="features[]" type="checkbox">
+                                                    <label for="a-4" class="checkbox-custom-label">Internet</label>
+                                                </li>
+                                                <li>
+                                                    <input id="a-5" class="checkbox-custom" {{ in_array("Microwave", json_decode($data->feature))  ? 'checked' : '' }} value="Microwave" name="features[]" type="checkbox">
+                                                    <label for="a-5" class="checkbox-custom-label">Microwave</label>
+                                                </li>
+                                                <li>
+                                                    <input id="a-6" class="checkbox-custom" {{ in_array("Smoking", json_decode($data->feature))  ? 'checked' : '' }} value="Smoking" name="features[]" type="checkbox">
+                                                    <label for="a-6" class="checkbox-custom-label">Smoking Allow</label>
+                                                </li>
+                                                <li>
+                                                    <input id="a-7" class="checkbox-custom" {{ in_array("Terrace", json_decode($data->feature))  ? 'checked' : '' }} value="Terrace" name="features[]" type="checkbox">
+                                                    <label for="a-7" class="checkbox-custom-label">Terrace</label>
+                                                </li>
+                                                <li>
+                                                    <input id="a-11" class="checkbox-custom" {{ in_array("Beach", json_decode($data->feature))  ? 'checked' : '' }} value="Beach" name="features[]"" type="checkbox">
+                                                    <label for="a-11" class="checkbox-custom-label">Beach</label>
+                                                </li>
+                                            
+                                            @endif
+											<!-- <li>Air Conditioning</li>
 											<li>Swimming Pool</li>
 											<li>Central Heating</li>
 											<li>Laundry Room</li>
@@ -142,7 +134,7 @@
 											<li>Pets Allow</li>
 											<li>Free WiFi</li>
 											<li>Car Parking</li>
-											<li>Spa & Massage</li>
+											<li>Spa & Massage</li> -->
 										</ul>
 									</div>
 								</div>
@@ -573,13 +565,13 @@
 						<div class="col-lg-4 col-md-12 col-sm-12">
 							
 							<!-- Like And Share -->
-							<div class="like_share_wrap b-0">
+							<!-- <div class="like_share_wrap b-0">
 								<ul class="like_share_list">
 									<li><a href="JavaScript:Void(0);" class="btn btn-likes" data-toggle="tooltip" data-original-title="Share"><i class="fas fa-share"></i>Share</a></li>
 									<li><a href="JavaScript:Void(0);" class="btn btn-likes" data-toggle="tooltip" data-original-title="Save"><i class="fas fa-heart"></i>Save</a></li>
 								</ul>
-							</div>
-							<div class="row">
+							</div> -->
+                            <div class="row">
 								<div class="col-lg-6">
 									<h5>Share this to Social Media</h5>
 								</div>
@@ -594,79 +586,7 @@
 							</div>
 							
 							<div class="details-sidebar">
-							
-								<!-- Agent Detail -->
-								<div class="sides-widget">
-									<div class="sides-widget-header">
-										<div class="agent-photo"><img src="{{ asset('img/user-6.jpg') }}" alt=""></div>
-										<div class="sides-widget-details">
-											<h4><a href="#">{{ $data->name }}</a></h4>
-											<span><i class="lni-phone-handset"></i>{{ $data->phone }}</span>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									
-									<div class="sides-widget-body simple-form">
-										<div class="form-group">
-											<label>Email</label>
-											<input type="text" class="form-control" placeholder="Your Email" value="{{ Auth::user()->email }}">
-										</div>
-										<div class="form-group">
-											<label>Phone No.</label>
-											<input type="text" class="form-control" placeholder="Your Phone" value="{{ Auth::user()->phone }}">
-										</div>
-										<div class="form-group">
-											<label>Description</label>
-											<textarea class="form-control">I'm interested in this property.</textarea>
-										</div>
-										<button class="btn btn-black btn-md rounded full-width">Send Message</button>
-									</div>
-								</div>
-								
-								<!-- Mortgage Calculator -->
-								<div class="sides-widget">
 
-									<div class="sides-widget-header">
-										<div class="sides-widget-details">
-											<h4><a href="#">{{ $data->name }}</a></h4>
-											<span><i class="lni-phone-handset"></i>{{ $data->phone }}</span>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									
-									<div class="sides-widget-body simple-form">
-										<div class="form-group">
-											<div class="input-with-icon">
-												<input type="text" class="form-control" placeholder="Sale Price" value="{{ $data->price }}">
-												<i class="ti-money"></i>
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="input-with-icon">
-												<input type="text" class="form-control" placeholder="Down Payment">
-												<i class="ti-money"></i>
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="input-with-icon">
-												<input type="text" class="form-control" placeholder="Loan Term (Years)">
-												<i class="ti-calendar"></i>
-											</div>
-										</div>
-										
-										<div class="form-group">
-											<div class="input-with-icon">
-												<input type="text" class="form-control" placeholder="Interest Rate">
-												<i class="fa fa-percent"></i>
-											</div>
-										</div>
-										
-										<button class="btn btn-black btn-md rounded full-width">Calculate</button>
-									
-									</div>
-								</div>
 								
 								<!-- Featured Property -->
 								<div class="sidebar-widgets">
@@ -679,14 +599,16 @@
 										@foreach($property as $row)
 										<div class="sides_list_property">
 											<div class="sides_list_property_thumb">
+                                                @if($row->image != '')
 												@foreach(json_decode($row->image) as $key=>$res)
 													@if($key == 0)
 														<img class='img-fluid' src="{{ asset('property/'. $res) }}" />
 													@endif
 												@endforeach
+                                                @endif
 											</div>
 											<div class="sides_list_property_detail">
-												<h4><a href="/propertyDetail/{{ $row->id }}">{{ $row->propertyType }}</a></h4>
+												<h4><a href="/propertyDetailOwner/{{ $row->id }}">{{ $row->title }}</a></h4>
 												<span><i class="ti-location-pin"></i>{{ $row->city }}</span>
 												<div class="lists_property_price">
 													<div class="lists_property_types">
@@ -705,16 +627,10 @@
 								</div>
 							
 							</div>
-							
 						</div>
 						
 					</div>
 				</div>
-			</section>
-			<!-- ============================ Property Detail End ================================== -->
-			
-			
-
 
 @endsection
 
