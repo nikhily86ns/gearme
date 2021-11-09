@@ -160,7 +160,7 @@
                                     <li class="nav-item dropdown" style="float:right;">
                                         <a class="show_sure" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                            ">
+                                                            document.getElementById('logout-form').submit();">
                                                             <img src="{{ asset('img/off.svg') }}" class="mr-2" width="17" alt="" />
                                                 {{ __('Sign Out') }}
                                             </a>
@@ -621,19 +621,19 @@
 			});
 		});
 
-		$('.show_sure').click(function() {
-			swal({
-				title: `Are you sure ?`,
-				text: "",
-				icon: "warning",
-				buttons: true,
-				dangerMode: true,
-			}).then((result) => { 
-				if (result.value===true) { 
-					document.getElementById('logout-form').submit();
-				} 
-			});
-		});
+		// $('.show_sure').click(function() {
+		// 	swal({
+		// 		title: `Are you sure ?`,
+		// 		text: "",
+		// 		icon: "warning",
+		// 		buttons: true,
+		// 		dangerMode: true,
+		// 	}).then((result) => { 
+		// 		if (result.value===true) { 
+		// 			document.getElementById('logout-form').submit();
+		// 		} 
+		// 	});
+		// });
 
 		</script>
 		<script>
