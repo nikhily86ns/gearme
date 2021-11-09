@@ -280,7 +280,35 @@
                                                                             <input id="a-11" class="checkbox-custom" {{ in_array("Beach", json_decode($data->feature))  ? 'checked' : '' }} value="Beach" name="features[]"" type="checkbox">
                                                                             <label for="a-11" class="checkbox-custom-label">Beach</label>
                                                                         </li>
-																	
+																	@else 
+                                                                        <li>
+                                                                            <input id="a-1" class="checkbox-custom" value="AC" name="features[]" type="checkbox">
+                                                                            <label for="a-1" class="checkbox-custom-label">Air Condition</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-3" class="checkbox-custom" value="Heating" name="features[]" type="checkbox">
+                                                                            <label for="a-3" class="checkbox-custom-label">Heating</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-4" class="checkbox-custom" value="Internet" name="features[]" type="checkbox">
+                                                                            <label for="a-4" class="checkbox-custom-label">Internet</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-5" class="checkbox-custom" value="MIcrowave" name="features[]" type="checkbox">
+                                                                            <label for="a-5" class="checkbox-custom-label">Microwave</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-6" class="checkbox-custom" value="Smoking" name="features[]" type="checkbox">
+                                                                            <label for="a-6" class="checkbox-custom-label">Smoking Allow</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-7" class="checkbox-custom" value="Terrace" name="features[]" type="checkbox">
+                                                                            <label for="a-7" class="checkbox-custom-label">Terrace</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-11" class="checkbox-custom" value="Beach" name="features[]"" type="checkbox">
+                                                                            <label for="a-11" class="checkbox-custom-label">Beach</label>
+                                                                        </li>
                                 									@endif
                                                                     </ul>
                                                                 </div>
