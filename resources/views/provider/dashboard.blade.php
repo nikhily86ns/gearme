@@ -316,7 +316,7 @@
 
 			<!-- ============================ All Plans  ================================== -->
 
-
+<!-- 
 			<section>
 				<div class="container">
 					<div class="row">
@@ -365,13 +365,13 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 
 			<!-- ============================ All Plans End ================================== -->
 
 			<!-- ============================ Interested & Potential Customers ================================== -->
 
-			<section class="bg-orange">
+			<!-- <section class="bg-orange">
 				<div class="container">
 					<div class="row">
 						<div class="col-6">
@@ -395,7 +395,7 @@
 					</div>
 				</div>
 
-			</section>
+			</section> -->
 
 			<!-- ============================ Interested & Potential Customers End ================================== -->
 

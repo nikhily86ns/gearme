@@ -93,14 +93,45 @@ class UserController extends Controller
 
     public function resetOwnerPassword(Request $request)
     {
+
+        // dd($request->all());
+        // $request->validate([
+        //     "password" => "min:6 | max:18", 
+        // ]);
+        // $user = User::where('id','=',$request->id)->first();
+        // dd($pass);
+        // if(!$pass)
+        // {
+        //     $request->session()->flash('danger', 'Old Password Wrong');
+        // }
+        // dd($request->current_password);
+        // $hashp = Hash::make($request->current_password);
+        // dd($hashp);
+        // if(!(Hash::check($hashp, '=', Auth::user()->password)))
+        // {
+        //     $request->session()->flash('danger', 'Old Password Wrong');
+        // }
+        // else
+        // {
+        //     User::where('id', $request->id)->first()->update([
+        //     'password' => Hash::make($request->password)]);
+        //     $request->session()->flash('success', 'User Password Reset Successfully');
+        // }
         $request->validate([
-            "password" => "min:6 | max:18", 
+            'old_password' => 'required',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
-   
-        User::where('email', $request->email)->first()->update([
-            'password' => Hash::make($request->password)
-        ]);
-        $request->session()->flash('success', 'User Password Reset Successfully');
+        $data = $request->all();
+        $user = User::find($request->id);
+        if (!Hash::check($data['old_password'], $user->password)) {
+            return back()->with('danger', 'The specified password does not match the database password');
+        } else {
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+            return back()->with('success', 'Successfully Changed');
+        }
         return redirect()->route('owner.changeOwnerPassword');
     }
 
@@ -183,13 +214,21 @@ class UserController extends Controller
     public function resetInvestorPassword(Request $request)
     {
         $request->validate([
-            "password" => "min:6 | max:18", 
+            'old_password' => 'required',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
-   
-        User::where('email', $request->email)->first()->update([
-            'password' => Hash::make($request->password)
-        ]);
-        return redirect()->route('investor.profile');
+        $data = $request->all();
+        $user = User::find($request->id);
+        if (!Hash::check($data['old_password'], $user->password)) {
+            return back()->with('danger', 'The specified password does not match the database password');
+        } else {
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+            return back()->with('success', 'Successfully Changed');
+        }
+        return redirect()->route('investor.changeInvestorPassword');
     }
 
 // Function To View Provider Profile
@@ -264,13 +303,21 @@ class UserController extends Controller
     public function resetProviderPassword(Request $request)
     {
         $request->validate([
-            "password" => "min:6 | max:18", 
+            'old_password' => 'required',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required_with:password|same:password|min:6'
         ]);
-   
-        User::where('email', $request->email)->first()->update([
-            'password' => Hash::make($request->password)
-        ]);
-        return redirect()->route('provider.profile');
+        $data = $request->all();
+        $user = User::find($request->id);
+        if (!Hash::check($data['old_password'], $user->password)) {
+            return back()->with('danger', 'The specified password does not match the database password');
+        } else {
+            $user->update([
+                'password' => Hash::make($request->password)
+            ]);
+            return back()->with('success', 'Successfully Changed');
+        }
+        return redirect()->route('provider.changeProviderPassword');
     }
 
 // Function to View All Plans Of Provider in Provider Dashboard
