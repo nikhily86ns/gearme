@@ -1,63 +1,51 @@
-@extends('layouts.app')
+@extends('provider.master')
 
 @section('title')
-	Capital Provider
+    Potential Investor
 @endsection
 
 @section('extra-css')
-<style>
-	#interestedTable_filter{
-		float:right;
-	}
-    #potentialTable_filter{
-		float:right;
-	}
-</style>
 @endsection
 
 @section('content')
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="d-flex justify-content-center">
-                        <div class="col-lg-10 col-md-10 col-sm-12 card p-4 ms-2">
-                            <h3 class="pb-3">Potential Customers</h3>
-                            <table class="table text-nowrap" id="potentialTable">
-                                <thead>
-                                    <tr>
-                                        <th class="border-top-0">#</th>
-                                        <th class="border-top-0">Plan</th>
-                                        <th class="border-top-0">Investor Name</th>
-                                        <th class="border-top-0">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                        @foreach($datap as $key=>$row)
-                                            <tr>
-                                            <td>{{ $key+1 }}</td>
-                                            <td>${{ $row->amount }}</td>
-                                            <td>{{ $row->name }}</td>
-                                            <td>
-                                                <a href="/investorDetail/{{ $row->notify_id }}" class="btn btn-info">Details</a>
-                                            </td>
-                                            </tr>
-                                        @endforeach
-                                </tbody>											
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-		</div>
-    </section>
+<div class="dashboard-wraper">
+							
+								<!-- Bookmark Property -->
+								<div class="form-submit">	
+									<h4>Potential Investor</h4>
+								</div>
+								
+								<div class="row">
+								@foreach($datap as $key=>$row)
+									<!-- Single Property -->
+									<div class="col-md-12 col-sm-12 col-md-12">
+										<div class="singles-dashboard-list">
+                                            <div class="sd-list-left">
+												@if($row->profileimage != '')
+												    <img class="img-fluid"  src="{{ asset('profile/'. $row->profileimage) }}"/>
+												@endif
+												<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
+											</div>
+											<div class="sd-list-right">
+												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Amount :- ${{ $row->amount }}</a></h4>
+												<div class="user_dashboard_listed">
+													Investor Name :- {{ $row->name }}
+												</div>
+												<div class="action">
+														<a href="/investorDetail/{{ $row->notify_id }}"><i class="ti-pencil"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								@endforeach
+								</div>
+								
+							</div>
+
+
 
 @endsection
 
 @section('extra-script')
-<script>
-	 $('#interestedTable').DataTable();
-	 $('#potentialTable').DataTable();
-</script>
 @endsection

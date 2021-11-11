@@ -122,6 +122,9 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::get('/investorDetail/{id}', [App\Http\Controllers\UserController::class, 'investorDetail'])->name('provider.investorDetail');
         Route::get('/providerProfile', [App\Http\Controllers\UserController::class, 'providerProfile'])->name('provider.profile');
         Route::post('/updateProviderProfile', [App\Http\Controllers\UserController::class, 'updateProviderProfile'])->name('provider.updateProfile');
+        Route::get('/providerPlan', [App\Http\Controllers\UserController::class, 'providerPlan'])->name('provider.plan');
+
+        Route::get('/changeProviderPassword', [App\Http\Controllers\UserController::class, 'changeProviderPassword'])->name('provider.changeProviderPassword');
         Route::post('/resetProviderPassword', [App\Http\Controllers\UserController::class, 'resetProviderPassword'])->name('provider.resetProviderPassword');
 
     });

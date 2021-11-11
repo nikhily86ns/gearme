@@ -11,8 +11,59 @@
 
          
             <!-- ============================ Selected Plan Details Start ================================== -->
-
-            <section class="bg-orange">
+                        <div class="dashboard-wraper">
+							
+                            <!-- Bookmark Property -->
+                            <div class="form-submit">	
+                                <h4>Selected Plan</h4>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-md-12">
+                                    <div class="singles-dashboard-list">
+                                        <div class="sd-list-left">
+                                            @if($data->image != '')
+                                                <img class="img-fluid"  src="{{ asset('plan/'. $data->image) }}"/>
+                                            @endif
+                                            <!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
+                                        </div>
+                                        <div class="sd-list-right">
+                                            <h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Plan Amount* :-${{ $data->amount }}</a></h4>
+                                            <div class="user_dashboard_listed">
+                                                Duration :- {{ $data->duration }}
+                                            </div>
+                                            <div class="user_dashboard_listed">
+                                                Minimun Interest :- {{ $data->interest_min }}
+                                            </div>
+                                            <div class="user_dashboard_listed">
+                                                Maximun Interest :- {{ $data->interest_max }}
+                                            </div>
+                                            <div class="user_dashboard_listed">
+                                                Processing Fee :- {{ $data->processing_fee }}
+                                            </div>
+                                            <div class="user_dashboard_listed">
+                                                Valid From :- {{ $data->validfrom }}
+                                            </div>
+                                            <div class="user_dashboard_listed">
+                                                Valid Till :- {{ $data->validto }}
+                                            </div>
+                                            <div class="action">
+                                                <form action="{{ route('investor.requestProvider') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $data->id }}" name="planId">
+                                                    <input type="hidden" value="{{ $data->providerId }}" name="providerId">
+                                                    <input type="hidden" value="{{ Auth::user()->id }}" name="investorId">
+                                                    <button type='submit'><i class="ti-pencil"></i></button>
+                                                    <!-- <a href=""><i class="ti-pencil"></i></a> -->
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+            <!-- <section class="bg-orange">
                 <div class="container">
                     <div class="row">
                         <div class="d-flex justify-content-center">
@@ -58,7 +109,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <!-- ============================ Selected Plan Details End ================================== -->
 			

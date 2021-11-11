@@ -1,81 +1,166 @@
-@extends('layouts.app')
+@extends('provider.master')
 
 @section('title')
 	Capital Provider
 @endsection
 
 @section('extra-css')
-<style>
-	#planTable_filter{
-		float:right;
-	}
-</style>
 @endsection
 
 @section('content')
 
-   <!-- ============================ Hero Banner  Start================================== -->
-            <div class="image-cover hero-banner" style="background:#eff6ff url({{ asset('img/home-2.png') }}) no-repeat;">
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-9 col-md-11 col-sm-12">
-							<div class="inner-banner-text text-center">
-								<p class="lead-i">Amet consectetur adipisicing <span class="badge badge-success">New</span></p>
-								<h2><span class="font-normal">Find Your</span> Perfect Place.</h2>
-							</div>
-							<div class="full-search-2 eclip-search italian-search hero-search-radius shadow-hard mt-5">
-								<div class="hero-search-content">
-									<div class="row">
-									
-										<div class="col-lg-4 col-md-4 col-sm-12 b-r">
-											<div class="form-group">
-												<div class="choose-propert-type">
-													<ul>
-														<li>
-															<input id="cp-1" class="checkbox-custom" name="cpt" type="radio" checked>
-															<label for="cp-1" class="checkbox-custom-label">Buy</label>
-														</li>
-														<li>
-															<input id="cp-2" class="checkbox-custom" name="cpt" type="radio">
-															<label for="cp-2" class="checkbox-custom-label">Rent</label>
-														</li>
-														<li>
-															<input id="cp-3" class="checkbox-custom" name="cpt" type="radio">
-															<label for="cp-3" class="checkbox-custom-label">Sold</label>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										
-										<div class="col-lg-6 col-md-5 col-sm-12 p-0 elio">
-											<div class="form-group">
-												<div class="input-with-icon">
-													<input type="text" class="form-control" placeholder="Search for a location">
-													<img src="{{ asset('img/pin.svg') }}" width="20"></i>
-												</div>
-											</div>
-										</div>
-										
-										<div class="col-lg-2 col-md-3 col-sm-12">
-											<div class="form-group">
-												<a href="#" class="btn search-btn black">Search</a>
-											</div>
-										</div>
-												
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- ============================ Hero Banner End ================================== -->
-			
 			<!-- ============================ Post Plans Form ================================== -->
+							<div class="dashboard-wraper">
+								
+								<div class="row">
+									
+									<!-- Submit Form -->
+									<div class="col-lg-12 col-md-12">
+									
+										<div class="submit-page">
+											
+											<!-- Basic Information -->
+                                            <form action="{{ route('provider.postPlan') }}" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="uid" value="{{ Auth::user()->id }}">
 
-			<section>
+                                                <div class="form-submit">	
+                                                    <h3>Plan Information</h3>
+                                                    <div class="submit-section">
+                                                        <div class="row">
+                                                        
+                                                            <div class="form-group col-md-12">
+                                                                <label>Plan Amount<span class="tip-topdata" data-tip="Plan Amount"><i class="ti-help"></i></span></label>
+                                                                <input type="text" name="amount" value="{{old('amount')}}" class="form-control">
+                                                            </div>
+                                                            @error('title')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
+															<div class="form-group col-md-6">
+                                                                <label>Interest Minimum<span class="tip-topdata" data-tip="Interest Minimum"><i class="ti-help"></i></span></label>
+                                                                <input type="text" name="interest_min" value="{{old('interest_min')}}" class="form-control">
+                                                            </div>
+                                                            @error('interest_min')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
+															<div class="form-group col-md-6">
+                                                                <label>Interest Maximum<span class="tip-topdata" data-tip="Interest Maximum"><i class="ti-help"></i></span></label>
+                                                                <input type="text" name="interest_max" value="{{old('interest_max')}}" class="form-control">
+                                                            </div>
+                                                            @error('interest_max')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
+                                                            <div class="form-group col-md-6">
+                                                                <label>Duration</label>
+                                                                <select id="status" name="duration" class="form-control">
+                                                                    <option value="">&nbsp;</option>
+                                                                    <option value="3 Months">3 Months</option>
+                                                                    <option value="6 Months">6 Months</option>
+                                                                    <option value="9 Months">9 Months</option>
+                                                                    <option value="12 Months">12 Months</option>
+                                                                    <option value="18 Months">18 Months</option>
+                                                                    <option value="24 Months">24 Months</option>
+                                                                    <option value="36 Months">36 Months</option>
+                                                                    <option value="48 Months">48 Months</option>
+                                                                    <option value="60 Months">60 Months</option>
+                                                                </select>
+                                                            </div>
+                                                            @error('duration')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
+															<div class="form-group col-md-6">
+                                                                <label>Processing Fee<span class="tip-topdata" data-tip="Processing Fee"><i class="ti-help"></i></span></label>
+                                                                <input type="text" name="processing_fee" value="{{old('processing_fee')}}" class="form-control">
+                                                            </div>
+                                                            @error('processing_fee')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
+															<div class="form-group col-md-6">
+                                                                <label>Valid From<span class="tip-topdata" data-tip="Valid From"><i class="ti-help"></i></span></label>
+																<input type="date" class="form-control" value="{{old('validfrom')}}" min="<?php echo date("Y-m-d"); ?>" id="validfrom" name="validfrom" placeholder="Enter Valid From Date">
+                                                            </div>
+                                                            @error('validfrom')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
+															<div class="form-group col-md-6">
+                                                                <label>Valid Till<span class="tip-topdata" data-tip="Valid Till"><i class="ti-help"></i></span></label>
+                                                                <input type="date" class="form-control" value="{{old('validto')}}" min="<?php echo date("Y-m-d"); ?>" id="validto" name="validto" placeholder="Enter Valid From Date">
+                                                            </div>
+                                                            @error('validto')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Gallery -->
+                                                <div class="form-submit">	
+                                                    <h3>Brochure</h3>
+                                                    <div class="submit-section">
+                                                        <div class="row">
+                                                        
+                                                            <div class="form-group col-md-12">
+                                                                <label>Upload Brochure</label>
+                                                                <div class="form-group" id="image">
+																	<input type="file" class="form-control" value="{{old('image')}}" id="image" name="file">
+																</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Contact Information -->
+                                                <div class="form-submit">	
+                                                    <h3>Contact Information</h3>
+                                                    <div class="submit-section">
+                                                        <div class="row">
+                                                        <input type="hidden" name="providerId" value="{{ Auth::user()->id }}">
+                                                            <div class="form-group col-md-4">
+                                                                <label>Name</label>
+                                                                <input type="text" name="postedBy" value="{{Auth::user()->name }}" class="form-control">
+                                                            </div>
+                                                            
+                                                            <div class="form-group col-md-4">
+                                                                <label>Email</label>
+                                                                <input type="text" value="{{Auth::user()->email }}" class="form-control" readonly>
+                                                            </div>
+                                                            
+                                                            <div class="form-group col-md-4">
+                                                                <label>Phone (optional)</label>
+                                                                <input type="text" value="{{Auth::user()->phone }}" class="form-control">
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                                <div class="form-group col-lg-12 col-md-12">
+                                                    <button class="btn btn-theme-light-2 rounded" type="submit">Submit & Preview</button>
+                                                </div>
+                                            </form>
+														
+										</div>
+									</div>
+									
+								</div>
+								
+							</div>
+			<!-- <section>
 				<div class="container">
 					<div class="row">
 						<div class="col-12">
@@ -225,7 +310,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 			
 			<!-- ============================ Post PLans Form End ================================== -->
 
@@ -360,7 +445,4 @@
 @endsection
 
 @section('extra-script')
-<script>
-	 $('#planTable').DataTable();
-</script>
 @endsection

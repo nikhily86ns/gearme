@@ -53,7 +53,7 @@
 														<a href="" class="show_confirm"><i class="ti-close"></i></a>
 													</form>
 													<!-- <a href="/deleteProperty/{{$row->id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Property" class="delete show_confirm"><i class="ti-close"></i> -->
-													</a>
+													<!-- </a> -->
 												</div>
 											</div>
 										</div>

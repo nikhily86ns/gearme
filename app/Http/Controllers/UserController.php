@@ -200,6 +200,13 @@ class UserController extends Controller
         return view('provider.profile', compact('data'));
     }
 
+// Function to View Change PassWord Page on invetsor Dashboard
+
+    public function changeProviderPassword()
+    {
+        return view('provider.changePassword');
+    }
+
 // Function to Update Provider Profile
 
     public function updateProviderProfile(Request $request)
@@ -220,7 +227,16 @@ class UserController extends Controller
                                             'email' => $request->email,
                                             'phone' => $request->phone ,
                                             'country' => $request->country ,
-                                            'profileimage' =>  $filename
+                                            'profileimage' =>  $filename,
+                                            'address' => $request->address ,
+                                            'city' => $request->city ,
+                                            'state' => $request->state ,
+                                            'zip' => $request->zip ,
+                                            'about' => $request->about ,
+                                            'facebook' => $request->facebook ,
+                                            'twitter' => $request->twitter ,
+                                            'google' => $request->google ,
+                                            'linkedin' => $request->linkedin ,
                                            ]);
         }
         else{
@@ -228,9 +244,17 @@ class UserController extends Controller
                                             'email' => $request->email,
                                             'phone' => $request->phone ,
                                             'country' => $request->country ,
+                                            'address' => $request->address ,
+                                            'city' => $request->city ,
+                                            'state' => $request->state ,
+                                            'zip' => $request->zip ,
+                                            'about' => $request->about ,
+                                            'facebook' => $request->facebook ,
+                                            'twitter' => $request->twitter ,
+                                            'google' => $request->google ,
+                                            'linkedin' => $request->linkedin ,
                                            ]);
         }
-                                        //    dd(DB::getQueryLog());
         
         return redirect()->route('provider.profile'); 
     }
@@ -247,6 +271,14 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
         ]);
         return redirect()->route('provider.profile');
+    }
+
+// Function to View All Plans Of Provider in Provider Dashboard
+
+    public function providerPlan()
+    {
+        $data = Plan::where('providerId','=',Auth::id())->get();
+        return view('provider.plan',compact('data'));
     }
 
 // Function to view Registration Form
@@ -638,7 +670,7 @@ class UserController extends Controller
     public function deletePlan($id)
     {
         Plan::find($id)->delete();
-        return redirect()->route('provider.dashboard');
+        return redirect()->route('provider.plan');
     }
 
 // Function to view Update Plan Edit
@@ -653,38 +685,13 @@ class UserController extends Controller
 
     public function editPlan(Request $request)
     {
-        $request->validate([
-            "amount" => "required",
-            "duration" => 'required', 
-            "interest_min" => "required",
-            "interest_max" => "required",
-            "processing_fee" => "required",
-            "validfrom" => "required",
-            "validto" => "required",
-        ]);
-
         $destinationPath = public_path('/plan');
-        $filename = '';
-            if($request->hasfile('file'))
-            {
-                $image = $request->file('file');
-                $filename = time() . '.' . $image->getClientOriginalExtension();
-                $image->move($destinationPath, $filename);  
-
-                    Plan::where('id',$request->id)->update([
-                                        "amount" => $request->amount,
-                                        "duration" => $request->duration, 
-                                        "interest_min" => $request->interest_min,
-                                        "interest_max" => $request->interest_max,
-                                        "processing_fee" => $request->processing_fee,
-                                        "validfrom" => $request->validfrom,
-                                        "validto" => $request->validto,
-                                        "image" => $filename,
-                                    ]);
-            }
-            else
-            {
-                Plan::where('id',$request->id)->update([
+        if($request->hasfile('file')){
+            $image = $request->file('file');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $filename);
+            
+            Plan::where('id', $request->id)->update([
                                                 "amount" => $request->amount,
                                                 "duration" => $request->duration, 
                                                 "interest_min" => $request->interest_min,
@@ -692,10 +699,55 @@ class UserController extends Controller
                                                 "processing_fee" => $request->processing_fee,
                                                 "validfrom" => $request->validfrom,
                                                 "validto" => $request->validto,
-                                            ]);
-            }
+                                                "image" => $filename,
+                                           ]);
+        }
+        else{
+            Plan::where('id', $request->id)->update([
+                                                "amount" => $request->amount,
+                                                "duration" => $request->duration, 
+                                                "interest_min" => $request->interest_min,
+                                                "interest_max" => $request->interest_max,
+                                                "processing_fee" => $request->processing_fee,
+                                                "validfrom" => $request->validfrom,
+                                                "validto" => $request->validto,
+                                           ]);
+        }
+        return redirect()->route('provider.plan');
 
-        return redirect()->route('provider.dashboard');
+        // $destinationPath = public_path('/plan');
+        // $filename = '';
+        //     if($request->hasfile('file'))
+        //     {
+        //         $image = $request->file('file');
+        //         $filename = time() . '.' . $image->getClientOriginalExtension();
+        //         $image->move($destinationPath, $filename);  
+
+        //             Plan::where('id',$request->id)->update([
+        //                                 "amount" => $request->amount,
+        //                                 "duration" => $request->duration, 
+        //                                 "interest_min" => $request->interest_min,
+        //                                 "interest_max" => $request->interest_max,
+        //                                 "processing_fee" => $request->processing_fee,
+        //                                 "validfrom" => $request->validfrom,
+        //                                 "validto" => $request->validto,
+        //                                 "image" => $filename,
+        //                             ]);
+        //     }
+        //     else
+        //     {
+        //         Plan::where('id',$request->id)->update([
+        //                                         "amount" => $request->amount,
+        //                                         "duration" => $request->duration, 
+        //                                         "interest_min" => $request->interest_min,
+        //                                         "interest_max" => $request->interest_max,
+        //                                         "processing_fee" => $request->processing_fee,
+        //                                         "validfrom" => $request->validfrom,
+        //                                         "validto" => $request->validto,
+        //                                     ]);
+        //     }
+
+        // return redirect()->route('provider.dashboard');
     }
 
 // Function to Download PDF 
@@ -743,7 +795,7 @@ class UserController extends Controller
             $notification->providerId = $request->providerId; 
             $notification->save();
 
-            return redirect()->route('investor.dashboard');
+            return redirect()->route('investor.viewFinance');
         }
         // Notification::create([
         //         'planId' => $request->planId;
@@ -755,15 +807,25 @@ class UserController extends Controller
 
     public function interestedInvetors()
     {
-        $data = DB::table('users')
-            ->join('notifications', 'users.id','=', 'notifications.investorId')
-            ->join('users as a', 'a.id','=', 'notifications.providerId')
-            ->join('plans', 'plans.providerId','=','notifications.providerId')
-            ->where('plans.providerId','=', Auth::user()->id)
-            ->select('plans.*','users.*','a.name as provider_name','notifications.id as notify_id')->get();
+        // $data = DB::table('users')
+        //     ->join('notifications', 'users.id','=', 'notifications.investorId')
+        //     ->join('users as a', 'a.id','=', 'notifications.providerId')
+        //     ->join('plans', 'plans.providerId','=','notifications.providerId')
+        //     ->where('plans.providerId','=', Auth::user()->id)
+        //     ->select('plans.*','users.*','a.name as provider_name','notifications.id as notify_id')->get();
+
+
+
+        $data = DB::table('notifications')
+            ->join('users', 'users.id','=', 'notifications.investorId')
+            ->join('plans', 'plans.id','=', 'notifications.planId')
+            ->where('notifications.providerId','=', Auth::user()->id)
+            ->select('plans.*','users.*', 'users.name as provider_name','notifications.id as notify_id')
+            ->get();
+
             // dd($data);
        
-        //    dd($datap); 
+         
         return view('provider.interestedInvestor', compact('data'));
     }
 
@@ -771,12 +833,18 @@ class UserController extends Controller
 
     public function potentialInvetors()
     {
-        $datap = DB::table('users')
-            ->join('notifications', 'users.id','=', 'notifications.investorId')
-            ->join('users as a', 'a.id','=', 'notifications.providerId')
-            ->join('plans', 'plans.providerId','=','notifications.providerId')
-            ->where('plans.providerId','!=', Auth::user()->id)
-            ->select('plans.*','users.*','a.name as provider_name','notifications.id as notify_id')->get();
+        $datap = DB::table('notifications')
+        ->join('users', 'users.id','=', 'notifications.investorId')
+        ->join('plans', 'plans.id','=', 'notifications.planId')
+        ->where('notifications.providerId','!=', Auth::user()->id)
+        ->select('plans.*','users.*', 'users.name as provider_name','notifications.id as notify_id')
+        ->get();
+        // $datap = DB::table('users')
+        //     ->join('notifications', 'users.id','=', 'notifications.investorId')
+        //     ->join('users as a', 'a.id','=', 'notifications.providerId')
+        //     ->join('plans', 'plans.providerId','=','notifications.providerId')
+        //     ->where('plans.providerId','!=', Auth::user()->id)
+        //     ->select('plans.*','users.*','a.name as provider_name','notifications.id as notify_id')->get();
 
             return view('provider.potentialInvestor', compact('datap'));
     }
