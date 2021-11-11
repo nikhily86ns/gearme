@@ -1,4 +1,4 @@
-@extends('investor.master')
+@extends('owner.master')
 
 @section('title')
 	Property Detail
@@ -587,38 +587,11 @@
 							
 							<div class="details-sidebar">
 
-								<div class="sides-widget">
-									<div class="sides-widget-header">
-										<div class="agent-photo"><img src="assets/img/user-6.jpg" alt=""></div>
-										<div class="sides-widget-details">
-											<h4><a href="#">{{ $data->name }}</a></h4>
-											<span><i class="lni-phone-handset"></i>{{ $data->phone }}</span>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-									
-									<div class="sides-widget-body simple-form">
-										<div class="form-group">
-											<label>Email</label>
-											<input type="text" class="form-control" placeholder="Your Email">
-										</div>
-										<div class="form-group">
-											<label>Phone No.</label>
-											<input type="text" class="form-control" placeholder="Your Phone">
-										</div>
-										<div class="form-group">
-											<label>Description</label>
-											<textarea class="form-control">I'm interested in this property.</textarea>
-										</div>
-										<button class="btn btn-black btn-md rounded full-width">Send Message</button>
-									</div>
-								</div>
-
 								
 								<!-- Featured Property -->
 								<div class="sidebar-widgets">
 									
-									<h4>Related Properties</h4>
+									<h4>Your Properties</h4>
 									
 									<div class="sidebar_featured_property">
 										
@@ -635,7 +608,7 @@
                                                 @endif
 											</div>
 											<div class="sides_list_property_detail">
-												<h4><a href="/propertyDetail/{{ $row->id }}">{{ $row->title }}</a></h4>
+												<h4><a href="/propertyDetailOwner/{{ $row->id }}">{{ $row->title }}</a></h4>
 												<span><i class="ti-location-pin"></i>{{ $row->city }}</span>
 												<div class="lists_property_price">
 													<div class="lists_property_types">

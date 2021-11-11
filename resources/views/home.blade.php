@@ -31,10 +31,6 @@
 															<label for="cp-1" class="checkbox-custom-label">Buy</label>
 														</li>
 														<li>
-															<input id="cp-2" class="checkbox-custom" name="cpt" type="radio">
-															<label for="cp-2" class="checkbox-custom-label">Rent</label>
-														</li>
-														<li>
 															<input id="cp-3" class="checkbox-custom" name="cpt" type="radio">
 															<label for="cp-3" class="checkbox-custom-label">Sold</label>
 														</li>

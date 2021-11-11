@@ -1,78 +1,94 @@
-@extends('layouts.app')
+@extends('owner.master')
 
 @section('title')
-	All properties
+	Properties
 @endsection
 
 @section('extra-css')
-<style>
-	#propertyTable_filter{
-		float:right;
-	}
-</style>
 @endsection
 
 @section('content')
+							<div class="dashboard-wraper">
+							
+								<!-- Bookmark Property -->
+								<div class="form-submit">	
+									<h4>My Property</h4>
+								</div>
+								
+								<div class="row">
+								@foreach($data as $key=>$row)
+									<!-- Single Property -->
+									<div class="col-md-12 col-sm-12 col-md-12">
+										<div class="singles-dashboard-list">
+											<div class="sd-list-left">
+												@if($row->image != '')
+												@foreach(json_decode($row->image) as $key=>$res)
+													@if($key < 1)
+												<img class="img-fluid"  src="{{ asset('property/'. $res) }}"/>
+													@endif
+												@endforeach
+												@endif
+												<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
+											</div>
+											<div class="sd-list-right">
+												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">{{ $row->title }}</a></h4>
+												<div class="user_dashboard_listed">
+													Price: from $ {{ $row->price }}
+												</div>
+												<div class="user_dashboard_listed">
+													Listed in <a href="javascript:void(0);" class="theme-cl"></a> <a href="javascript:void(0);" class="theme-cl">{{ $row->propertyType }}</a>
+												</div>
+												<div class="user_dashboard_listed">
+													City: <a href="javascript:void(0);" class="theme-cl">{{ $row->city }}</a> , Area: {{ $row->area ? $row->area : ''}} Sq ft
+												</div>
+												<div class="user_dashboard_listed">
+													Status: <a href="javascript:void(0);" class="theme-cl">{{ $row->status }}</a> 
+												</div>
+												<div class="action">
+													<form method="POST" action="{{ route('owner.deleteProperty', $row->id) }}">
+														@csrf
+														<a href="/updateProperty/{{ $row->id }}"><i class="ti-pencil"></i></a>
+														<a href="/propertyDetailOwner/{{ $row->id }}" ><i class="ti-eye"></i></a>
+														<a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Make Featured" class="delete"><i class="ti-star"></i></a>
+														<a href="" class="show_confirm"><i class="ti-close"></i></a>
+													</form>
+													<!-- <a href="/deleteProperty/{{$row->id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Property" class="delete show_confirm"><i class="ti-close"></i> -->
+													<!-- </a> -->
+												</div>
+											</div>
+										</div>
+									</div>
+								@endforeach
+								</div>
+								
+							</div>
 
-    <div class="d-flex justify-content-center py-4">
-        <div>
-            <h2 >All Property</h2>
-        </div>
-    </div>
-    <div class="container">
-            
 
-          <table class="table text-nowrap bg-light" id="propertyTable">
-            <div class="d-flex justify-content-center">
-            
-                <thead>
-                    <tr>
-                        <th class="border-top-0">#</th>
-                        <th class="border-top-0">Image</th>
-                        <th class="border-top-0">Property For</th>
-                        <th class="border-top-0">City</th>
-                        <th class="border-top-0">Price</th>
-                        <th class="border-top-0">Status</th>
-                        <th class="border-top-0">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-            
-                        @foreach($data as $key=>$row)
-                            <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>
-                                @foreach(json_decode($row->image) as $key=>$res)
-                                    @if($key < 1)
-                                <img class="rounded-circle " width="150px" height="100px" src="{{ asset('property/'. $res) }}"/>
-                                    @endif
-                                @endforeach
-                            </td>
-                            <!-- <td>{{ $row->image }}</td> -->
-                            <td>{{ $row->propertyFor }}</td>
-                            <td>{{ $row->city }}</td>
-                            <td>{{ $row->price }}</td>
-                            <td>{{ $row->status }}</td>
-                            <td> 
-                                <form method="POST" action="{{ route('owner.deleteProperty', $row->id) }}">
-                                    @csrf
-                                    <a href="" class="show_confirm"><i class="fa fa-trash-alt"></i></a>&nbsp;&nbsp;
-                                    <a href="/updateProperty/{{ $row->id }}"><i class="fas fa-edit"></i></a>
-                                </form>
-                            </td>
-                            </tr>
-                        @endforeach
-                </tbody>
-            </div>
-          </table>
-
-    </div>
+   
 
 @endsection
 
 @section('extra-script')
-<script>
-	 $('#propertyTable').DataTable();
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script type="text/javascript">
 
+$('.show_confirm').click(function(event) {
+	var form =  $(this).closest("form");
+	var name = $(this).data("name");
+	event.preventDefault();
+	swal({
+		title: `Are you sure you want to delete this record?`,
+		text: "If you delete this, it will be gone forever.",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	})
+	.then((willDelete) => {
+		if (willDelete) {
+		form.submit();
+		}
+	});
+});
+
+</script>
 @endsection
