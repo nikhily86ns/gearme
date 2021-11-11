@@ -105,14 +105,6 @@ class HomeController extends Controller
         $plan = DB::table('plans')
                 ->join('users', 'users.id','=', 'plans.providerId')
                 ->select('plans.*', 'users.name')->get();
-                
-
-        // $valid_till = $plan[0]->validto;
-        // $date = date_default_timezone_set('Asia/Kolkata');
-        // $today_date = date('Y-m-d');
-        
-        // $valid_time = strtotime($valid_till);
-        // $today_time = strtotime($today_date);
 
         return view('investor.dashboard', compact('data','finance','plan'));
     }

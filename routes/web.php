@@ -100,6 +100,11 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::post('/requestProvider', [App\Http\Controllers\UserController::class, 'requestProvider'])->name('investor.requestProvider');
         Route::get('/investorProfile', [App\Http\Controllers\UserController::class, 'investorProfile'])->name('investor.profile');
         Route::post('/updateInvestorProfile', [App\Http\Controllers\UserController::class, 'updateInvestorProfile'])->name('investor.updateProfile');
+
+        Route::get('/viewAllProperty', [App\Http\Controllers\UserController::class, 'viewAllProperty'])->name('investor.viewAllProperty');
+        Route::get('/viewFinance', [App\Http\Controllers\UserController::class, 'viewFinance'])->name('investor.viewFinance');
+
+        Route::get('/changeInvestorPassword', [App\Http\Controllers\UserController::class, 'changeInvestorPassword'])->name('investor.changeInvestorPassword');
         Route::post('/resetInvestorPassword', [App\Http\Controllers\UserController::class, 'resetInvestorPassword'])->name('investor.resetInvestorPassword');
     });
 

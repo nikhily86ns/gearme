@@ -1,13 +1,17 @@
-@extends('layouts.app')
+@extends('investor.master')
 
 @section('title')
 	Property Investor
 @endsection
 
 @section('extra-css')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
 @endsection
 
 @section('content')
+
+							
 
    			<!-- ============================ Hero Banner  Start================================== -->
             <div class="image-cover hero-banner" style="background:#eff6ff url({{ asset('img/home-2.png') }}) no-repeat;">
@@ -21,29 +25,9 @@
 							<div class="full-search-2 eclip-search italian-search hero-search-radius shadow-hard mt-5">
 								<div class="hero-search-content">
 									<form action="{{ route('investor.search') }}" method="POST">
-									    @csrf
+									    @csrf	
 										<div class="row">
-											<div class="col-lg-12 col-md-12 col-sm-12 b-r mt-3 d-flex justify-content-center">
-												<div class="form-group" id="bhks">
-													<div class="btn-group btn-group-toggle"  data-toggle="buttons">
-														<label class="btn btn-outline-primary mr-5 rounded-pill">
-															<input type="radio" name="propertyFor" value="sell" id="buy" autocomplete="off" checked> Buy
-														</label>
-														<!-- <label class="btn btn-outline-primary ms-3 rounded-pill">
-															<input type="radio" name="propertyFor" value="rent" id="rent" autocomplete="off"> Rent
-														</label> -->
-													</div>
-												</div>
-											</div>
-											@error('propertyFor')
-												<small id="usercheck" style="color: red;" >
-													{{$message}}
-												</small>
-											@enderror
-											</div>
-										</div>	
-										<div class="row">
-											<div class="col-lg-3 col-md-3 col-sm-12 b-r mt-2">
+											<div class="col-lg-5 col-md-5 col-sm-12 b-r mt-2">
 												<div class="form-group">
 													<div class="choose-propert-type">
 													<select class="form-select" name="propertyType" id="type" aria-label="Default select example">
@@ -71,23 +55,6 @@
 															<option class="aa" value="Agricultural Land">Agricultural Land</option>
 															<option class="aa" value="Farm House">Farm House</option>
 													</select>
-														<!-- <ul> -->
-															<!-- <li> -->
-																<!-- <input type="radio"  id="pfora" class="checkbox-custom" name="pfor" value="all" > -->
-																<!-- <input type="radio"  name="pfor" id="pfora"  value="all" checked>
-																<label for="cp-1" class="checkbox-custom-label">All</label>
-															</li>
-															<li> -->
-																<!-- <input id="pforr" class="checkbox-custom" name="pfor" value="rent" type="radio"> -->
-																<!-- <input type="radio" name="pfor" id="pforr"  value="rent">
-																<label for="cp-2" class="checkbox-custom-label">Rent</label>
-															</li>
-															<li> -->
-																<!-- <input id="pfors" class="checkbox-custom" name="pfor" value="sell" type="radio"> -->
-																<!-- <input type="radio" name="pfor" id="pfors"  value="sell">
-																<label for="cp-3" class="checkbox-custom-label">Sell</label>
-															</li> -->
-														<!-- </ul> -->
 													</div>
 												</div>
 											</div>
@@ -96,32 +63,10 @@
 													{{$message}}
 												</small>
 											@enderror
-											<div class="col-lg-2 col-md-2 col-sm-12 b-r mt-2">
-												<div class="form-group">
-													<div class="choose-propert-type">
-													<select class="form-select" name="budget" id="type" aria-label="Default select example">
-														<option selected class="nun">$ Budget</option>
-															<option class="bd" value="0-5000">$5000</option>
-															<option class="bd" value="5000-10000">$5000 - 10000</option>
-															<option class="bd" value="10000-20000">$10000 - 20000</option>
-															<option class="bd" value="20000-30000">$20000 - 30000</option>
-															<option class="bd" value="30000-40000">$30000 - 40000</option>
-															<option class="bd" value="40000-50000">$40000 - 50000</option>
-															<option class="bd" value="50000-60000">$50000 - 60000</option>
-															<option class="bd" value="60000-10000000">$60000+</option>
-													</select>
-													</div>
-												</div>
-											</div>
-											@error('budget')
-												<small id="usercheck" style="color: red;" >
-													{{$message}}
-												</small>
-											@enderror
 											<div class="col-lg-5 col-md-5 col-sm-12 p-0 elio">
 												<div class="form-group">
 													<div class="input-with-icon">
-														<input type="text" name="search" class="form-control" placeholder="Search for a location">
+														<input type="text" name="search" class="form-control" placeholder="Search for a city">
 														<img src="{{ asset('img/pin.svg') }}" width="20"></i>
 													</div>
 												</div>
@@ -138,7 +83,6 @@
 											</div>
 										</div>
 									</form>	
-									<small id="emailHelp" class="form-text text-muted">--Please Fill All The Feilds For Searching--</small>
 								</div>
 							</div>
 							
@@ -156,7 +100,6 @@
 						<div class="col-lg-7 col-md-10 text-center">
 							<div class="sec-heading center">
 								<h2>Explore Good places</h2>
-								<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
 							</div>
 						</div>
 					</div>
@@ -189,7 +132,7 @@
 								<div class="listing-detail-wrapper">
 									<div class="listing-short-detail-wrap">
 										<div class="listing-short-detail">
-											<span class="property-type">{{ $row->propertyFor }}</span>
+											<span class="property-type">For {{ $row->propertyFor }}</span>
 											<h4 class="listing-name verified"><a href="single-property-1.html" class="prt-link-detail">{{ $row->propertyType }}</a></h4>
 										</div>
 										<div class="listing-short-detail-flex">
@@ -214,7 +157,7 @@
 								
 								<div class="listing-detail-footer">
 									<div class="footer-first">
-										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->city }}, {{ $row->locality }} </div>
+										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->state }}, {{ $row->city }} </div>
 									</div>
 									<div class="footer-flex">
 										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
@@ -262,7 +205,7 @@
 
 			<!-- ================= Finance Option Start Collapse  ================= -->
 			
-			<section class="bg-orange">
+			<!-- <section class="bg-orange">
 					<div class="row justify-content-center">
 						<div class="col-lg-7 col-md-10 text-center">
 							<div class="sec-heading center">
@@ -303,7 +246,7 @@
 																<th class="border-top-0">Download Brochure</th>
 															</tr>
 														</thead>
-														<tbody>@if($row->plan != null)
+														<tbody>@if($row->plan != '')
 														@foreach($row->plan as $key => $res)
 															<tr>
 															<td>{{ $key+1 }}</td>
@@ -346,76 +289,14 @@
 							</div>
 						</div>
 					</div>
-			</section>
+			</section> -->
 
 			<!-- ================= Finance Option End  ================= -->
-
-			
-			<!-- ========================== Download App Section =============================== -->
-			<section class="bg-light">
-				<div class="container">
-					<div class="row align-items-center">
-						
-						<div class="col-lg-7 col-md-12 col-sm-12 content-column">
-							<div class="content_block_2">
-								<div class="content-box">
-									<div class="sec-title light">
-										<p class="text-blue">Download apps</p>
-										<h2>Download App Free App For Android and iPhone</h2>
-									</div>
-									<div class="text">
-										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto accusantium.</p>
-									</div>
-									<div class="btn-box clearfix mt-5">
-										<a href="index.html" class="download-btn play-store">
-											<i class="fab fa-google-play"></i>
-											<span>Download on</span>
-											<h3>Google Play</h3>
-										</a>
-										
-										<a href="index.html" class="download-btn app-store">
-											<i class="fab fa-apple"></i>
-											<span>Download on</span>
-											<h3>App Store</h3>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-5 col-md-12 col-sm-12 image-column">
-							<div class="image-box">
-								<figure class="image"><img src="{{ asset('img/app.png') }}" class="img-fluid" alt=""></figure>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- ========================== Download App Section =============================== -->
-			
-			<!-- ============================ Call To Action ================================== -->
-			<section class="theme-bg call-to-act-wrap">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							
-							<div class="call-to-act">
-								<div class="call-to-act-head">
-									<h3>Want to Become a Real Estate Agent?</h3>
-									<span>We'll help you to grow your career and growth.</span>
-								</div>
-								<a href="#" class="btn btn-call-to-act">SignUp Today</a>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- ============================ Call To Action End ================================== -->
 
 @endsection
 
 @section('extra-script')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 	const gmailBtn = document.getElementById('gmail-btn');
 	const facebookBtn = document.getElementById('facebook-btn');

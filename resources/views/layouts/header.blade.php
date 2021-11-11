@@ -106,6 +106,9 @@
 										<li><a href="contact.html">Contacts</a></li>
 									</ul>
 								</li>
+								<li class="add-listing blue">
+									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="assets/img/user-light.svg" width="12" alt="" class="mr-2" />Sign In</a>
+								</li>
 							
 							<!-- </ul>
                             <ul class="navbar-nav ml-auto pt-3" style="float:right;"> -->

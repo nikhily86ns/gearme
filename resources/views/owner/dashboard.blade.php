@@ -160,18 +160,13 @@
 						
 			<!-- ============================ User Dashboard End ================================== -->
 
-			<!-- ============================ Post Property Form ================================== -->
-
-		
-
-			<!-- ============================ Post Property Form End ================================== -->
 
 	
 @endsection
 
 @section('extra-script')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>  
+<!-- <script>  
 	$(function() {
 		// Multiple images preview with JavaScript
 		var multiImgPreview = function(input, imgPreviewPlaceholder) {
@@ -190,9 +185,9 @@
 			multiImgPreview(this, 'div.preview-image');
 		});
 	});  
-</script>
+</script> -->
 
-<script>
+<!-- <script>
 	$(document).ready(function(){
 		$("#cafeterias").hide();
 		$("#areas").hide();
@@ -247,5 +242,5 @@
 			$("#parkings").hide();
 		}
 	});
-</script>
+</script> -->
 @endsection

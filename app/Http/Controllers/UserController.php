@@ -82,7 +82,7 @@ class UserController extends Controller
         return redirect()->route('owner.profile'); 
     }
 
-// Function to View Change PassWord Page
+// Function to View Change PassWord Page on owner dashboard
 
     public function changeOwnerPassword()
     {
@@ -90,26 +90,6 @@ class UserController extends Controller
     }
 
 // Function to Reset Owner Password
-
-    // public function resetOwnerPassword(Request $request) {
-     
-    //     $request->validate([
-    //         'current_password' => 'required|min:3',
-    //         'password' => 'required|min:6|confirmed'
-    //     ]);
-    //     $user = User::where('email', auth()->user()->email)->first();
-        
-    //     if(!Hash::check($request->current_password, $user->password)) {
-    //         $request->session()->flash('error', 'Invalid Current Password');
-    //         return redirect()->route('owner.changePassword');
-    //     } else {
-    //         User::where('email', auth()->user()->email)->update([
-    //             'password' => Hash::make($request->password)
-    //         ]);
-    //         $request->session()->flash('success', 'User Password Reset Successfully');
-    //         return redirect()->route('owner.changePassword');
-    //     }
-    // }
 
     public function resetOwnerPassword(Request $request)
     {
@@ -124,6 +104,14 @@ class UserController extends Controller
         return redirect()->route('owner.changeOwnerPassword');
     }
 
+// Function to view All Properties in Investor Dashboard 
+
+    public function viewAllProperty()
+    {
+        $data = Property::where('status','=','Approved')->paginate(10);
+        return view('investor.viewProperty', compact('data'));
+    }
+
 // Function To View Investor Profile
 
     public function InvestorProfile()
@@ -136,7 +124,6 @@ class UserController extends Controller
 
     public function updateInvestorProfile(Request $request)
     {  
-
         $validator = Validator::make($request->all(), [
             "name" => "regex:/^[a-zA-Z]+$/u|max:255",
             "phone" => "min:10|numeric",
@@ -152,7 +139,16 @@ class UserController extends Controller
                                             'email' => $request->email,
                                             'phone' => $request->phone ,
                                             'country' => $request->country ,
-                                            'profileimage' =>  $filename
+                                            'profileimage' =>  $filename,
+                                            'address' => $request->address ,
+                                            'city' => $request->city ,
+                                            'state' => $request->state ,
+                                            'zip' => $request->zip ,
+                                            'about' => $request->about ,
+                                            'facebook' => $request->facebook ,
+                                            'twitter' => $request->twitter ,
+                                            'google' => $request->google ,
+                                            'linkedin' => $request->linkedin ,
                                            ]);
         }
         else{
@@ -160,11 +156,26 @@ class UserController extends Controller
                                             'email' => $request->email,
                                             'phone' => $request->phone ,
                                             'country' => $request->country ,
+                                            'address' => $request->address ,
+                                            'city' => $request->city ,
+                                            'state' => $request->state ,
+                                            'zip' => $request->zip ,
+                                            'about' => $request->about ,
+                                            'facebook' => $request->facebook ,
+                                            'twitter' => $request->twitter ,
+                                            'google' => $request->google ,
+                                            'linkedin' => $request->linkedin ,
                                            ]);
         }
-                                        //    dd(DB::getQueryLog());
-        
+
         return redirect()->route('investor.profile'); 
+    }
+
+// Function to View Change PassWord Page on invetsor Dashboard
+
+    public function changeInvestorPassword()
+    {
+        return view('investor.changePassword');
     }
 
 // Function to Reset Investor Password
@@ -401,7 +412,7 @@ class UserController extends Controller
         return redirect()->route('owner.viewProperty', ['id' => $id]);
     }
 
-// Function to View All Posted Property By Property Owner
+// Function to View All Posted Property By Property Owner in owner dashboard
 
     public function viewProperty($id)
     {
@@ -523,29 +534,53 @@ class UserController extends Controller
         return view('investor.propertyDetail', compact('data','property'));
     }
 
+// Function to view All FInanace Option in Investor Dashboard
+
+    public function viewFinance()
+    {
+        $currentDate = date('Y-m-d');
+        $finance = User::where('roles','2')->get();
+        foreach($finance as $key => $value)
+        {
+            $plan = Plan::where([
+                ['providerId',$value->id],
+                ['validto','>=',$currentDate]
+                ])->get();
+            if(count($plan) > 0)
+            {
+                $finance[$key] = $value;
+                $finance[$key]->plan = $plan;
+            }
+        }
+        // dd($finance); 
+        $plan = DB::table('plans')
+                ->join('users', 'users.id','=', 'plans.providerId')
+                ->select('plans.*', 'users.name')->get();
+
+        return view('investor.viewFinance', compact('finance','plan'));
+    }
+
 // Function to Search/Filter Property On Property Investor Dashboard
 
     public function search(Request $request)
     {
-        $request->validate([
-            "propertyFor" => "required",
-            "propertyType" => "required",
-            "budget" => 'required', 
-            "search" => "required",
-        ]);
+        
         $propertyFor = $request->propertyFor;
         $propertyType = $request->propertyType;
         $price = $request->budget;
         $budget = explode('-',$price);
         $search = $request->search;
 
-        $data = Property::where('propertyFor', $propertyFor)
-        ->where('propertyType',$propertyType)
-        ->whereBetween('price', $budget)->orderBY('id','desc')
+        // $data = Property::where('propertyFor', $propertyFor)
+        // ->where('propertyType',$propertyType)
+        // ->whereBetween('price', $budget)->orderBY('id','desc')
+        // ->where('city','LIKE','%'.$search.'%')->take(10)->get();
+
+        $data = Property::where('propertyType',$propertyType)
         ->where('city','LIKE','%'.$search.'%')->take(10)->get();
 
         $property = Property::paginate(6);
-         return view('investor.viewProperty',compact('data','property'));
+        return view('investor.viewProperty',compact('data','property'));
         
     }
 
