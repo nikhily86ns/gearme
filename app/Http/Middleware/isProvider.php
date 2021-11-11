@@ -16,10 +16,10 @@ class isProvider
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->roles == '2'){
+        if(auth()->user() && auth()->user()->roles == '2'){
             return $next($request);
         }
    
-        return redirect('/')->with('error',"You don't have Provider access.");
+        return redirect('/login')->with('error',"You don't have Provider access.");
     }
 }

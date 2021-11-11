@@ -106,13 +106,19 @@
 										<li><a href="contact.html">Contacts</a></li>
 									</ul>
 								</li>
-								<li class="add-listing blue">
-									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="assets/img/user-light.svg" width="12" alt="" class="mr-2" />Sign In</a>
-								</li>
 							
 							<!-- </ul>
                             <ul class="navbar-nav ml-auto pt-3" style="float:right;"> -->
                                 <!-- Authentication Links -->
+								<ul class="nav-menu nav-menu-social align-to-right">
+								
+								<li>
+									<a href="{{ route('owner.submitProperty') }}" class="text-success"><img src="{{ asset('/img/submit.svg') }}" width="20" alt="" class="mr-2" />Add Property</a>
+								</li>
+								<li class="add-listing blue">
+									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="{{ asset('/img/user-light.svg') }}" width="12" alt="" class="mr-2" />Sign In</a>
+								</li>
+							</ul>
                                 @guest
 									@if (Route::has('register'))
 									<li style="float:right;"><a href="{{ route('register') }}">Register</a></li>

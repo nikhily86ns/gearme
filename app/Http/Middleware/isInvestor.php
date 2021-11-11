@@ -16,10 +16,10 @@ class isInvestor
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->roles == '3'){
+        if(auth()->user() && auth()->user()->roles == '3'){
             return $next($request);
         }
    
-        return redirect('/')->with('error',"You don't have Investor access.");
+        return redirect('/login')->with('error',"You don't have Investor access.");
     }
 }
