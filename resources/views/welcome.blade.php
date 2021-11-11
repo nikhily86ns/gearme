@@ -1359,12 +1359,12 @@
 						<div class="modal-body">
 							<h4 class="modal-header-title">Log In</h4>
 							<div class="login-form">
-								<form>
-								
+								<form method="POST" action="{{ route('login') }}">
+								@csrf
 									<div class="form-group">
-										<label>User Name</label>
+										<label>Email</label>
 										<div class="input-with-icon">
-											<input type="text" class="form-control" placeholder="Username">
+											<input type="email" name="email" class="form-control" placeholder="Username">
 											<i class="ti-user"></i>
 										</div>
 									</div>
@@ -1372,7 +1372,7 @@
 									<div class="form-group">
 										<label>Password</label>
 										<div class="input-with-icon">
-											<input type="password" class="form-control" placeholder="*******">
+											<input type="password" name="password" class="form-control" placeholder="*******">
 											<i class="ti-unlock"></i>
 										</div>
 									</div>
