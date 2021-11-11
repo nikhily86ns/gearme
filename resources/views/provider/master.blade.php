@@ -251,7 +251,7 @@
 											<img src="{{ asset('profile/'. Auth::user()->profileimage) }}" class="img-fluid avater" alt="">
                                             
 											<h4>{{ Auth::user()->name }}</h4>
-											<span>{{ Auth::user()->state }},{{ Auth::user()->city }}</span>
+											<span>{{ Auth::user()->country }},{{ Auth::user()->city }}</span>
 										</div>
 										
 										<div class="d-navigation">
