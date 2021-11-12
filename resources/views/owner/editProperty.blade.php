@@ -9,7 +9,11 @@
 
 @endsection
 
-@section('content')                   
+@section('content')       
+@php 
+use App\Models\Country;
+$country = Country::all();
+@endphp            
 <?php $data = $data[0]  ?> 
 <div class="dashboard-wraper">
 								
@@ -162,6 +166,18 @@
                                                     <h3>Location</h3>
                                                     <div class="submit-section">
                                                         <div class="row">
+
+                                                            <div class="form-group col-md-12">
+                                                                <label>Country</label>
+                                                                    <select class="form-control" name="country" id="country" data-parsley-required="true">
+                                                                        <option value="">--Select Country--</option>
+                                                                            @foreach ($country as $row) 
+                                                                            {
+                                                                                <option value="{{ $row->name }}" {{$row->name == $data->country ? 'selected': ''  }}>{{ $row->name }}</option>
+                                                                            }
+                                                                            @endforeach
+                                                                    </select>
+                                                            </div>
                                                         
                                                             <div class="form-group col-md-6">
                                                                 <label>Address</label>

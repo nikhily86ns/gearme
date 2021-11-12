@@ -39,7 +39,7 @@
 													Listed in <a href="javascript:void(0);" class="theme-cl"></a> <a href="javascript:void(0);" class="theme-cl">{{ $row->propertyType }}</a>
 												</div>
 												<div class="user_dashboard_listed">
-													City: <a href="javascript:void(0);" class="theme-cl">{{ $row->city }}</a> , Area: {{ $row->area ? $row->area : ''}} Sq ft
+													Country: <a href="javascript:void(0);" class="theme-cl">{{ $row->country }}</a> , Area: {{ $row->area ? $row->area : ''}} Sq ft
 												</div>
 												<div class="user_dashboard_listed">
 													Status: <a href="javascript:void(0);" class="theme-cl">{{ $row->status }}</a> 

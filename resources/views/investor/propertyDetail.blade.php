@@ -9,9 +9,32 @@
 
 @section('content')
 
+			
+			
+
 
 				<div class="container">
 					<div class="row">
+
+					<!-- ============================ Hero Banner  Start================================== -->
+					<div class="featured_slick_gallery gray mb-3">
+						@if($data->image != '')
+						<div class="featured_slick_gallery-slide">
+							@foreach(json_decode($data->image) as $key=>$res)
+								@if($key < 1)
+									<div class="featured_slick_padd"><a href="#" class="mfp-gallery"><img src="{{ asset('property/'. $res) }}" class="img-fluid mx-auto" alt="" /></a></div>
+								@else
+									<div class="featured_slick_padd"><a href="#" class="mfp-gallery"><img src="{{ asset('property/'. $res) }}" class="img-fluid mx-auto" alt="" /></a></div>
+								@endif
+							@endforeach
+							</div>
+						@endif
+						<!-- <div class="featured_slick_gallery-slide">
+							<div class="featured_slick_padd"><a href="assets/img/p-1.jpg" class="mfp-gallery"><img src="{{ asset('property/'. $data->image) }}" class="img-fluid mx-auto" alt="" /></a></div>
+						</div> -->
+						<!-- <a href="JavaScript:Void(0);" class="btn-view-pic">View photos</a> -->
+					</div>
+					<!-- ============================ Hero Banner End ================================== -->
 						
 						<!-- property main detail -->
 						<div class="col-lg-8 col-md-12 col-sm-12">
@@ -20,7 +43,7 @@
 								<div class="prt-detail-title-desc">
 									<span class="prt-types sale">For {{ $data->propertyFor }}</span>
 									<h3>{{ $data->title }} </h3>
-									<span><i class="lni-map-marker"></i>  {{ $data->state }} ,{{ $data->city }}</span>
+									<span><i class="lni-map-marker"></i>  {{ $data->country }} ,{{ $data->city }}</span>
 									<h3 class="prt-price-fix">$ {{ $data->price }}</sub></h3>
 									<div class="list-fx-features">
 										<div class="listing-card-info-icon">
@@ -169,7 +192,7 @@
 							</div>
 							
 							<!-- Single Block Wrap -->
-							<div class="property_block_wrap style-2">
+							<!-- <div class="property_block_wrap style-2">
 								
 								<div class="property_block_wrap_header">
 									<a data-bs-toggle="collapse" data-parent="#floor"  data-bs-target="#clFive" aria-controls="clFive" href="javascript:void(0);" aria-expanded="true" class="collapsed"><h4 class="property_block_title">Floor Plan</h4></a>
@@ -218,7 +241,7 @@
 									</div>
 								</div>
 								
-							</div>
+							</div> -->
 							
 							<!-- Single Block Wrap -->
 							<div class="property_block_wrap style-2">
@@ -572,7 +595,7 @@
 								</ul>
 							</div> -->
                             <div class="row">
-								<div class="col-lg-6">
+								<div class="col-lg-6 mt-2">
 									<h5>Share this to Social Media</h5>
 								</div>
 								<div class="col-lg-6" id="social-links">
@@ -596,22 +619,28 @@
 										</div>
 										<div class="clearfix"></div>
 									</div>
-									
-									<div class="sides-widget-body simple-form">
-										<div class="form-group">
-											<label>Email</label>
-											<input type="text" class="form-control" placeholder="Your Email">
+									<form action="{{ route('investor.requestOwner') }}" method="POST">
+										@csrf
+										<input type="hidden" value="{{ $data->id }}" name="propertyId">
+										<input type="hidden" value="{{ $data->ownerId }}" name="ownerId">
+										<input type="hidden" value="{{ Auth::user()->id }}" name="investorId">
+                                                    
+										<div class="sides-widget-body simple-form">
+											<div class="form-group">
+												<label>Email</label>
+												<input type="text" value="{{ Auth::user()->email }}" class="form-control" placeholder="Your Email">
+											</div>
+											<div class="form-group">
+												<label>Phone No.</label>
+												<input type="text" value="{{ Auth::user()->phone }}" class="form-control" placeholder="Your Phone">
+											</div>
+											<div class="form-group">
+												<label>Description</label>
+												<textarea class="form-control" name="description">I'm interested in this property.</textarea>
+											</div>
+											<button ype='submit' class="btn btn-dark btn-md rounded full-width">Send Message</button>
 										</div>
-										<div class="form-group">
-											<label>Phone No.</label>
-											<input type="text" class="form-control" placeholder="Your Phone">
-										</div>
-										<div class="form-group">
-											<label>Description</label>
-											<textarea class="form-control">I'm interested in this property.</textarea>
-										</div>
-										<button class="btn btn-black btn-md rounded full-width">Send Message</button>
-									</div>
+                                    </form>
 								</div>
 
 								

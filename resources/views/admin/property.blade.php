@@ -42,11 +42,13 @@
                             <tr>
                             <td>{{ $key+1 }}</td>
                             <td>
+                                @if($row->image != '')
                                 @foreach(json_decode($row->image) as $key=>$res)
                                     @if($key < 1)
                                 <img class="rounded-circle " width="150px" height="100px" src="{{ asset('property/'. $res) }}"/>
                                     @endif
                                 @endforeach
+                                @endif
                             </td>
                             <!-- <td>{{ $row->image }}</td> -->
                             <td>{{ $row->propertyFor }}</td>

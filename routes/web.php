@@ -81,6 +81,9 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::post('/editProperties', [App\Http\Controllers\UserController::class, 'editProperties'])->name('owner.editProperties');
         Route::get('/propertyDetailOwner/{id}', [App\Http\Controllers\UserController::class, 'propertyDetailOwner'])->name('investor.propertyDetailOwner');
 
+        Route::get('/propertyInterestedInvetors', [App\Http\Controllers\UserController::class, 'propertyInterestedInvetors'])->name('owner.propertyInterestedInvetors');
+        Route::get('/interestedInvestorDetail/{id}', [App\Http\Controllers\UserController::class, 'interestedInvestorDetail'])->name('owner.interestedInvestorDetail');
+
         Route::get('/ownerProfile', [App\Http\Controllers\UserController::class, 'ownerProfile'])->name('owner.profile');
         Route::post('/updateOwnerProfile', [App\Http\Controllers\UserController::class, 'updateOwnerProfile'])->name('owner.updateProfile');
         Route::get('/changeOwnerPassword', [App\Http\Controllers\UserController::class, 'changeOwnerPassword'])->name('owner.changeOwnerPassword');
@@ -98,11 +101,14 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::get('/selectPlans/{id}', [App\Http\Controllers\UserController::class, 'selectPlan'])->name('investor.selectPlan');
         Route::get('generatepdf/{id}', [App\Http\Controllers\UserController::class, 'generatePDF'])->name('investor.generatePDF');
         Route::post('/requestProvider', [App\Http\Controllers\UserController::class, 'requestProvider'])->name('investor.requestProvider');
+        Route::post('/requestOwner', [App\Http\Controllers\UserController::class, 'requestOwner'])->name('investor.requestOwner');
         Route::get('/investorProfile', [App\Http\Controllers\UserController::class, 'investorProfile'])->name('investor.profile');
         Route::post('/updateInvestorProfile', [App\Http\Controllers\UserController::class, 'updateInvestorProfile'])->name('investor.updateProfile');
 
         Route::get('/viewAllProperty', [App\Http\Controllers\UserController::class, 'viewAllProperty'])->name('investor.viewAllProperty');
+        Route::get('/viewRequestedProperty', [App\Http\Controllers\UserController::class, 'viewRequestedProperty'])->name('investor.viewRequestedProperty');
         Route::get('/viewFinance', [App\Http\Controllers\UserController::class, 'viewFinance'])->name('investor.viewFinance');
+        Route::get('/viewRequestedFinance', [App\Http\Controllers\UserController::class, 'viewRequestedFinance'])->name('investor.viewRequestedFinance');
 
         Route::get('/changeInvestorPassword', [App\Http\Controllers\UserController::class, 'changeInvestorPassword'])->name('investor.changeInvestorPassword');
         Route::post('/resetInvestorPassword', [App\Http\Controllers\UserController::class, 'resetInvestorPassword'])->name('investor.resetInvestorPassword');

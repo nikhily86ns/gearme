@@ -10,6 +10,10 @@
 @endsection
 
 @section('content')
+@php 
+use App\Models\Country;
+$data = Country::all();
+@endphp
 
                             <div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12">
@@ -213,6 +217,18 @@
                                                     <h3>Location</h3>
                                                     <div class="submit-section">
                                                         <div class="row">
+
+                                                            <div class="form-group col-md-12">
+                                                                <label>Country</label>
+                                                                    <select class="form-control" name="country" id="country" data-parsley-required="true">
+                                                                        <option value="">--Select Country--</option>
+                                                                            @foreach ($data as $row) 
+                                                                            {
+                                                                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                                                                            }
+                                                                            @endforeach
+                                                                    </select>
+                                                            </div>
                                                         
                                                             <div class="form-group col-md-6">
                                                                 <label>Address</label>
@@ -314,7 +330,7 @@
                                                                             <label for="a-4" class="checkbox-custom-label">Internet</label>
                                                                         </li>
                                                                         <li>
-                                                                            <input id="a-5" class="checkbox-custom" value="MIcrowave" name="features[]" type="checkbox">
+                                                                            <input id="a-5" class="checkbox-custom" value="Microwave" name="features[]" type="checkbox">
                                                                             <label for="a-5" class="checkbox-custom-label">Microwave</label>
                                                                         </li>
                                                                         <li>

@@ -13,6 +13,26 @@
 				<div class="container">
 					<div class="row">
 						
+						<!-- ============================ Hero Banner  Start================================== -->
+						<div class="featured_slick_gallery gray">
+							@if($data->image != '')
+							<div class="featured_slick_gallery-slide">
+								@foreach(json_decode($data->image) as $key=>$res)
+									@if($key < 1)
+										<div class="featured_slick_padd"><a href="#" class="mfp-gallery"><img src="{{ asset('property/'. $res) }}" class="img-fluid mx-auto" alt="" /></a></div>
+									@else
+										<div class="featured_slick_padd"><a href="#" class="mfp-gallery"><img src="{{ asset('property/'. $res) }}" class="img-fluid mx-auto" alt="" /></a></div>
+									@endif
+								@endforeach
+								</div>
+							@endif
+							<!-- <div class="featured_slick_gallery-slide">
+								<div class="featured_slick_padd"><a href="assets/img/p-1.jpg" class="mfp-gallery"><img src="{{ asset('property/'. $data->image) }}" class="img-fluid mx-auto" alt="" /></a></div>
+							</div> -->
+							<!-- <a href="JavaScript:Void(0);" class="btn-view-pic">View photos</a> -->
+						</div>
+						<!-- ============================ Hero Banner End ================================== -->
+						
 						<!-- property main detail -->
 						<div class="col-lg-8 col-md-12 col-sm-12">
 						

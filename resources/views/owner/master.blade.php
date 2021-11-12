@@ -262,6 +262,7 @@
 												<li class="{{ Request::is('viewOwnerProperty*') ? 'active' : '' }}"><a href="/viewOwnerProperty/{{ Auth::user()->id }}"><i class="ti-layers"></i>My Properties</a></li>
 												<!-- <li><a href="submit-property-dashboard.html"><i class="ti-pencil-alt"></i>Submit New Property</a></li> -->
 												<li class="{{ Request::is('submitProperty') ? 'active' : '' }}"><a href="{{ route('owner.submitProperty') }}"><i class="ti-pencil-alt"></i>Submit New Property</a></li>
+												<li class="{{ Request::is('propertyInterestedInvetors') ? 'active' : '' }}"><a href="{{ route('owner.propertyInterestedInvetors') }}"><i class="ti-pencil-alt"></i>Interested Investors</a></li>
 												
 												<li class="{{ Request::is('changeOwnerPassword') ? 'active' : '' }}"><a href="{{ route('owner.changeOwnerPassword') }}"><i class="ti-unlock"></i>Change Password</a></li>
 												<!-- <li><a href="#"><i class="ti-power-off"></i>Log Out</a></li> -->

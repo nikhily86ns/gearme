@@ -19,7 +19,7 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-9 col-md-11 col-sm-12">
 							<div class="inner-banner-text text-center">
-								<p class="lead-i">Amet consectetur adipisicing <span class="badge badge-success">New</span></p>
+								<!-- <p class="lead-i">Amet consectetur adipisicing <span class="badge badge-success">New</span></p> -->
 								<h2><span class="font-normal">Find Your</span> Perfect Place.</h2>
 							</div>
 							<div class="full-search-2 eclip-search italian-search hero-search-radius shadow-hard mt-5">
@@ -31,7 +31,7 @@
 												<div class="form-group">
 													<div class="choose-propert-type">
 													<select class="form-select" name="propertyType" id="type" aria-label="Default select example">
-														<option selected class="nun"><i class="fa fa-home"></i>Property Type</option>
+														<option value='' selected class="nun"><i class="fa fa-home"></i>Property Type</option>
 														<option class="bg-secondary text-white">** ALL RESIDENTIAL **</option>
 															<option class="ar" value="Apartment">Flat/ Apartment</option>
 															<option class="ar" value="Residential House">Residential House</option>
@@ -133,7 +133,7 @@
 									<div class="listing-short-detail-wrap">
 										<div class="listing-short-detail">
 											<span class="property-type">For {{ $row->propertyFor }}</span>
-											<h4 class="listing-name verified"><a href="single-property-1.html" class="prt-link-detail">{{ $row->propertyType }}</a></h4>
+											<h4 class="listing-name verified"><a href="/propertyDetail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
 										</div>
 										<div class="listing-short-detail-flex">
 											<h6 class="listing-card-info-price">$ {{ $row->price }}</h6>
@@ -157,7 +157,7 @@
 								
 								<div class="listing-detail-footer">
 									<div class="footer-first">
-										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->state }}, {{ $row->city }} </div>
+										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->country }}, {{ $row->city }} </div>
 									</div>
 									<div class="footer-flex">
 										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>

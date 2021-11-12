@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\Property;
 use App\Models\Plan;
 use App\Models\Notification;
+use App\Models\PropertyNotification;
 use DB;
 use PDF;
 use Auth;
@@ -87,6 +88,38 @@ class UserController extends Controller
     public function changeOwnerPassword()
     {
         return view('owner.changePassword');
+    }
+
+// Function to View Interested INvestors in Owner Dashboard
+
+    public function propertyInterestedInvetors()
+    {
+
+        $data = DB::table('property_notifications')
+            ->join('users', 'users.id','=', 'property_notifications.investorId')
+            ->join('properties', 'properties.id','=', 'property_notifications.propertyId')
+            ->where('property_notifications.ownerId','=', Auth::user()->id)
+            ->select('properties.*','users.*', 'users.name as owner_name','property_notifications.id as notify_id','property_notifications.description')
+            ->get();
+
+            // dd($data);
+       
+         
+        return view('owner.interestedInvestor', compact('data'));
+    }
+
+// Function to view Interested Investor Details in Owner Dashboard
+
+    public function interestedInvestorDetail($id)
+    {
+        // $data = User::where('id','=',$id)->first();
+        $data = DB::table('users')
+            ->join('property_notifications', 'users.id','=', 'property_notifications.investorId')
+            ->join('users as a', 'a.id','=', 'property_notifications.ownerId')
+            ->where('property_notifications.id','=',$id)
+            ->select('a.name as owner_name','users.name as investor_name','users.*')
+            ->first();
+        return view('owner.investorDetails', compact('data'));
     }
 
 // Function to Reset Owner Password
@@ -450,6 +483,7 @@ class UserController extends Controller
             "city" => "required",
             "area" => "required",
             "price" => "required",
+            "country" => "required",
         ]);
 
         $image = array();
@@ -485,6 +519,7 @@ class UserController extends Controller
                 $property->title = $request->title;
                 $property->state = $request->state;
                 $property->zip = $request->zip;
+                $property->country = $request->country;
                 $property->feature = json_encode($request->input('features'));
                 $property->save();
 
@@ -553,6 +588,7 @@ class UserController extends Controller
                     'title' => $request->title,
                     'state' => $request->state,
                     'zip' => $request->zip,
+                    'country' => $request->country,
                     'feature' => json_encode($request->input('features')),
                 ]);
             }
@@ -577,6 +613,7 @@ class UserController extends Controller
                 'title' => $request->title,
                 'state' => $request->state,
                 'zip' => $request->zip,
+                'country' => $request->country,
                 'feature' => json_encode($request->input('features')),
             ]);            
         }
@@ -607,7 +644,7 @@ class UserController extends Controller
         $data = DB::table('properties')
               ->join('users', 'properties.uid','=', 'users.id')
               ->where('properties.id','=',$id)
-              ->select('users.name','users.phone','properties.*')->first();
+              ->select('users.name','users.phone','properties.*','users.id as ownerId')->first();
         $property = Property::all();
             //   print_r($data); die;
         return view('investor.propertyDetail', compact('data','property'));
@@ -644,24 +681,81 @@ class UserController extends Controller
     public function search(Request $request)
     {
         
-        $propertyFor = $request->propertyFor;
+        // $propertyFor = $request->propertyFor;
         $propertyType = $request->propertyType;
-        $price = $request->budget;
-        $budget = explode('-',$price);
+        // $price = $request->budget;
+        // $budget = explode('-',$price);
         $search = $request->search;
+
+        if($propertyType == '' && $search == '')
+        {
+            return redirect()->route('investor.viewAllProperty');
+        }
+        else if($search == '')
+        {
+            $data = Property::where('propertyType' , $propertyType)->take(10)->get();
+            $property = Property::paginate(6);
+            return view('investor.viewProperty',compact('data','property'));
+        }
+        else if($propertyType == '')
+        {
+            $data = Property::where('city' ,$search )->take(10)->get();
+            $property = Property::paginate(6);
+            return view('investor.viewProperty',compact('data','property'));
+        }
+        else
+        {
+            $matchThese = ['propertyType' => $propertyType, 'city' => $search];
+            $data = Property::where($matchThese)->take(10)->get();
+            $property = Property::paginate(6);
+            return view('investor.viewProperty',compact('data','property'));
+        }
 
         // $data = Property::where('propertyFor', $propertyFor)
         // ->where('propertyType',$propertyType)
         // ->whereBetween('price', $budget)->orderBY('id','desc')
         // ->where('city','LIKE','%'.$search.'%')->take(10)->get();
 
-        $data = Property::where('propertyType',$propertyType)
-        ->where('city','LIKE','%'.$search.'%')->take(10)->get();
+        // $data = Property::where('propertyType',$propertyType)
+        // ->orWhere('city','LIKE','%'.$search.'%')->take(10)->get();
 
-        $property = Property::paginate(6);
-        return view('investor.viewProperty',compact('data','property'));
+        // $matchThese = ['propertyType' => $propertyType, 'city' => $search];
+
+        // $data = Property::where($matchThese)->take(10)->get();
+
+        // $property = Property::paginate(6);
+        // return view('investor.viewProperty',compact('data','property'));
         
     }
+
+// Function to View Requested Properties in Investor Dashboard
+    
+    public function viewRequestedProperty()
+    {
+        $data = DB::table('property_notifications')
+            ->join('users', 'users.id','=', 'property_notifications.investorId')
+            ->join('properties', 'properties.id','=', 'property_notifications.propertyId')
+            ->where('property_notifications.investorId','=', Auth::user()->id)
+            ->select('properties.*','users.*', 'users.name as owner_name','property_notifications.id as notify_id')
+            ->get();
+
+        return view('investor.requestedProperty', compact('data'));
+    }
+
+// Function to View Requested Finance Options in Investor Dashboard
+
+    public function viewRequestedFinance()
+    {
+        $data = DB::table('notifications')
+            ->join('users', 'users.id','=', 'notifications.providerId')
+            ->join('plans', 'plans.id','=', 'notifications.planId')
+            ->where('notifications.investorId','=', Auth::user()->id)
+            ->select('plans.*','users.*', 'users.name as provider_name','notifications.id as notify_id')
+            ->get();
+
+        return view('investor.requestedFinance', compact('data'));
+    }
+
 
 // Fucntion To Post Plan By Capital Provider in Capital Provider Dashboard
 
@@ -850,7 +944,29 @@ class UserController extends Controller
         
     }
 
-// Function To View Interested Investors
+// Function to Request Owner For Property
+
+    public function requestOwner(Request $request)
+    {
+        $notification = new PropertyNotification();
+        $notifiy = PropertyNotification::where('propertyId',$request->propertyId)->where('investorId',$request->investorId)->where('ownerId',$request->ownerId)->get();
+        if(count($notifiy) > 0)
+        {
+            return redirect()->route('investor.viewAllProperty')->with('error','Message');
+        }
+        else
+        {
+            $notification->propertyId = $request->propertyId; 
+            $notification->investorId = $request->investorId; 
+            $notification->ownerId = $request->ownerId; 
+            $notification->description = $request->description; 
+            $notification->save();
+
+            return redirect()->route('investor.viewAllProperty');
+        }
+    }
+
+// Function To View Interested Investors in Proovider Dashboard
 
     public function interestedInvetors()
     {
@@ -909,5 +1025,7 @@ class UserController extends Controller
             ->first();
         return view('provider.interestedInvestorDetails', compact('data'));
     }
+
+
 
 }

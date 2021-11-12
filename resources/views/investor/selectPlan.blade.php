@@ -53,7 +53,7 @@
                                                     <input type="hidden" value="{{ $data->id }}" name="planId">
                                                     <input type="hidden" value="{{ $data->providerId }}" name="providerId">
                                                     <input type="hidden" value="{{ Auth::user()->id }}" name="investorId">
-                                                    <button type='submit'><i class="ti-pencil"></i></button>
+                                                    <button type='submit' class="btn btn-dark btn-sm">Request</button>
                                                     <!-- <a href=""><i class="ti-pencil"></i></a> -->
                                                 </form>
                                             </div>

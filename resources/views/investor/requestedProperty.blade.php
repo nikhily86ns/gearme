@@ -1,7 +1,7 @@
 @extends('investor.master')
 
 @section('title')
-	Properties
+	Requested Properties
 @endsection
 
 @section('extra-css')
@@ -14,7 +14,7 @@
 	
 		<!-- Bookmark Property -->
 		<div class="form-submit">	
-			<h4>All Properties</h4>
+			<h4>Requested Properties</h4>
 		</div>
 		
 		<div class="row">
@@ -57,7 +57,7 @@
 			</div>
 		@endforeach
 		@else
-		<h4 class="text-center">No Matching Property With Your Request</h4>
+		<h4 class="text-center">You Don't Requested Any Property</h4>
 		@endif
 		</div>
 		

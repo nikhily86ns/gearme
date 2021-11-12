@@ -236,7 +236,9 @@
 												<li class="{{ Request::is('dashboardInvestor') ? 'active' : '' }}"><a href="{{ route('investor.dashboard') }}"><i class="ti-dashboard"></i>Dashboard</a></li>
 												<li class="{{ Request::is('investorProfile') ? 'active' : '' }}"><a href="{{ route('investor.profile') }}"><i class="ti-user"></i>My Profile</a></li>
 												<li class="{{ Request::is('viewAllProperty') ? 'active' : '' }}"><a href="/viewAllProperty"><i class="ti-layers"></i>All Properties</a></li>
+												<li class="{{ Request::is('viewRequestedProperty') ? 'active' : '' }}"><a href="/viewRequestedProperty"><i class="ti-layers"></i>Requested Properties</a></li>
 												<li class="{{ Request::is('viewFinance') ? 'active' : '' }}"><a href="/viewFinance"><i class="ti-layers"></i>All Finance Options</a></li>
+												<li class="{{ Request::is('viewRequestedFinance') ? 'active' : '' }}"><a href="/viewRequestedFinance"><i class="ti-layers"></i>Requested Finance Options</a></li>
 												
 												<li class="{{ Request::is('changeInvestorPassword') ? 'active' : '' }}"><a href="{{ route('investor.changeInvestorPassword') }}"><i class="ti-unlock"></i>Change Password</a></li>
 												<!-- <li><a href="#"><i class="ti-power-off"></i>Log Out</a></li> -->
