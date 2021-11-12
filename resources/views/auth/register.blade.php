@@ -24,19 +24,19 @@ $data = Country::all();
                 </div>
                 <ul class="nav nav-tabs startup_tab d-flex justify-content-center my-3" id="myTab" role="tablist">
                     <li class="nav-item" style="margin-right: 10px;">
-                        <a class="nav-link active rounded-pill" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="true">
+                        <a class="nav-link active btn btn-md full-width btn-theme-light-2 rounded-pill" id="market-tab" data-toggle="tab" href="#market" role="tab" aria-controls="market" aria-selected="true">
                             <span class="icon"><i class="icon-cloud-upload"></i></span>
                             <h4 class="text-white">Register Property Owner</h4>
                         </a>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
-                        <a class="nav-link rounded-pill" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app" aria-selected="false">
+                        <a class="nav-link btn btn-md full-width btn-theme-light-2 rounded-pill" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app" aria-selected="false">
                             <span class="icon"><i class="icon-screen-tablet"></i></span>
                             <h4 class="text-white">Register Capital Provider</h4>
                         </a>
                     </li>
                     <li class="nav-item" style="margin-right: 10px;">
-                        <a class="nav-link rounded-pill" id="hubstaff-tab" data-toggle="tab" href="#hubstaff" role="tab" aria-controls="hubstaff" aria-selected="false">
+                        <a class="nav-link btn btn-md full-width btn-theme-light-2 rounded-pill" id="hubstaff-tab" data-toggle="tab" href="#hubstaff" role="tab" aria-controls="hubstaff" aria-selected="false">
                             <span class="icon"><i class="icon-graduation"></i></span>
                             <h4 class="text-white">Register Property Investor</h4>
                         </a>
@@ -49,7 +49,7 @@ $data = Country::all();
                                 <div class="row justify-content-center">
                                     <div class="col-md-8">
                                         <div class="card">
-                                            <div class="card-header text-center"><h3>{{ __('Register Property Owner') }}</h3></div>
+                                            <div class="card-header text-center" ><h3>{{ __('Register Property Owner') }}</h3></div>
                                             <h4 class="modal-header-title">Sign Up</h4>
                                             <div class="card-body">
                                                 <form method="POST" action="{{ route('registerOwner') }}">
