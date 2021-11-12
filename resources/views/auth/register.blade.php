@@ -50,97 +50,87 @@ $data = Country::all();
                                     <div class="col-md-8">
                                         <div class="card">
                                             <div class="card-header text-center"><h3>{{ __('Register Property Owner') }}</h3></div>
-
+                                            <h4 class="modal-header-title">Sign Up</h4>
                                             <div class="card-body">
                                                 <form method="POST" action="{{ route('registerOwner') }}">
                                                     @csrf
 
-                                                    <div class="form-group row">
-                                                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                                            @error('name')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                    <div class="row">
+										
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="text" name="name" class="form-control" placeholder="Full Name">
+                                                                    <i class="ti-user"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                                                    <i class="ti-email"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                                            @error('password')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="password" name="password" class="form-control" placeholder="password">
+                                                                    <i class="ti-unlock"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input id="password-confirm" type="password" class="form-control" placeholder="confirm password" name="password_confirmation">
+                                                                    <i class="ti-unlock"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required>
-
-                                                            @error('phone')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="text" class="form-control" name="phone" placeholder="123 546 5847">
+                                                                    <i class="lni-phone-handset"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <select class="form-control" name="country" id="country" data-parsley-required="true">
-                                                                <option value="">--Select Country--</option>
-                                                                    @foreach ($data as $row) 
-                                                                    {
-                                                                        <option value="{{ $row->name }}">{{ $row->name }}</option>
-                                                                    }
-                                                                    @endforeach
-                                                            </select>
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <select class="form-control" name="country" id="country" data-parsley-required="true">
+                                                                        <option value="">--Select Country--</option>
+                                                                            @foreach ($data as $row) 
+                                                                            {
+                                                                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                                                                            }
+                                                                            @endforeach
+                                                                    </select>
+                                                                    <!-- <select class="form-control">
+                                                                        <option>As a Customer</option>
+                                                                        <option>As a Agent</option>
+                                                                        <option>As a Agency</option>
+                                                                    </select> -->
+                                                                    <i class="ti-briefcase"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
+										
+									                </div>
 
-                                                    <div class="form-group row mb-0">
-                                                        <div class="col-md-6 offset-md-4">
-                                                            <button type="submit" class="btn btn-primary">
-                                                                {{ __('Register') }}
-                                                            </button>
-                                                        </div>
+                                                   
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-md full-width btn-theme-light-2 rounded">Sign Up</button>
                                                     </div>
+                                    
                                                 </form>
                                             </div>
                                         </div>
@@ -156,95 +146,85 @@ $data = Country::all();
                                     <div class="col-md-8">
                                         <div class="card">
                                             <div class="card-header text-center"><h3>{{ __('Register Capital Provider') }}</h3></div>
+                                            <h4 class="modal-header-title">Sign Up</h4>
                                             <div class="card-body">
                                                 <form method="POST" action="{{ route('registerProvider') }}">
                                                     @csrf
 
-                                                    <div class="form-group row">
-                                                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                                            @error('name')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                    <div class="row">
+										
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="text" name="name" class="form-control" placeholder="Full Name">
+                                                                    <i class="ti-user"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                                                    <i class="ti-email"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                                            @error('password')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="password" name="password" class="form-control" placeholder="password">
+                                                                    <i class="ti-unlock"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input id="password-confirm" type="password" class="form-control" placeholder="confirm password" name="password_confirmation">
+                                                                    <i class="ti-unlock"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required>
-
-                                                            @error('phone')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="text" class="form-control" name="phone" placeholder="123 546 5847">
+                                                                    <i class="lni-phone-handset"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <select class="form-control" name="country" id="country" data-parsley-required="true">
-                                                                <option value="">--Select Country--</option>
-                                                                    @foreach ($data as $row) 
-                                                                    {
-                                                                        <option value="{{ $row->name }}">{{ $row->name }}</option>
-                                                                    }
-                                                                    @endforeach
-                                                            </select>
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <select class="form-control" name="country" id="country" data-parsley-required="true">
+                                                                        <option value="">--Select Country--</option>
+                                                                            @foreach ($data as $row) 
+                                                                            {
+                                                                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                                                                            }
+                                                                            @endforeach
+                                                                    </select>
+                                                                    <!-- <select class="form-control">
+                                                                        <option>As a Customer</option>
+                                                                        <option>As a Agent</option>
+                                                                        <option>As a Agency</option>
+                                                                    </select> -->
+                                                                    <i class="ti-briefcase"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
+										
+									                </div>
 
-                                                    <div class="form-group row mb-0">
-                                                        <div class="col-md-6 offset-md-4">
-                                                            <button type="submit" class="btn btn-primary">
-                                                                {{ __('Register') }}
-                                                            </button>
-                                                        </div>
+                                                   
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-md full-width btn-theme-light-2 rounded">Sign Up</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -260,96 +240,86 @@ $data = Country::all();
                                 <div class="row justify-content-center">
                                     <div class="col-md-8">
                                         <div class="card">
-                                            <div class="card-header text-center"><h3>{{ __('Register Property Investor') }}</h3></div>     
+                                            <div class="card-header text-center"><h3>{{ __('Register Property Investor') }}</h3></div> 
+                                            <h4 class="modal-header-title">Sign Up</h4>    
                                             <div class="card-body">
                                                 <form method="POST" action="{{ route('registerInvestor') }}">
                                                     @csrf
 
-                                                    <div class="form-group row">
-                                                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                                            @error('name')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                    <div class="row">
+										
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="text" name="name" class="form-control" placeholder="Full Name">
+                                                                    <i class="ti-user"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                                                    <i class="ti-email"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                                            @error('password')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="password" name="password" class="form-control" placeholder="password">
+                                                                    <i class="ti-unlock"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group row">
-                                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input id="password-confirm" type="password" class="form-control" placeholder="confirm password" name="password_confirmation">
+                                                                    <i class="ti-unlock"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" required>
-
-                                                            @error('phone')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
+                                                        
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <input type="text" class="form-control" name="phone" placeholder="123 546 5847">
+                                                                    <i class="lni-phone-handset"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
-
-                                                        <div class="col-md-6">
-                                                            <select class="form-control" name="country" id="country" data-parsley-required="true">
-                                                                <option value="">--Select Country--</option>
-                                                                    @foreach ($data as $row) 
-                                                                    {
-                                                                        <option value="{{ $row->name }}">{{ $row->name }}</option>
-                                                                    }
-                                                                    @endforeach
-                                                            </select>
+                                                        
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="form-group">
+                                                                <div class="input-with-icon">
+                                                                    <select class="form-control" name="country" id="country" data-parsley-required="true">
+                                                                        <option value="">--Select Country--</option>
+                                                                            @foreach ($data as $row) 
+                                                                            {
+                                                                                <option value="{{ $row->name }}">{{ $row->name }}</option>
+                                                                            }
+                                                                            @endforeach
+                                                                    </select>
+                                                                    <!-- <select class="form-control">
+                                                                        <option>As a Customer</option>
+                                                                        <option>As a Agent</option>
+                                                                        <option>As a Agency</option>
+                                                                    </select> -->
+                                                                    <i class="ti-briefcase"></i>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
+										
+									                </div>
 
-                                                    <div class="form-group row mb-0">
-                                                        <div class="col-md-6 offset-md-4">
-                                                            <button type="submit" class="btn btn-primary">
-                                                                {{ __('Register') }}
-                                                            </button>
-                                                        </div>
+                                                   
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-md full-width btn-theme-light-2 rounded">Sign Up</button>
                                                     </div>
                                                 </form>
                                             </div>

@@ -106,6 +106,7 @@
 										<li><a href="contact.html">Contacts</a></li>
 									</ul>
 								</li>
+								<li><a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</a></li>
 							
 							<!-- </ul>
                             <ul class="navbar-nav ml-auto pt-3" style="float:right;"> -->

@@ -9,13 +9,33 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+                <!-- <div class="card-header">{{ __('Login') }}</div> -->
+                <h4 class="modal-header-title">Log In</h4>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <div class="input-with-icon">
+                                <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email">
+                                <i class="ti-user"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Password</label>
+                            <div class="input-with-icon">
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                                <i class="ti-unlock"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="form-group">
+                            <button type="submit" class="btn btn-md full-width btn-theme-light-2 rounded">Login</button>
+                        </div> -->
+
+                        <!-- <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -41,10 +61,10 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -56,8 +76,8 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-md full-width btn-theme-light-2 rounded">
                                     {{ __('Login') }}
                                 </button>
 
