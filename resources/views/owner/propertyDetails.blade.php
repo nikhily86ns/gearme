@@ -14,7 +14,7 @@
 					<div class="row">
 						
 						<!-- ============================ Hero Banner  Start================================== -->
-						<div class="featured_slick_gallery gray">
+						<div class="featured_slick_gallery gray mb-3">
 							@if($data->image != '')
 							<div class="featured_slick_gallery-slide">
 								@foreach(json_decode($data->image) as $key=>$res)
@@ -113,34 +113,54 @@
 										<ul class="avl-features third color">
                                         @if($data->feature != '' && $data->feature != null && $data->feature != 'null' && $data->feature != NULL && is_array(json_decode($data->feature)))
                                    									
-                                                <li>
-                                                    <input id="a-1" class="checkbox-custom " {{ in_array("AC", json_decode($data->feature)) ? 'checked' : '' }} value="AC" name="features[]" type="checkbox">
-                                                    <label for="a-1" class="checkbox-custom-label">Air Condition</label>
-                                                </li>
-                                                <li>
-                                                    <input id="a-3" class="checkbox-custom" {{ in_array("Heating", json_decode($data->feature)) ? 'checked' : '' }} value="Heating" name="features[]" type="checkbox">
-                                                    <label for="a-3" class="checkbox-custom-label">Heating</label>
-                                                </li>
-                                                <li>
-                                                    <input id="a-4" class="checkbox-custom" {{ in_array("Internet", json_decode($data->feature))  ? 'checked' : '' }} value="Internet" name="features[]" type="checkbox">
-                                                    <label for="a-4" class="checkbox-custom-label">Internet</label>
-                                                </li>
-                                                <li>
-                                                    <input id="a-5" class="checkbox-custom" {{ in_array("Microwave", json_decode($data->feature))  ? 'checked' : '' }} value="Microwave" name="features[]" type="checkbox">
-                                                    <label for="a-5" class="checkbox-custom-label">Microwave</label>
-                                                </li>
-                                                <li>
-                                                    <input id="a-6" class="checkbox-custom" {{ in_array("Smoking", json_decode($data->feature))  ? 'checked' : '' }} value="Smoking" name="features[]" type="checkbox">
-                                                    <label for="a-6" class="checkbox-custom-label">Smoking Allow</label>
-                                                </li>
-                                                <li>
-                                                    <input id="a-7" class="checkbox-custom" {{ in_array("Terrace", json_decode($data->feature))  ? 'checked' : '' }} value="Terrace" name="features[]" type="checkbox">
-                                                    <label for="a-7" class="checkbox-custom-label">Terrace</label>
-                                                </li>
-                                                <li>
-                                                    <input id="a-11" class="checkbox-custom" {{ in_array("Beach", json_decode($data->feature))  ? 'checked' : '' }} value="Beach" name="features[]"" type="checkbox">
-                                                    <label for="a-11" class="checkbox-custom-label">Beach</label>
-                                                </li>
+											<li>
+												<input id="a-1" class="checkbox-custom " {{ in_array("AC", json_decode($data->feature)) ? 'checked' : '' }} value="AC" name="features[]" type="checkbox">
+												<label for="a-1" class="checkbox-custom-label">Air Condition</label>
+											</li>
+											<li>
+												<input id="a-3" class="checkbox-custom" {{ in_array("Heating", json_decode($data->feature)) ? 'checked' : '' }} value="Heating" name="features[]" type="checkbox">
+												<label for="a-3" class="checkbox-custom-label">Heating</label>
+											</li>
+											<li>
+												<input id="a-4" class="checkbox-custom" {{ in_array("Internet", json_decode($data->feature))  ? 'checked' : '' }} value="Internet" name="features[]" type="checkbox">
+												<label for="a-4" class="checkbox-custom-label">Internet</label>
+											</li>
+											<li>
+												<input id="a-5" class="checkbox-custom" {{ in_array("Microwave", json_decode($data->feature))  ? 'checked' : '' }} value="Microwave" name="features[]" type="checkbox">
+												<label for="a-5" class="checkbox-custom-label">Microwave</label>
+											</li>
+											<li>
+												<input id="a-6" class="checkbox-custom" {{ in_array("Smoking", json_decode($data->feature))  ? 'checked' : '' }} value="Smoking" name="features[]" type="checkbox">
+												<label for="a-6" class="checkbox-custom-label">Smoking Allow</label>
+											</li>
+											<li>
+												<input id="a-7" class="checkbox-custom" {{ in_array("Terrace", json_decode($data->feature))  ? 'checked' : '' }} value="Terrace" name="features[]" type="checkbox">
+												<label for="a-7" class="checkbox-custom-label">Terrace</label>
+											</li>
+											<li>
+												<input id="a-11" class="checkbox-custom" {{ in_array("Beach", json_decode($data->feature))  ? 'checked' : '' }} value="Beach" name="features[]"" type="checkbox">
+												<label for="a-11" class="checkbox-custom-label">Beach</label>
+											</li>
+											<li>
+												<input id="a-9" class="checkbox-custom" {{ in_array("Bedding", json_decode($data->feature))  ? 'checked' : '' }} value="Bedding" name="features[]" type="checkbox">
+												<label for="a-9" class="checkbox-custom-label">Bedding</label>
+											</li>
+											<li>
+												<input id="a-14" class="checkbox-custom"  {{ in_array("Balcony", json_decode($data->feature))  ? 'checked' : '' }}value="Balcony" name="features[]" type="checkbox">
+												<label for="a-14" class="checkbox-custom-label">Balcony</label>
+											</li>
+											<li>
+												<input id="a-15" class="checkbox-custom" {{ in_array("Icon", json_decode($data->feature))  ? 'checked' : '' }} value="Icon" name="features[]" type="checkbox">
+												<label for="a-15" class="checkbox-custom-label">Icon</label>
+											</li>
+											<li>
+												<input id="1a-6" class="checkbox-custom"  {{ in_array("Parking", json_decode($data->feature))  ? 'checked' : '' }}value="Parking" name="features[]" type="checkbox">
+												<label for="1a-6" class="checkbox-custom-label">Parking</label>
+											</li>
+											<li>
+												<input id="a-10" class="checkbox-custom" {{ in_array("Wi-Fi", json_decode($data->feature))  ? 'checked' : '' }} value="Wi-Fi" name="features[]"" type="checkbox">
+												<label for="a-10" class="checkbox-custom-label">Wi-Fi</label>
+											</li>
                                             
                                             @endif
 											<!-- <li>Air Conditioning</li>

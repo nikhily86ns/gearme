@@ -252,9 +252,12 @@
 								
 								<div id="clSix" class="panel-collapse collapse">
 									<div class="block-body">
-										<div class="map-container">
-											<div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781" data-mapTitle="Our Location"></div>
-										</div>
+										<span><i class="lni-map-marker"></i>Country:  {{ $data->country }}</span>
+										<span><i class="lni-map-marker"></i>State:  {{ $data->state }}</span>
+										<span><i class="lni-map-marker"></i>City:  {{ $data->city }}</span>
+											<div class="map-container">
+												<div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781" data-mapTitle="Our Location"></div>
+											</div>
 
 									</div>
 								</div>

@@ -99,7 +99,8 @@ class UserController extends Controller
             ->join('users', 'users.id','=', 'property_notifications.investorId')
             ->join('properties', 'properties.id','=', 'property_notifications.propertyId')
             ->where('property_notifications.ownerId','=', Auth::user()->id)
-            ->select('properties.*','users.*', 'users.name as owner_name','property_notifications.id as notify_id','property_notifications.description')
+            ->select('properties.*','users.*', 'users.name as owner_name','property_notifications.id as notify_id','property_notifications.description'
+                , 'properties.id as property_id')
             ->get();
 
             // dd($data);

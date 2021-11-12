@@ -345,6 +345,26 @@ $data = Country::all();
                                                                             <input id="a-11" class="checkbox-custom" value="Beach" name="features[]"" type="checkbox">
                                                                             <label for="a-11" class="checkbox-custom-label">Beach</label>
                                                                         </li>
+                                                                        <li>
+                                                                            <input id="a-3" class="checkbox-custom" value="Bedding" name="features[]" type="checkbox">
+                                                                            <label for="a-3" class="checkbox-custom-label">Bedding</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-4" class="checkbox-custom" value="Balcony" name="features[]" type="checkbox">
+                                                                            <label for="a-4" class="checkbox-custom-label">Balcony</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-5" class="checkbox-custom" value="Icon" name="features[]" type="checkbox">
+                                                                            <label for="a-5" class="checkbox-custom-label">Icon</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-6" class="checkbox-custom" value="Parking" name="features[]" type="checkbox">
+                                                                            <label for="a-6" class="checkbox-custom-label">Parking</label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <input id="a-11" class="checkbox-custom" value="Wi-Fi" name="features[]"" type="checkbox">
+                                                                            <label for="a-11" class="checkbox-custom-label">Wi-Fi</label>
+                                                                        </li>
                                                                     </ul>
                                                                 </div>
                                                             </div>

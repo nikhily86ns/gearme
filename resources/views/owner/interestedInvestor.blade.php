@@ -27,17 +27,17 @@
 												@endif
 											</div>
 											<div class="sd-list-right">
-												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Property Title :- </a>{{ $row->title }}</h4>
+												<h4 class="listing_dashboard_title"><a href="/propertyDetailOwner/{{ $row->property_id }}" class="theme-cl">Property Title :- {{ $row->title }}</a></h4>
 												<div class="user_dashboard_listed">
-													Investor Name :- {{ $row->name }}
+													Investor Name :- <a href="/interestedInvestorDetail/{{ $row->notify_id }}">{{ $row->name }}</a>
 												</div>
                                                 <div class="user_dashboard_listed">
 													Message :- {{ $row->description }}
 												</div>
-												<div class="action">
-														<a href="/propertyDetailOwner/{{ $row->notify_id }}" title="Property Details"><i class="ti-eye"></i></a>
+												<!-- <div class="action">
+														<a href="/propertyDetailOwner/{{ $row->property_id }}" title="Property Details"><i class="ti-eye"></i></a>
                                                         <a href="/interestedInvestorDetail/{{ $row->notify_id }}" title="Investor Details"><i class="ti-eye"></i></a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>
