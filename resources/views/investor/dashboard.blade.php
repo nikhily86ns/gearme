@@ -88,11 +88,8 @@
 							
 						</div>
 					</div>
-				</div>
-			</div>
-			<!-- ============================ Hero Banner End ================================== -->
-			
-			<!-- ================= Explore Property ================= -->
+
+					<!-- ================= Explore Property ================= -->
 			<section>
 				<div class="container">
 					
@@ -191,14 +188,98 @@
 						
 					</div>
 					
-					<!-- <div class="row">
+					<div class="row pt-5">
 						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
-							<a href="listings-list-with-sidebar.html" class="btn btn-theme-light-2 rounded">Browse More Properties</a>
+							<a href="{{ route('investor.viewAllProperty') }}" class="btn btn-dark btn-md rounded">Browse More Properties</a>
 						</div>
-					</div> -->
+					</div>
 					
 				</div>	
 			</section>
+			<!-- ================================= Explore Property End =============================== -->
+				</div>
+			</div>
+			<!-- ============================ Hero Banner End ================================== -->
+			
+			<!-- ================= Explore Property ================= -->
+			<!-- <section>
+				<div class="container">
+					
+					<div class="row justify-content-center">
+						<div class="col-lg-7 col-md-10 text-center">
+							<div class="sec-heading center">
+								<h2>Explore Good places</h2>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						
+						@foreach ($data as $row)
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="property-listing property-2">
+								
+								<div class="listing-img-wrapper">
+									<div class="list-img-slide">
+										<div class="click">
+											<div>
+												@if($row->image)
+												@foreach(json_decode($row->image) as $key=>$res)
+												@if($key == 0)
+													<img class='img-size img-responsive' src="{{ asset('property/'. $res) }}" />
+												@endif
+												@endforeach
+												@endif
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="listing-detail-wrapper">
+									<div class="listing-short-detail-wrap">
+										<div class="listing-short-detail">
+											<span class="property-type">For {{ $row->propertyFor }}</span>
+											<h4 class="listing-name verified"><a href="/propertyDetail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
+										</div>
+										<div class="listing-short-detail-flex">
+											<h6 class="listing-card-info-price">$ {{ $row->price }}</h6>
+										</div>
+									</div>
+								</div>
+								
+								<div class="price-features-wrapper">
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>{{ $row->unitType }}
+										</div>
+										<div class="listing-card-info-icon">
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>{{ $row->bathroom }}
+										</div>
+										<div class="listing-card-info-icon">
+											<div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>{{ $row->area }}
+										</div>
+									</div>
+								</div>
+								
+								<div class="listing-detail-footer">
+									<div class="footer-first">
+										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->country }}, {{ $row->city }} </div>
+									</div>
+									<div class="footer-flex">
+										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
+									</div>
+								</div>
+						
+							</div>
+						</div>
+						@endforeach
+						
+					</div>
+					
+					
+					
+				</div>	
+			</section> -->
 			<!-- ================================= Explore Property End =============================== -->
 
 

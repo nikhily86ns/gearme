@@ -30,11 +30,11 @@
 											<div class="sd-list-right">
 												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Amount :- ${{ $row->amount }}</a></h4>
 												<div class="user_dashboard_listed">
-													Investor Name :- {{ $row->name }}
+													Investor Name :- <a href="/investorDetail/{{ $row->notify_id }}">{{ $row->name }}</a>
 												</div>
-												<div class="action">
+												<!-- <div class="action">
 														<a href="/investorDetail/{{ $row->notify_id }}"><i class="ti-pencil"></i></a>
-												</div>
+												</div> -->
 											</div>
 										</div>
 									</div>

@@ -73,21 +73,21 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
     Route::middleware(['isOwner'])->group(function () {
 
         Route::get('/dashboardOwner', [App\Http\Controllers\HomeController::class, 'ownerLogin'])->name('owner.dashboard');
-        Route::get('/submitProperty', [App\Http\Controllers\UserController::class, 'submitProperty'])->name('owner.submitProperty');
-        Route::post('/postProperty', [App\Http\Controllers\UserController::class, 'postProperty'])->name('owner.property');
-        Route::get('/viewOwnerProperty/{id}', [App\Http\Controllers\UserController::class, 'viewProperty'])->name('owner.viewProperty');
-        Route::post('/deleteProperty/{id}', [App\Http\Controllers\UserController::class, 'deleteProperty'])->name('owner.deleteProperty');
-        Route::get('/updateProperty/{id}', [App\Http\Controllers\UserController::class, 'updateProperty'])->name('owner.updateProperty');
-        Route::post('/editProperties', [App\Http\Controllers\UserController::class, 'editProperties'])->name('owner.editProperties');
-        Route::get('/propertyDetailOwner/{id}', [App\Http\Controllers\UserController::class, 'propertyDetailOwner'])->name('investor.propertyDetailOwner');
+        Route::get('/submitProperty', [App\Http\Controllers\OwnerController::class, 'submitProperty'])->name('owner.submitProperty');
+        Route::post('/postProperty', [App\Http\Controllers\OwnerController::class, 'postProperty'])->name('owner.property');
+        Route::get('/viewOwnerProperty/{id}', [App\Http\Controllers\OwnerController::class, 'viewProperty'])->name('owner.viewProperty');
+        Route::post('/deleteProperty/{id}', [App\Http\Controllers\OwnerController::class, 'deleteProperty'])->name('owner.deleteProperty');
+        Route::get('/updateProperty/{id}', [App\Http\Controllers\OwnerController::class, 'updateProperty'])->name('owner.updateProperty');
+        Route::post('/editProperties', [App\Http\Controllers\OwnerController::class, 'editProperties'])->name('owner.editProperties');
+        Route::get('/propertyDetailOwner/{id}', [App\Http\Controllers\OwnerController::class, 'propertyDetailOwner'])->name('investor.propertyDetailOwner');
 
-        Route::get('/propertyInterestedInvetors', [App\Http\Controllers\UserController::class, 'propertyInterestedInvetors'])->name('owner.propertyInterestedInvetors');
-        Route::get('/interestedInvestorDetail/{id}', [App\Http\Controllers\UserController::class, 'interestedInvestorDetail'])->name('owner.interestedInvestorDetail');
+        Route::get('/propertyInterestedInvetors', [App\Http\Controllers\OwnerController::class, 'propertyInterestedInvetors'])->name('owner.propertyInterestedInvetors');
+        Route::get('/interestedInvestorDetail/{id}', [App\Http\Controllers\OwnerController::class, 'interestedInvestorDetail'])->name('owner.interestedInvestorDetail');
 
-        Route::get('/ownerProfile', [App\Http\Controllers\UserController::class, 'ownerProfile'])->name('owner.profile');
-        Route::post('/updateOwnerProfile', [App\Http\Controllers\UserController::class, 'updateOwnerProfile'])->name('owner.updateProfile');
-        Route::get('/changeOwnerPassword', [App\Http\Controllers\UserController::class, 'changeOwnerPassword'])->name('owner.changeOwnerPassword');
-        Route::post('/resetOwnerPassword', [App\Http\Controllers\UserController::class, 'resetOwnerPassword'])->name('owner.resetOwnerPassword');
+        Route::get('/ownerProfile', [App\Http\Controllers\OwnerController::class, 'ownerProfile'])->name('owner.profile');
+        Route::post('/updateOwnerProfile', [App\Http\Controllers\OwnerController::class, 'updateOwnerProfile'])->name('owner.updateProfile');
+        Route::get('/changeOwnerPassword', [App\Http\Controllers\OwnerController::class, 'changeOwnerPassword'])->name('owner.changeOwnerPassword');
+        Route::post('/resetOwnerPassword', [App\Http\Controllers\OwnerController::class, 'resetOwnerPassword'])->name('owner.resetOwnerPassword');
 
     });
 
@@ -119,19 +119,20 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
     Route::middleware(['isProvider'])->group(function () {
 
         Route::get('/dashboardProvider', [App\Http\Controllers\HomeController::class, 'providerLogin'])->name('provider.dashboard');
-        Route::post('/postPlan', [App\Http\Controllers\UserController::class, 'postPlan'])->name('provider.postPlan');
-        Route::get('/updatePlans/{id}', [App\Http\Controllers\UserController::class, 'updatePlan'])->name('provider.updatePlans');
-        Route::post('/editPlan', [App\Http\Controllers\UserController::class, 'editPlan'])->name('provider.editPlan');
-        Route::post('/deletePlan/{id}', [App\Http\Controllers\UserController::class, 'deletePlan'])->name('provider.deletePlan');
-        Route::get('/interestedInvetors', [App\Http\Controllers\UserController::class, 'interestedInvetors'])->name('provider.interestedInvetors');
-        Route::get('/potentialInvetors', [App\Http\Controllers\UserController::class, 'potentialInvetors'])->name('provider.potentialInvetors');
-        Route::get('/investorDetail/{id}', [App\Http\Controllers\UserController::class, 'investorDetail'])->name('provider.investorDetail');
-        Route::get('/providerProfile', [App\Http\Controllers\UserController::class, 'providerProfile'])->name('provider.profile');
-        Route::post('/updateProviderProfile', [App\Http\Controllers\UserController::class, 'updateProviderProfile'])->name('provider.updateProfile');
-        Route::get('/providerPlan', [App\Http\Controllers\UserController::class, 'providerPlan'])->name('provider.plan');
+        Route::post('/postPlan', [App\Http\Controllers\ProviderController::class, 'postPlan'])->name('provider.postPlan');
+        Route::get('/updatePlans/{id}', [App\Http\Controllers\ProviderController::class, 'updatePlan'])->name('provider.updatePlans');
+        Route::post('/editPlan', [App\Http\Controllers\ProviderController::class, 'editPlan'])->name('provider.editPlan');
+        Route::post('/deletePlan/{id}', [App\Http\Controllers\ProviderController::class, 'deletePlan'])->name('provider.deletePlan');
+        Route::get('/interestedInvetors', [App\Http\Controllers\ProviderController::class, 'interestedInvetors'])->name('provider.interestedInvetors');
+        Route::get('/potentialInvetors', [App\Http\Controllers\ProviderController::class, 'potentialInvetors'])->name('provider.potentialInvetors');
+        Route::get('/investorDetail/{id}', [App\Http\Controllers\ProviderController::class, 'investorDetail'])->name('provider.investorDetail');
+        Route::get('/providerProfile', [App\Http\Controllers\ProviderController::class, 'providerProfile'])->name('provider.profile');
+        Route::post('/updateProviderProfile', [App\Http\Controllers\ProviderController::class, 'updateProviderProfile'])->name('provider.updateProfile');
+        Route::get('/providerPlan', [App\Http\Controllers\ProviderController::class, 'providerPlan'])->name('provider.plan');
+        
 
-        Route::get('/changeProviderPassword', [App\Http\Controllers\UserController::class, 'changeProviderPassword'])->name('provider.changeProviderPassword');
-        Route::post('/resetProviderPassword', [App\Http\Controllers\UserController::class, 'resetProviderPassword'])->name('provider.resetProviderPassword');
+        Route::get('/changeProviderPassword', [App\Http\Controllers\ProviderController::class, 'changeProviderPassword'])->name('provider.changeProviderPassword');
+        Route::post('/resetProviderPassword', [App\Http\Controllers\ProviderController::class, 'resetProviderPassword'])->name('provider.resetProviderPassword');
 
     });
 
