@@ -10,7 +10,7 @@
 @section('content')
 
                             <div class="dashboard-wraper">
-							
+								@if(count($data) > 0)
 								<!-- Bookmark Property -->
 								<div class="form-submit">	
 									<h4>Interested Investor</h4>
@@ -40,7 +40,11 @@
 									</div>
 								@endforeach
 								</div>
-								
+								@else
+								<div class="form-submit">
+									<h4>No Interested Investors !!</h4>
+								</div>
+								@endif
 							</div>
 
 
