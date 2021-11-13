@@ -627,6 +627,8 @@
 							
 							<div class="details-sidebar">
 
+						
+
 								
 								<!-- Featured Property -->
 								<div class="sidebar-widgets">

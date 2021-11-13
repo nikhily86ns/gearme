@@ -1,7 +1,7 @@
 @extends('investor.master')
 
 @section('title')
-    Requested Finance
+    Requested Finance Option
 @endsection
 
 @section('extra-css')
@@ -17,6 +17,7 @@
 								</div>
 								
 								<div class="row">
+								@if(count($data) >0)
 								@foreach($data as $key=>$row)
 									<!-- Single Property -->
 									<div class="col-md-12 col-sm-12 col-md-12">
@@ -39,6 +40,10 @@
 										</div>
 									</div>
 								@endforeach
+								@endforeach
+								@else
+								<h4 class="text-center">You Don't Requested Any Finance Option</h4>
+								@endif
 								</div>
 								
 							</div>
