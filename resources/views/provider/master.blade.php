@@ -259,7 +259,7 @@
 												<li class="{{ Request::is('dashboardProvider') ? 'active' : '' }}"><a href="{{ route('provider.dashboard') }}"><i class="ti-dashboard"></i>Dashboard</a></li>
 												<li class="{{ Request::is('providerProfile') ? 'active' : '' }}"><a href="{{ route('provider.profile') }}"><i class="ti-user"></i>My Profile</a></li>
 												<li class="{{ Request::is('providerPlan') ? 'active' : '' }}"><a href="{{ route('provider.plan') }}"><i class="ti-user"></i>All Plans</a></li>
-												<li class="{{ Request::is('interestedInvestors') ? 'active' : '' }}"><a href="{{ route('provider.interestedInvetors') }}"><i class="ti-user"></i>Interested Investors</a></li>
+												<li class="{{ Request::is('interestedInvetors') ? 'active' : '' }}"><a href="{{ route('provider.interestedInvetors') }}"><i class="ti-user"></i>Interested Investors</a></li>
 												<li class="{{ Request::is('potentialInvetors') ? 'active' : '' }}"><a href="{{ route('provider.potentialInvetors') }}"><i class="ti-user"></i>Potential Investors</a></li>
 			
 												<li class="{{ Request::is('changeProviderPassword') ? 'active' : '' }}"><a href="{{ route('provider.changeProviderPassword') }}"><i class="ti-unlock"></i>Change Password</a></li>
