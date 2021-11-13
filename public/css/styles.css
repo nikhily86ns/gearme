@@ -9793,7 +9793,8 @@ h3.pa-name {
     margin: 2em 0;
 }
 .d-user-avater img {
-    max-width: 180px;
+    width: 170px;
+    height: 150px;
     border-radius: 50%;
     margin-bottom: 8px;
 }

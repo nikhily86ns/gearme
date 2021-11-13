@@ -248,7 +248,7 @@
 									<div class="dashboard-navbar">
 										
 										<div class="d-user-avater">
-											<img src="{{ asset('profile/'. Auth::user()->profileimage) }}" class="img-fluid avater" alt="">
+											<img src="{{ asset('profile/'. Auth::user()->profileimage) }}"  class="img-fluid avater" alt="">
                                             
 											<h4>{{ Auth::user()->name }}</h4>
 											<span>{{ Auth::user()->country }},{{ Auth::user()->city }}</span>
