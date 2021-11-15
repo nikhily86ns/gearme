@@ -289,7 +289,7 @@
 			<!-- ============================ User Dashboard End ================================== -->
 			
 			<!-- ============================ Call To Action ================================== -->
-			<section class="theme-bg call-to-act-wrap">
+			<!-- <section class="theme-bg call-to-act-wrap">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
@@ -305,7 +305,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> -->
 			<!-- ============================ Call To Action End ================================== -->
 			
 			<!-- ============================ Footer Start ================================== -->
@@ -420,7 +420,7 @@
 			<!-- ============================ Footer End ================================== -->
 			
 			<!-- Log In Modal -->
-			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
+			<!-- <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
 					<div class="modal-content" id="registermodal">
 						<span class="mod-close" data-bs-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
@@ -464,11 +464,11 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- End Modal -->
 			
 			<!-- Sign Up Modal -->
-			<div class="modal fade signup" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
+			<!-- <div class="modal fade signup" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
 					<div class="modal-content" id="sign-up">
 						<span class="mod-close" data-bs-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
@@ -558,7 +558,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- End Modal -->
 			
 			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
