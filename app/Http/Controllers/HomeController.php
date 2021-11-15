@@ -87,25 +87,25 @@ class HomeController extends Controller
         $approvedProperties =   Property::select('*')
                         ->from(DB::raw("( SELECT * FROM `properties`
                           WHERE `uid` = ".Auth::user()->id." AND `status` = 'Approved') as `approvedProperties`"))->count();
-        $notApprovedProperties =   Property::select('*')
+        $rejectedProperties =   Property::select('*')
                         ->from(DB::raw("( SELECT * FROM `properties`
-                          WHERE `uid` = ".Auth::user()->id." AND `status` = 'Not Approved') as `notApprovedProperties`"))->count();
+                          WHERE `uid` = ".Auth::user()->id." AND `status` = 'Reject') as `rejectedProperties`"))->count();
 
                         //   print_r($approvedProperties);
-                        //   print_r($notApprovedProperties);
+                        //   print_r($rejectedProperties);
                         //   print_r($totalProperties); die;
    
         if ($totalProperties && $approvedProperties) 
         {
             $data['totalProperties'] =  $totalProperties;
             $data['approvedProperties'] =  $approvedProperties;
-            $data['notApprovedProperties'] =  $notApprovedProperties;
+            $data['rejectedProperties'] =  $rejectedProperties;
         } 
         else 
         {
             $data['totalProperties'] =  '00';
             $data['approvedProperties'] =  '00';
-            $data['notApprovedProperties'] =  '00';
+            $data['rejectedProperties'] =  '00';
         }
         return view('owner.dashboard', compact('data'));
     }

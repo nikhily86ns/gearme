@@ -48,11 +48,11 @@
 									<div class="dashboard-stat widget-3">
 										<div class="dashboard-stat-content"><h4>
 										@if($data)
-											{{ $data['notApprovedProperties'] }}
+											{{ $data['rejectedProperties'] }}
 										@else
 											{{ 0 }}
 										@endif
-										</h4> <span>Not Approved Properties</span></div>
+										</h4> <span>Rejected Properties</span></div>
 										<div class="dashboard-stat-icon"><i class="ti-user"></i></div>
 									</div>	
 								</div>
