@@ -40,7 +40,6 @@
 										</div>
 									</div>
 								@endforeach
-								@endforeach
 								@else
 								<h4 class="text-center">You Don't Requested Any Finance Option</h4>
 								@endif
