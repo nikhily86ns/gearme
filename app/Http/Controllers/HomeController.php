@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'welcomeSearch']);
     }
 
     /**
@@ -30,6 +30,15 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+// For Welcome Pgae 
+ 
+    // public function welcome()
+    // {
+    //     $data = Property::where('status','=','Approved')->paginate(6);
+    //     return view('welcome', compact('data'));
+    // }
+
 // Admin Route Dashboard
 
     public function adminLogin()
@@ -167,4 +176,42 @@ class HomeController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+// Function to Perform Searching on Welcome Page
+
+    public function welcomeSearch(Request $request)
+    {
+        $propertyType = $request->propertyType;
+        $search = $request->search;
+
+        if($propertyType == '' && $search == '')
+        {
+            return redirect()->route('welcome');
+        }
+        else if($search == '')
+        {
+            $data = Property::where('propertyType' , $propertyType)->take(10)->get();
+            $property = Property::paginate(6);
+            return view('allProperties',compact('data','property'));
+        }
+        else if($propertyType == '')
+        {
+            $data = Property::where('city' ,$search )->take(10)->get();
+            $property = Property::paginate(6);
+            return view('allProperties',compact('data','property'));
+        }
+        else
+        {
+            $matchThese = ['propertyType' => $propertyType, 'city' => $search];
+            $data = Property::where($matchThese)->take(10)->get();
+            $property = Property::paginate(6);
+            return view('allProperties',compact('data','property'));
+        }
+        
+    }
+
+
+
+
+
 }

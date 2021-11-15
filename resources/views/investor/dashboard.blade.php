@@ -133,7 +133,7 @@
 											<h4 class="listing-name verified"><a href="/propertyDetail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
 										</div>
 										<div class="listing-short-detail-flex">
-											<h6 class="listing-card-info-price">$ {{ $row->price }}</h6>
+											<h6 class="listing-card-info-price">&#8377; {{ $row->price }}</h6>
 										</div>
 									</div>
 								</div>
@@ -141,13 +141,13 @@
 								<div class="price-features-wrapper">
 									<div class="list-fx-features">
 										<div class="listing-card-info-icon">
-											<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>{{ $row->unitType }}
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>{{ $row->unitType }} bedroom
 										</div>
 										<div class="listing-card-info-icon">
-											<div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>{{ $row->bathroom }}
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>{{ $row->bathroom }} bath
 										</div>
 										<div class="listing-card-info-icon">
-											<div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>{{ $row->area }}
+											<div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>{{ $row->area }} Sq ft
 										</div>
 									</div>
 								</div>

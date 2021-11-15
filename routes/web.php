@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 
 Auth::routes();
 
@@ -33,7 +34,9 @@ Route::post('/registerProvider',  [App\Http\Controllers\UserController::class, '
 Route::get('/registerInvestorPage', [App\Http\Controllers\UserController::class, 'registerInvestorPage'])->name('registerInvestorPage');
 Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, 'registerInvestor'])->name('registerInvestor');
 
-// Route::group(['middleware' => 'isAdmin'], function(){
+Route::post('/search-Properties',  [App\Http\Controllers\HomeController::class, 'welcomeSearch'])->name('search-Properties');
+
+
 
     Route::middleware(['isAdmin'])->group(function () {
 
@@ -69,7 +72,6 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
     });
 
 
-// Route::group(['middleware' => 'isOwner'], function(){
     Route::middleware(['isOwner'])->group(function () {
 
         Route::get('/dashboardOwner', [App\Http\Controllers\HomeController::class, 'ownerLogin'])->name('owner.dashboard');
@@ -91,7 +93,7 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
 
     });
 
-// Route::group(['middleware' => 'isInvestor'], function(){
+
     Route::middleware(['isInvestor'])->group(function () {
 
         Route::get('/dashboardInvestor', [App\Http\Controllers\HomeController::class, 'investorLogin'])->name('investor.dashboard');
@@ -114,8 +116,6 @@ Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, '
         Route::post('/resetInvestorPassword', [App\Http\Controllers\UserController::class, 'resetInvestorPassword'])->name('investor.resetInvestorPassword');
     });
 
-
-// Route::group(['middleware' => 'isProvider'], function(){
     Route::middleware(['isProvider'])->group(function () {
 
         Route::get('/dashboardProvider', [App\Http\Controllers\HomeController::class, 'providerLogin'])->name('provider.dashboard');

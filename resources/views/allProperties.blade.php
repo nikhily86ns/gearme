@@ -1,20 +1,15 @@
 @extends('layouts.app')
 
 @section('title')
-	Welcome 
+	Result 
 @endsection
  
 @section('extra-css')
 @endsection
 
 @section('content')
-@php 
-use App\Models\Property;
-$data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')->paginate(6);
 
-@endphp
-
-  			<!-- ============================ Hero Banner  Start================================== -->
+            <!-- ============================ Hero Banner  Start================================== -->
             <div class="image-cover hero-banner" style="background:#eff6ff url({{ asset('img/home-2.png') }}) no-repeat;">
 				<div class="container">
 					<div class="row justify-content-center">
@@ -96,7 +91,7 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 					</div>
 					
 					<div class="row">
-						
+						@if(count($data)>0)
 						@foreach ($data as $row)
 						<div class="col-lg-4 col-md-6 col-sm-12">
 							<div class="property-listing property-2">
@@ -132,13 +127,13 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 								<div class="price-features-wrapper">
 									<div class="list-fx-features">
 										<div class="listing-card-info-icon">
-											<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>{{ $row->unitType }} bedroom
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt="" /></div>{{ $row->unitType }}
 										</div>
 										<div class="listing-card-info-icon">
-											<div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>{{ $row->bathroom }} bath
+											<div class="inc-fleat-icon"><img src="{{ asset('img/bathtub.svg') }}" width="13" alt="" /></div>{{ $row->bathroom }}
 										</div>
 										<div class="listing-card-info-icon">
-											<div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>{{ $row->area }} Sq ft
+											<div class="inc-fleat-icon"><img src="{{ asset('img/move.svg') }}" width="13" alt="" /></div>{{ $row->area }}
 										</div>
 									</div>
 								</div>
@@ -154,134 +149,21 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 							</div>
 						</div>
 						@endforeach
-						
+						@else
+                            <h4>No Result Found !!</h4>
+                        @endif
 					</div>
 					
-					<div class="row pt-5">
+					<!-- <div class="row pt-5">
 						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
 							<a href="{{ route('investor.viewAllProperty') }}" class="btn btn-dark btn-md rounded">Browse More Properties</a>
 						</div>
-					</div>
+					</div> -->
 					
 				</div>	
 			</section>
 			<!-- ================================= Explore Property =============================== -->
-			
-			
-			<!-- ========================== Download App Section =============================== -->
-			<section class="bg-light">
-				<div class="container">
-					<div class="row align-items-center">
-						
-						<div class="col-lg-7 col-md-12 col-sm-12 content-column">
-							<div class="content_block_2">
-								<div class="content-box">
-									<div class="sec-title light">
-										<p class="text-blue">Download apps</p>
-										<h2>Download App Free App For Android and iPhone</h2>
-									</div>
-									<div class="text">
-										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto accusantium.</p>
-									</div>
-									<div class="btn-box clearfix mt-5">
-										<a href="index.html" class="download-btn play-store">
-											<i class="fab fa-google-play"></i>
-											<span>Download on</span>
-											<h3>Google Play</h3>
-										</a>
-										
-										<a href="index.html" class="download-btn app-store">
-											<i class="fab fa-apple"></i>
-											<span>Download on</span>
-											<h3>App Store</h3>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="col-lg-5 col-md-12 col-sm-12 image-column">
-							<div class="image-box">
-								<figure class="image"><img src="{{ asset('img/app.png') }}" class="img-fluid" alt=""></figure>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- ========================== Download App Section =============================== -->
-			
-			<!-- ============================ Call To Action ================================== -->
-			<!-- <section class="theme-bg call-to-act-wrap">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							
-							<div class="call-to-act">
-								<div class="call-to-act-head">
-									<h3>Want to Become a Real Estate Agent?</h3>
-									<span>We'll help you to grow your career and growth.</span>
-								</div>
-								<a href="#" class="btn btn-call-to-act">SignUp Today</a>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</section> -->
-			<!-- ============================ Call To Action End ================================== -->
 
-			<!-- Log In Modal -->
-			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
-					<div class="modal-content" id="registermodal">
-						<span class="mod-close" data-bs-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
-						<div class="modal-body">
-							<h4 class="modal-header-title">Log In</h4>
-							<div class="login-form">
-								<form method="POST" action="{{ route('login') }}">
-								@csrf
-									<div class="form-group">
-										<label>Email</label>
-										<div class="input-with-icon">
-											<input type="email" name="email" class="form-control" placeholder="Username">
-											<i class="ti-user"></i>
-										</div>
-									</div>
-									
-									<div class="form-group">
-										<label>Password</label>
-										<div class="input-with-icon">
-											<input type="password" name="password" class="form-control" placeholder="*******">
-											<i class="ti-unlock"></i>
-										</div>
-									</div>
-									
-									<div class="form-group">
-										<button type="submit" class="btn btn-md full-width btn-theme-light-2 rounded">Login</button>
-									</div>
-								
-								</form>
-							</div>
-							<!-- <div class="modal-divider"><span>Or login via</span></div>
-							<div class="social-login mb-3">
-								<ul>
-									<li><a href="#" class="btn connect-fb"><i class="ti-facebook"></i>Facebook</a></li>
-									<li><a href="#" class="btn connect-google"><i class="ti-google"></i>Google+</a></li>
-								</ul>
-							</div> -->
-							<div class="text-center">
-								@if (Route::has('password.request'))
-                                    <a class="link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-								<!-- <p class="mt-5"><a href="#" class="link">Forgot password?</a></p> -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Modal -->
 
 @endsection
 
