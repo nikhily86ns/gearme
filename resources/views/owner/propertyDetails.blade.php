@@ -41,7 +41,7 @@
 									<span class="prt-types sale">For {{ $data->propertyFor }}</span>
 									<h3>{{ $data->title }} </h3>
 									<span><i class="lni-map-marker"></i>  {{ $data->state }} ,{{ $data->city }}</span>
-									<h3 class="prt-price-fix">$ {{ $data->price }}</sub></h3>
+									<h3 class="prt-price-fix">&#8377; {{ $data->price }}</sub></h3>
 									<div class="list-fx-features">
 										<div class="listing-card-info-icon">
 											<div class="inc-fleat-icon"><img src="{{ asset('img/bed.svg') }}" width="13" alt=""></div>{{ $data->unitType }} Beds

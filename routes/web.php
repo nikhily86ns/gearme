@@ -74,22 +74,22 @@ Route::post('/search-Properties',  [App\Http\Controllers\HomeController::class, 
 
     Route::middleware(['isOwner'])->group(function () {
 
-        Route::get('/dashboardOwner', [App\Http\Controllers\HomeController::class, 'ownerLogin'])->name('owner.dashboard');
-        Route::get('/submitProperty', [App\Http\Controllers\OwnerController::class, 'submitProperty'])->name('owner.submitProperty');
-        Route::post('/postProperty', [App\Http\Controllers\OwnerController::class, 'postProperty'])->name('owner.property');
-        Route::get('/viewOwnerProperty/{id}', [App\Http\Controllers\OwnerController::class, 'viewProperty'])->name('owner.viewProperty');
-        Route::post('/deleteProperty/{id}', [App\Http\Controllers\OwnerController::class, 'deleteProperty'])->name('owner.deleteProperty');
-        Route::get('/updateProperty/{id}', [App\Http\Controllers\OwnerController::class, 'updateProperty'])->name('owner.updateProperty');
-        Route::post('/editProperties', [App\Http\Controllers\OwnerController::class, 'editProperties'])->name('owner.editProperties');
-        Route::get('/propertyDetailOwner/{id}', [App\Http\Controllers\OwnerController::class, 'propertyDetailOwner'])->name('investor.propertyDetailOwner');
+        Route::get('/dashboard-Owner', [App\Http\Controllers\HomeController::class, 'ownerLogin'])->name('owner.dashboard');
+        Route::get('/submit-Property', [App\Http\Controllers\OwnerController::class, 'submitProperty'])->name('owner.submitProperty');
+        Route::post('/post-Property', [App\Http\Controllers\OwnerController::class, 'postProperty'])->name('owner.property');
+        Route::get('/view-OwnerProperty/{id}', [App\Http\Controllers\OwnerController::class, 'viewProperty'])->name('owner.viewProperty');
+        Route::post('/delete-Property/{id}', [App\Http\Controllers\OwnerController::class, 'deleteProperty'])->name('owner.deleteProperty');
+        Route::get('/update-Property/{id}', [App\Http\Controllers\OwnerController::class, 'updateProperty'])->name('owner.updateProperty');
+        Route::post('/edit-Properties', [App\Http\Controllers\OwnerController::class, 'editProperties'])->name('owner.editProperties');
+        Route::get('/propertyDetail-Owner/{id}', [App\Http\Controllers\OwnerController::class, 'propertyDetailOwner'])->name('investor.propertyDetailOwner');
 
         Route::get('/propertyInterestedInvetors', [App\Http\Controllers\OwnerController::class, 'propertyInterestedInvetors'])->name('owner.propertyInterestedInvetors');
         Route::get('/interestedInvestorDetail/{id}', [App\Http\Controllers\OwnerController::class, 'interestedInvestorDetail'])->name('owner.interestedInvestorDetail');
 
-        Route::get('/ownerProfile', [App\Http\Controllers\OwnerController::class, 'ownerProfile'])->name('owner.profile');
-        Route::post('/updateOwnerProfile', [App\Http\Controllers\OwnerController::class, 'updateOwnerProfile'])->name('owner.updateProfile');
-        Route::get('/changeOwnerPassword', [App\Http\Controllers\OwnerController::class, 'changeOwnerPassword'])->name('owner.changeOwnerPassword');
-        Route::post('/resetOwnerPassword', [App\Http\Controllers\OwnerController::class, 'resetOwnerPassword'])->name('owner.resetOwnerPassword');
+        Route::get('/owner-Profile', [App\Http\Controllers\OwnerController::class, 'ownerProfile'])->name('owner.profile');
+        Route::post('/update-OwnerProfile', [App\Http\Controllers\OwnerController::class, 'updateOwnerProfile'])->name('owner.updateProfile');
+        Route::get('/change-OwnerPassword', [App\Http\Controllers\OwnerController::class, 'changeOwnerPassword'])->name('owner.changeOwnerPassword');
+        Route::post('/resetOwner-Password', [App\Http\Controllers\OwnerController::class, 'resetOwnerPassword'])->name('owner.resetOwnerPassword');
 
     });
 

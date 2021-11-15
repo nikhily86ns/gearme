@@ -154,7 +154,6 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 							</div>
 						</div>
 						@endforeach
-						
 					</div>
 					
 					<div class="row pt-5">

@@ -40,7 +40,7 @@
                                         </div>
                                         @endif
                                         </div>
-                                            <form action="/resetOwnerPassword" method="POST" enctype="multipart/form-data">
+                                            <form action="/resetOwner-Password" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ Auth::user()->id }}">
                                                 <div class="form-group col-lg-12 col-md-6">

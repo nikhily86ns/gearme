@@ -15,7 +15,7 @@ use App\Models\Country;
 $data = Country::all();
 @endphp
 
-                            <div class="row">
+                            <!-- <div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12">
 									<h4>Your Current Package: <span class="pc-title theme-cl">Gold Package</span></h4>
 								</div>
@@ -65,7 +65,7 @@ $data = Country::all();
 									</div>	
 								</div>
 
-							</div>
+							</div> -->
 					
 							<div class="dashboard-wraper">
 								
@@ -143,7 +143,7 @@ $data = Country::all();
                                                             @enderror
                                                             <div class="form-group col-md-6">
                                                                 <label>Price</label>
-                                                                <input type="text" name="price" value="{{old('price')}}" class="form-control" placeholder="USD">
+                                                                <input type="text" name="price" value="{{old('price')}}" class="form-control" placeholder="&#8377;">
                                                             </div>
                                                             @error('price')
                                                                 <small id="usercheck" style="color: red;" >
@@ -229,7 +229,11 @@ $data = Country::all();
                                                                             @endforeach
                                                                     </select>
                                                             </div>
-                                                        
+                                                            @error('country')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
                                                             <div class="form-group col-md-6">
                                                                 <label>Address</label>
                                                                 <input type="text" value="{{old('address')}}" name="address" class="form-control">
@@ -239,7 +243,11 @@ $data = Country::all();
                                                                 <label>City</label>
                                                                 <input type="text" value="{{old('city')}}" name="city" class="form-control">
                                                             </div>
-                                                            
+                                                            @error('city')
+                                                                <small id="usercheck" style="color: red;" >
+                                                                    {{$message}}
+                                                                </small>
+                                                            @enderror
                                                             <div class="form-group col-md-6">
                                                                 <label>State</label>
                                                                 <input type="text" value="{{old('state')}}" name="state" class="form-control">
@@ -346,24 +354,24 @@ $data = Country::all();
                                                                             <label for="a-11" class="checkbox-custom-label">Beach</label>
                                                                         </li>
                                                                         <li>
-                                                                            <input id="a-3" class="checkbox-custom" value="Bedding" name="features[]" type="checkbox">
-                                                                            <label for="a-3" class="checkbox-custom-label">Bedding</label>
+                                                                            <input id="a-13" class="checkbox-custom" value="Bedding" name="features[]" type="checkbox">
+                                                                            <label for="a-13" class="checkbox-custom-label">Bedding</label>
                                                                         </li>
                                                                         <li>
-                                                                            <input id="a-4" class="checkbox-custom" value="Balcony" name="features[]" type="checkbox">
-                                                                            <label for="a-4" class="checkbox-custom-label">Balcony</label>
+                                                                            <input id="a-14" class="checkbox-custom" value="Balcony" name="features[]" type="checkbox">
+                                                                            <label for="a-14" class="checkbox-custom-label">Balcony</label>
                                                                         </li>
                                                                         <li>
-                                                                            <input id="a-5" class="checkbox-custom" value="Icon" name="features[]" type="checkbox">
-                                                                            <label for="a-5" class="checkbox-custom-label">Icon</label>
+                                                                            <input id="a-15" class="checkbox-custom" value="Icon" name="features[]" type="checkbox">
+                                                                            <label for="a-15" class="checkbox-custom-label">Icon</label>
                                                                         </li>
                                                                         <li>
-                                                                            <input id="a-6" class="checkbox-custom" value="Parking" name="features[]" type="checkbox">
-                                                                            <label for="a-6" class="checkbox-custom-label">Parking</label>
+                                                                            <input id="a-16" class="checkbox-custom" value="Parking" name="features[]" type="checkbox">
+                                                                            <label for="a-16" class="checkbox-custom-label">Parking</label>
                                                                         </li>
                                                                         <li>
-                                                                            <input id="a-11" class="checkbox-custom" value="Wi-Fi" name="features[]"" type="checkbox">
-                                                                            <label for="a-11" class="checkbox-custom-label">Wi-Fi</label>
+                                                                            <input id="a-01" class="checkbox-custom" value="Wi-Fi" name="features[]"" type="checkbox">
+                                                                            <label for="a-01" class="checkbox-custom-label">Wi-Fi</label>
                                                                         </li>
                                                                     </ul>
                                                                 </div>

@@ -15,7 +15,7 @@
 								<div class="form-submit">	
 									<h4>My Account</h4>
 									<div class="submit-section">
-										<form action="updateOwnerProfile" method="POST" enctype="multipart/form-data">
+										<form action="update-OwnerProfile" method="POST" enctype="multipart/form-data">
 										@csrf
 											<div class="image-upload d-flex flex-column align-items-center text-center p-3 py-5">
 												<label for="file-input">
