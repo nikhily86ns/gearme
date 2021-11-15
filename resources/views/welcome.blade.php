@@ -158,7 +158,7 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 					
 					<div class="row pt-5">
 						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
-							<a href="{{ route('investor.viewAllProperty') }}" class="btn btn-dark btn-md rounded">Browse More Properties</a>
+							<a href="{{ route('investor.viewAllProperty') }}" class="btn btn-md btn-theme-light-2 rounded">Browse More Properties</a>
 						</div>
 					</div>
 					
