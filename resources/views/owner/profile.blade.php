@@ -20,10 +20,10 @@
 											<div class="image-upload d-flex flex-column align-items-center text-center p-3 py-5">
 												<label for="file-input">
 													<img class="rounded-circle mt-5" title="Click To Upload New Image" width="200px" height="200px" src="{{ asset('profile/'. Auth::user()->profileimage) }}"/>
-													<img src="{{ asset('img/profile.png') }}" height="40px" width="40px" style="    
+													<img src="{{ asset('img/profile.png') }}" class="p-1" height="40px" width="40px" style="    
 															background: #fff;
-															margin-top: 179px;
-															right: 50px;
+															margin-top: 185px;
+															right: 45px;
 															position: relative;
 															border-radius: 25px;
 															cursor: pointer;">
