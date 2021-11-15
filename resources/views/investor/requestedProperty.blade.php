@@ -48,7 +48,7 @@
 							Status: <a href="javascript:void(0);" class="theme-cl">{{ $row->status }}</a> 
 						</div>
 						<div class="action">
-								<a href="/propertyDetail/{{ $row->id }}" ><i class="ti-eye"></i></a>
+								<a href="/propertyDetail/{{ $row->propertyId }}" ><i class="ti-eye"></i></a>
 								<a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Make Featured" class="delete"><i class="ti-star"></i></a>
 							</a>
 						</div>

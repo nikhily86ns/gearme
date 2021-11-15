@@ -332,7 +332,7 @@ class UserController extends Controller
             ->join('users', 'users.id','=', 'property_notifications.investorId')
             ->join('properties', 'properties.id','=', 'property_notifications.propertyId')
             ->where('property_notifications.investorId','=', Auth::user()->id)
-            ->select('properties.*','users.*', 'users.name as owner_name','property_notifications.id as notify_id')
+            ->select('properties.*','users.*', 'users.name as owner_name','property_notifications.id as notify_id','properties.id as propertyId')
             ->get();
 
         return view('investor.requestedProperty', compact('data'));
