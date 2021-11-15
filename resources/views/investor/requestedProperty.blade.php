@@ -34,9 +34,9 @@
 						<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
 					</div>
 					<div class="sd-list-right">
-						<h4 class="listing_dashboard_title"><a href="/propertyDetail/{{ $row->id }}" class="theme-cl">{{ $row->title }}</a></h4>
+						<h4 class="listing_dashboard_title"><a href="/propertyDetail/{{ $row->propertyId }}" class="theme-cl">{{ $row->title }}</a></h4>
 						<div class="user_dashboard_listed">
-							Price: from $ {{ $row->price }}
+							Price: from &#8377; {{ $row->price }}
 						</div>
 						<div class="user_dashboard_listed">
 							Listed in <a href="javascript:void(0);" class="theme-cl"></a> <a href="javascript:void(0);" class="theme-cl">{{ $row->propertyType }}</a>

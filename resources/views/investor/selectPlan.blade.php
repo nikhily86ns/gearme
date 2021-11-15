@@ -28,7 +28,7 @@
                                             <!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
                                         </div>
                                         <div class="sd-list-right">
-                                            <h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Plan Amount* :-${{ $data->amount }}</a></h4>
+                                            <h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Plan Amount* :- &#8377;  {{ $data->amount }} </a></h4>
                                             <div class="user_dashboard_listed">
                                                 Duration :- {{ $data->duration }}
                                             </div>
@@ -39,7 +39,7 @@
                                                 Maximun Interest :- {{ $data->interest_max }}
                                             </div>
                                             <div class="user_dashboard_listed">
-                                                Processing Fee :- {{ $data->processing_fee }}
+                                                Processing Fee :- &#8377; {{ $data->processing_fee }}
                                             </div>
                                             <div class="user_dashboard_listed">
                                                 Valid From :- {{ $data->validfrom }}

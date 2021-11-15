@@ -28,7 +28,7 @@
 												<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
 											</div>
 											<div class="sd-list-right">
-												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Amount :- ${{ $row->amount }}</a></h4>
+												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Amount :-  &#8377; {{ $row->amount }}</a></h4>
 												<div class="user_dashboard_listed">
 													Investor Name :- <a href="/investorDetail/{{ $row->notify_id }}">{{ $row->name }}</a>
 												</div>

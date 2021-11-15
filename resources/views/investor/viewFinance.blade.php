@@ -26,7 +26,7 @@
                                         <h4 class="listing_dashboard_title">Capital Provider : {{ $row->name }}</h4> 
                                         @foreach($row->plan as $key => $res)
                                         <div class="user_dashboard_listed mt-2">
-                                            Plan Amount: from $ {{ $res->amount }}
+                                            Plan Amount: from &#8377; {{ $res->amount }} 
                                         </div>
                                         <div class="user_dashboard_listed">
                                             Duration: <a href="javascript:void(0);" class="theme-cl"></a> <a href="javascript:void(0);" class="theme-cl"></a>{{ $res->duration }}
@@ -35,7 +35,7 @@
                                         Interest : <a href="javascript:void(0);" class="theme-cl"></a>{{ $res->interest_min }}% -  {{ $res->interest_max }}%
                                         </div>
                                         <div class="user_dashboard_listed">
-                                            Processing Fee : <a href="javascript:void(0);" class="theme-cl"></a>{{ $res->processing_fee }} 
+                                            Processing Fee : <a href="javascript:void(0);" class="theme-cl"></a>&#8377; {{ $res->processing_fee }} 
                                         </div>
                                         <div class="user_dashboard_listed">
                                             Valid Till : <a href="javascript:void(0);" class="theme-cl"></a> {{ $res->validto }}

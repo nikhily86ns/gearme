@@ -70,15 +70,69 @@ class HomeController extends Controller
 
     public function ownerLogin()
     {
-        return view('owner.dashboard');
+
+
+        $totalProperties =   Property::select('*')
+                        ->from(DB::raw("( SELECT * FROM `properties`
+                          WHERE `uid` = ".Auth::user()->id.") as `totalProperties`"))->count();
+        $approvedProperties =   Property::select('*')
+                        ->from(DB::raw("( SELECT * FROM `properties`
+                          WHERE `uid` = ".Auth::user()->id." AND `status` = 'Approved') as `approvedProperties`"))->count();
+        $notApprovedProperties =   Property::select('*')
+                        ->from(DB::raw("( SELECT * FROM `properties`
+                          WHERE `uid` = ".Auth::user()->id." AND `status` = 'Not Approved') as `notApprovedProperties`"))->count();
+
+                        //   print_r($approvedProperties);
+                        //   print_r($notApprovedProperties);
+                        //   print_r($totalProperties); die;
+   
+        if ($totalProperties && $approvedProperties) 
+        {
+            $data['totalProperties'] =  $totalProperties;
+            $data['approvedProperties'] =  $approvedProperties;
+            $data['notApprovedProperties'] =  $notApprovedProperties;
+        } 
+        else 
+        {
+            $data['totalProperties'] =  '00';
+            $data['approvedProperties'] =  '00';
+            $data['notApprovedProperties'] =  '00';
+        }
+        return view('owner.dashboard', compact('data'));
     }
 
 // Capital Provider Dashboard
 
     public function providerLogin()
     {
-        $data = Plan::where('providerId','=',Auth::id())->get();
-        return view('provider.dashboard',compact('data'));
+        // 
+        // $totalplans =   Plan::select('*')
+        //         ->from(DB::raw("( SELECT * FROM `plans`
+        //         WHERE `providerId` = ".Auth::user()->id.") as `totalplans`"))->count();
+        // $totalinvestors =   Plan::select('*')
+        //         ->from(DB::raw("( SELECT * FROM `plans`
+        //         WHERE `providerId` = ".Auth::user()->id." AND `investorId` = 'Approved') as `totalinvestors`"))->count();
+        // $interestedinvestors =   Plan::select('*')
+        //         ->from(DB::raw("( SELECT * FROM `plans`
+        //         WHERE `providerId` = ".Auth::user()->id." ) as `interestedinvestors`"))->count();
+
+                //   print_r($totalinvestors);
+                //   print_r($interestedinvestors);
+                //   print_r($totalplans); die;
+
+        // if ($totalplans && $totalinvestors) 
+        // {
+        // $data['totalplans'] =  $totalplans;
+        // $data['totalinvestors'] =  $totalinvestors;
+        // $data['interestedinvestors'] =  $interestedinvestors;
+        // } 
+        // else 
+        // {
+        // $data['totalplans'] =  '00';
+        // $data['totalinvestors'] =  '00';
+        // $data['interestedinvestors'] =  '00';
+        // }
+        return view('provider.dashboard');
     }
 
 // Property Investor Dashboard

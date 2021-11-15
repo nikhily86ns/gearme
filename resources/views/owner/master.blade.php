@@ -64,7 +64,7 @@
 								<!-- <li class="active"><a href="/dashboard">Home<span class="submenu-indicator"></span></a>
 								</li> -->
 								
-								<li><a href="JavaScript:Void(0);">Listings<span class="submenu-indicator"></span></a>
+								<!-- <li><a href="JavaScript:Void(0);">Listings<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">
 										<li><a href="JavaScript:Void(0);">List Layout<span class="submenu-indicator"></span></a>
 											<ul class="nav-dropdown nav-submenu">
@@ -91,9 +91,9 @@
 											</ul>
 										</li>
 									</ul>
-								</li>
+								</li> -->
 								
-								<li><a href="JavaScript:Void(0);">Features<span class="submenu-indicator"></span></a>
+								<!-- <li><a href="JavaScript:Void(0);">Features<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">
 										<li><a href="JavaScript:Void(0);">Single Property<span class="submenu-indicator"></span></a>
 											<ul class="nav-dropdown nav-submenu">
@@ -126,9 +126,9 @@
 											<a href="submit-property.html">Submit Property</a>                                
 										</li>
 									</ul>
-								</li>
+								</li> -->
 								
-								<li><a href="JavaScript:Void(0);">Pages<span class="submenu-indicator"></span></a>
+								<!-- <li><a href="JavaScript:Void(0);">Pages<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">
 										<li><a href="blog.html">Blogs Page</a></li>                                    
 										<li><a href="blog-detail.html">Blog Detail</a></li>                                    
@@ -137,7 +137,7 @@
 										<li><a href="404.html">Error Page</a></li>
 										<li><a href="contact.html">Contacts</a></li>
 									</ul>
-								</li>
+								</li> -->
 							
 							<!-- </ul>
                             <ul class="navbar-nav ml-auto pt-3" style="float:right;"> -->
