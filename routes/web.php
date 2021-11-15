@@ -26,13 +26,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/logout', [App\Http\Controllers\HomeController::class, 'logout'])->name('logout');
 
 Route::get('/registerOwnerPage', [App\Http\Controllers\UserController::class, 'registerOwnerPage'])->name('registerOwnerPage');
-Route::post('/registerOwner',  [App\Http\Controllers\UserController::class, 'registerOwner'])->name('registerOwner');
+Route::post('/register-Owner',  [App\Http\Controllers\UserController::class, 'registerOwner'])->name('registerOwner');
 
 Route::get('/registerProviderPage', [App\Http\Controllers\UserController::class, 'registerProviderPage'])->name('registerProviderPage');
-Route::post('/registerProvider',  [App\Http\Controllers\UserController::class, 'registerProvider'])->name('registerProvider');
+Route::post('/register-Provider',  [App\Http\Controllers\UserController::class, 'registerProvider'])->name('registerProvider');
 
 Route::get('/registerInvestorPage', [App\Http\Controllers\UserController::class, 'registerInvestorPage'])->name('registerInvestorPage');
-Route::post('/registerInvestor',  [App\Http\Controllers\UserController::class, 'registerInvestor'])->name('registerInvestor');
+Route::post('/register-Investor',  [App\Http\Controllers\UserController::class, 'registerInvestor'])->name('registerInvestor');
 
 Route::post('/search-Properties',  [App\Http\Controllers\HomeController::class, 'welcomeSearch'])->name('search-Properties');
 

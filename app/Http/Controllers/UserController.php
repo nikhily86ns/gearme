@@ -144,12 +144,19 @@ class UserController extends Controller
     public function registerOwner(Request $request)
     {
 
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-                'phone' => ['required', 'numeric', 'max:13'],
-                'country' => ['required'],
+            // Validator::make($request->all(), [
+            //     'name' => ['required', 'string', 'max:255'],
+            //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //     'phone' => ['required', 'numeric', 'max:13'],
+            //     'country' => ['required'],
+            // ]);
+            $request->validate([
+                "name" => "required",
+                "email" => "required",
+                "password" => "required",
+                "phone" => "required",
+                "country" => "required",
             ]);
    
             $user = new User();
@@ -177,10 +184,12 @@ class UserController extends Controller
     public function registerProvider(Request $request)
     {
 
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            $request->validate([
+                "name" => "required",
+                "email" => "required",
+                "password" => "required",
+                "phone" => "required",
+                "country" => "required",
             ]);
    
             $user = new User();
@@ -208,10 +217,12 @@ class UserController extends Controller
     public function registerInvestor(Request $request)
     {
 
-            Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            $request->validate([
+                "name" => "required",
+                "email" => "required",
+                "password" => "required",
+                "phone" => "required",
+                "country" => "required",
             ]);
    
             $user = new User();

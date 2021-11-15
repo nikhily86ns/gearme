@@ -15,8 +15,8 @@
 								<div class="form-submit">	
 									<h4>My Account</h4>
 									<div class="submit-section">
-										<form action="update-OwnerProfile" method="POST" enctype="multipart/form-data">
-										@csrf
+										<form action="{{ route('owner.updateProfile') }}" method="POST" enctype="multipart/form-data">
+											@csrf
 											<div class="image-upload d-flex flex-column align-items-center text-center p-3 py-5">
 												<label for="file-input">
 													<img class="rounded-circle mt-5" title="Click To Upload New Image" width="200px" height="200px" src="{{ asset('profile/'. Auth::user()->profileimage) }}"/>
@@ -81,37 +81,37 @@
 										
 									</div>
 								</div>
-								
-								<div class="form-submit">	
-									<h4>Social Accounts</h4>
-									<div class="submit-section">
-										<div class="row">
-										
-											<div class="form-group col-md-6">
-												<label>Facebook</label>
-												<input type="text" name="facebook" class="form-control" value="{{ Auth::user()->facebook }}">
-											</div>
+									
+									<div class="form-submit">	
+										<h4>Social Accounts</h4>
+										<div class="submit-section">
+											<div class="row">
 											
-											<div class="form-group col-md-6">
-												<label>Twitter</label>
-												<input type="text" name="twitter" class="form-control" value="{{ Auth::user()->twitter }}">
+												<div class="form-group col-md-6">
+													<label>Facebook</label>
+													<input type="text" name="facebook" class="form-control" value="{{ Auth::user()->facebook }}">
+												</div>
+												
+												<div class="form-group col-md-6">
+													<label>Twitter</label>
+													<input type="text" name="twitter" class="form-control" value="{{ Auth::user()->twitter }}">
+												</div>
+												
+												<div class="form-group col-md-6">
+													<label>Google Plus</label>
+													<input type="text" name="google" class="form-control" value="{{ Auth::user()->google }}">
+												</div>
+												
+												<div class="form-group col-md-6">
+													<label>LinkedIn</label>
+													<input type="text" name="linkedin" class="form-control" value="{{ Auth::user()->linkedin }}">
+												</div>
+												
+												<div class="form-group col-lg-12 col-md-12">
+													<button class="btn btn-theme-light-2 rounded" type="submit">Save Changes</button>
+												</div>
+												
 											</div>
-											
-											<div class="form-group col-md-6">
-												<label>Google Plus</label>
-												<input type="text" name="google" class="form-control" value="{{ Auth::user()->google }}">
-											</div>
-											
-											<div class="form-group col-md-6">
-												<label>LinkedIn</label>
-												<input type="text" name="linkedin" class="form-control" value="{{ Auth::user()->linkedin }}">
-											</div>
-											
-											<div class="form-group col-lg-12 col-md-12">
-												<button class="btn btn-theme-light-2 rounded" type="submit">Save Changes</button>
-											</div>
-											
-										</div>
 										</form>
 									</div>
 								</div>

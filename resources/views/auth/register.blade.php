@@ -64,8 +64,12 @@ $data = Country::all();
                                                                     <i class="ti-user"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('name')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -73,8 +77,12 @@ $data = Country::all();
                                                                     <i class="ti-email"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('email')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -82,8 +90,12 @@ $data = Country::all();
                                                                     <i class="ti-unlock"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('password')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -91,8 +103,12 @@ $data = Country::all();
                                                                     <i class="ti-unlock"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('password')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
@@ -101,8 +117,12 @@ $data = Country::all();
                                                                     <i class="lni-phone-handset"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('phone')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -122,8 +142,12 @@ $data = Country::all();
                                                                     <i class="ti-briefcase"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('country')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-										
 									                </div>
 
                                                    
@@ -160,8 +184,12 @@ $data = Country::all();
                                                                     <i class="ti-user"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('name')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -169,8 +197,12 @@ $data = Country::all();
                                                                     <i class="ti-email"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('email')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -178,8 +210,12 @@ $data = Country::all();
                                                                     <i class="ti-unlock"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('password')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -187,8 +223,12 @@ $data = Country::all();
                                                                     <i class="ti-unlock"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('password')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
@@ -197,8 +237,12 @@ $data = Country::all();
                                                                     <i class="lni-phone-handset"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('phone')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -218,8 +262,12 @@ $data = Country::all();
                                                                     <i class="ti-briefcase"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('country')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-										
 									                </div>
 
                                                    
@@ -255,8 +303,12 @@ $data = Country::all();
                                                                     <i class="ti-user"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('name')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -264,8 +316,12 @@ $data = Country::all();
                                                                     <i class="ti-email"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('email')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -273,8 +329,12 @@ $data = Country::all();
                                                                     <i class="ti-unlock"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('password')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -282,8 +342,12 @@ $data = Country::all();
                                                                     <i class="ti-unlock"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('password')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
@@ -292,8 +356,12 @@ $data = Country::all();
                                                                     <i class="lni-phone-handset"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('phone')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-                                                        
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-with-icon">
@@ -313,10 +381,13 @@ $data = Country::all();
                                                                     <i class="ti-briefcase"></i>
                                                                 </div>
                                                             </div>
+                                                            @error('country')
+                                                                    <small id="usercheck" style="color: red;" >
+                                                                        {{$message}}
+                                                                    </small>
+                                                            @enderror
                                                         </div>
-										
-									                </div>
-
+                                                    </div>
                                                    
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-md full-width btn-theme-light-2 rounded">Sign Up</button>
