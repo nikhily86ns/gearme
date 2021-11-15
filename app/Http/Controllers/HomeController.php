@@ -114,34 +114,42 @@ class HomeController extends Controller
 
     public function providerLogin()
     {
-        // 
-        // $totalplans =   Plan::select('*')
-        //         ->from(DB::raw("( SELECT * FROM `plans`
-        //         WHERE `providerId` = ".Auth::user()->id.") as `totalplans`"))->count();
-        // $totalinvestors =   Plan::select('*')
-        //         ->from(DB::raw("( SELECT * FROM `plans`
-        //         WHERE `providerId` = ".Auth::user()->id." AND `investorId` = 'Approved') as `totalinvestors`"))->count();
+        $totalplans =   Plan::select('*')
+                ->from(DB::raw("( SELECT * FROM `plans`
+                WHERE `providerId` = ".Auth::user()->id.") as `totalplans`"))->count();
+        $totalinvestors = User::select('*')
+        ->from(DB::raw("( SELECT * FROM `users`
+          WHERE `roles` = '3') as `totalinvestors`"))->count();
+        
+        
+        $interestedinvestors = DB::table('notifications')
+            ->join('users', 'users.id','=', 'notifications.investorId')
+            ->join('plans', 'plans.id','=', 'notifications.planId')
+            ->where('notifications.providerId','=', Auth::user()->id)
+            ->select('*')
+            ->count();
         // $interestedinvestors =   Plan::select('*')
         //         ->from(DB::raw("( SELECT * FROM `plans`
         //         WHERE `providerId` = ".Auth::user()->id." ) as `interestedinvestors`"))->count();
 
                 //   print_r($totalinvestors);
-                //   print_r($interestedinvestors);
-                //   print_r($totalplans); die;
+                //    print_r($interestedinvestors);
+                //    print_r($totalplans); 
+                //   die;
 
-        // if ($totalplans && $totalinvestors) 
-        // {
-        // $data['totalplans'] =  $totalplans;
-        // $data['totalinvestors'] =  $totalinvestors;
-        // $data['interestedinvestors'] =  $interestedinvestors;
-        // } 
-        // else 
-        // {
-        // $data['totalplans'] =  '00';
-        // $data['totalinvestors'] =  '00';
-        // $data['interestedinvestors'] =  '00';
-        // }
-        return view('provider.dashboard');
+        if ($totalplans && $totalinvestors) 
+        {
+        $data['totalplans'] =  $totalplans;
+        $data['totalinvestors'] =  $totalinvestors;
+        $data['interestedinvestors'] =  $interestedinvestors;
+        } 
+        else 
+        {
+        $data['totalplans'] =  '00';
+        $data['totalinvestors'] =  '00';
+        $data['interestedinvestors'] =  '00';
+        }
+        return view('provider.dashboard', compact('data'));
     }
 
 // Property Investor Dashboard

@@ -8,31 +8,49 @@
 @endsection
 
 @section('content')
-<!-- 
+
 				<div class="row">
 					
 					<div class="col-lg-4 col-md-6 col-sm-12">
 						<div class="dashboard-stat widget-1">
-							<div class="dashboard-stat-content"><h4>607</h4> <span>Total Plans</span></div>
+							<div class="dashboard-stat-content"><h4>
+                            @if($data)
+                                {{ $data['totalplans'] }}
+                            @else
+                                {{ 0 }}
+                            @endif
+                            </h4> <span>Total Plans</span></div>
 							<div class="dashboard-stat-icon"><i class="ti-location-pin"></i></div>
 						</div>	
 					</div>
 					
 					<div class="col-lg-4 col-md-6 col-sm-12">
 						<div class="dashboard-stat widget-2">
-							<div class="dashboard-stat-content"><h4>102</h4> <span>Approved Plans</span></div>
+							<div class="dashboard-stat-content"><h4>
+                            @if($data)
+                                {{ $data['interestedinvestors'] }}
+                            @else
+                                {{ 0 }}
+                            @endif
+                            </h4> <span>Total Interested Investors</span></div>
 							<div class="dashboard-stat-icon"><i class="ti-pie-chart"></i></div>
 						</div>	
 					</div>
 					
 					<div class="col-lg-4 col-md-6 col-sm-12">
 						<div class="dashboard-stat widget-3">
-							<div class="dashboard-stat-content"><h4>70</h4> <span>Not Approved Plans</span></div>
+							<div class="dashboard-stat-content"><h4>
+                            @if($data)
+                                {{ $data['totalinvestors'] }}
+                            @else
+                                {{ 0 }}
+                            @endif
+                            </h4> <span>Total Investors</span></div>
 							<div class="dashboard-stat-icon"><i class="ti-user"></i></div>
 						</div>	
 					</div>
 
-				</div> -->
+				</div>
 
 			<!-- ============================ Post Plans Form ================================== -->
 							<div class="dashboard-wraper">
