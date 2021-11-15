@@ -124,7 +124,7 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 											<h4 class="listing-name verified"><a href="/propertyDetail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
 										</div>
 										<div class="listing-short-detail-flex">
-											<h6 class="listing-card-info-price">$ {{ $row->price }}</h6>
+											<h6 class="listing-card-info-price">&#8377; {{ $row->price }}</h6>
 										</div>
 									</div>
 								</div>
