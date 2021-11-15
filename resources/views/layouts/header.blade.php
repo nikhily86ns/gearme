@@ -106,40 +106,27 @@
 										<li><a href="contact.html">Contacts</a></li>
 									</ul>
 								</li>
-								<li><a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</a></li>
-							
-							<!-- </ul>
-                            <ul class="navbar-nav ml-auto pt-3" style="float:right;"> -->
-                                <!-- Authentication Links -->
-								<ul class="nav-menu nav-menu-social align-to-right">
-								
 								<li>
-									<a href="{{ route('owner.submitProperty') }}" class="text-success"><img src="{{ asset('/img/submit.svg') }}" width="20" alt="" class="mr-2" />Add Property</a>
-								</li>
-								<li class="add-listing blue">
-									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="{{ asset('/img/user-light.svg') }}" width="12" alt="" class="mr-2" />Sign In</a>
-								</li>
-							</ul>
-                                @guest
+								@guest
 									@if (Route::has('register'))
-									<li style="float:right;"><a href="{{ route('register') }}">Register</a></li>
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                        </li> -->
+									<li><a href="{{ route('register') }}">Sign Up</a></li>
                                     @endif
 
                                     @if (Route::has('login'))
-									<li style="float:right;"><a href="{{ route('login') }}">Login</a></li>
-                                        <!-- <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                        </li> -->
+									<ul class="nav-menu nav-menu-social align-to-right">
+									<li class="add-listing blue">
+										<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="{{ asset('/img/user-light.svg') }}" width="12" alt="" class="mr-2" />Sign In</a>
+									</li>
+									</ul>
                                     @endif  
                                 @else
                                     <li class="nav-item dropdown" style="float:right;">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
+                                         
+										
+											{{ Auth::user()->name }}
                                         </a>
-
+									
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 											@if(Auth::check() && Auth::user()->roles == '1')
 												<a href="{{ route('owner.profile') }}" class="dropdown-item">Profile</a>
@@ -162,6 +149,23 @@
                                         </div>
                                     </li>
                                 @endguest
+								</li>
+								<!-- <li><a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#signup">Sign Up</a></li> -->
+								<!-- <li><a href="{{ route('register') }}">Sign Up</a></li> -->
+							
+							<!-- </ul>
+                            <ul class="navbar-nav ml-auto pt-3" style="float:right;"> -->
+                                <!-- Authentication Links -->
+								<ul class="nav-menu nav-menu-social align-to-right">
+								
+								<li>
+									<a href="{{ route('owner.submitProperty') }}" class="text-success"><img src="{{ asset('/img/submit.svg') }}" width="20" alt="" class="mr-2" />Add Property</a>
+								</li>
+								<!-- <li class="add-listing blue">
+									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="{{ asset('/img/user-light.svg') }}" width="12" alt="" class="mr-2" />Sign In</a>
+								</li> -->
+							</ul>
+                               
                             </ul>   
 						</div>
 					</nav>
