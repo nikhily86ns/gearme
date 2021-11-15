@@ -22,24 +22,39 @@
 								<div class="hero-search-content">
 									<div class="row">
 									
-										<div class="col-lg-4 col-md-4 col-sm-12 b-r">
-											<div class="form-group">
-												<div class="choose-propert-type">
-													<ul>
-														<li>
-															<input id="cp-1" class="checkbox-custom" name="cpt" type="radio" checked>
-															<label for="cp-1" class="checkbox-custom-label">Buy</label>
-														</li>
-														<li>
-															<input id="cp-3" class="checkbox-custom" name="cpt" type="radio">
-															<label for="cp-3" class="checkbox-custom-label">Sold</label>
-														</li>
-													</ul>
+											<div class="col-lg-5 col-md-5 col-sm-12 b-r mt-2">
+												<div class="form-group">
+													<div class="choose-propert-type">
+													<select class="form-select" name="propertyType" id="type" aria-label="Default select example">
+														<option value='' selected class="nun"><i class="fa fa-home"></i>Property Type</option>
+														<option class="bg-secondary text-white">** ALL RESIDENTIAL **</option>
+															<option class="ar" value="Apartment">Flat/ Apartment</option>
+															<option class="ar" value="Residential House">Residential House</option>
+															<option class="ar" value="Villa">Villa</option>
+															<option class="ar" value="Builder Floor Apartment">Builder Floor Apartment</option>
+															<option class="ar" value="Penthouse">Penthouse</option>
+															<option class="ar" value="Studio Apartment">Studio Apartment</option>
+															<option class="ar" value="Service Apartment">Service Apartment</option>
+														<option class="bg-secondary text-white">** ALL COMMERCIAL **</option>	
+															<option class="ac" value="Commercial Office Space">Commercial Office Space</option>
+															<option class="ac" value="Office in IT Park/ SEZ ">Office in IT Park/ SEZ</option>
+															<option class="ac" value="Commercial Shop">Commercial Shop</option>
+															<option class="ac" value="Commercial Showroom">Commercial Showroom</option>
+															<option class="ac" value="Commercial Land">Commercial Land</option>
+															<option class="ac" value="Warehouse/ Godown">Warehouse/ Godown</option>
+															<option class="ac" value="Industrial Land">Industrial Land</option>
+															<option class="ac" value="Industrial Building">Industrial Building</option>
+															<option class="ac" value="Industrial Shed">Industrial Shed</option>
+															<option class="ac" value="Co-working Space">Co-working Space</option>
+														<option class="bg-secondary text-white">** ALL AGRICULTURAL **</option>	
+															<option class="aa" value="Agricultural Land">Agricultural Land</option>
+															<option class="aa" value="Farm House">Farm House</option>
+													</select>
+													</div>
 												</div>
 											</div>
-										</div>
 										
-										<div class="col-lg-6 col-md-5 col-sm-12 p-0 elio">
+										<div class="col-lg-5 col-md-5 col-sm-12 p-0 elio">
 											<div class="form-group">
 												<div class="input-with-icon">
 													<input type="text" class="form-control" placeholder="Search for a location">
@@ -1383,15 +1398,20 @@
 								
 								</form>
 							</div>
-							<div class="modal-divider"><span>Or login via</span></div>
+							<!-- <div class="modal-divider"><span>Or login via</span></div>
 							<div class="social-login mb-3">
 								<ul>
 									<li><a href="#" class="btn connect-fb"><i class="ti-facebook"></i>Facebook</a></li>
 									<li><a href="#" class="btn connect-google"><i class="ti-google"></i>Google+</a></li>
 								</ul>
-							</div>
+							</div> -->
 							<div class="text-center">
-								<p class="mt-5"><a href="#" class="link">Forgot password?</a></p>
+								@if (Route::has('password.request'))
+                                    <a class="link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+								<!-- <p class="mt-5"><a href="#" class="link">Forgot password?</a></p> -->
 							</div>
 						</div>
 					</div>

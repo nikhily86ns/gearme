@@ -139,16 +139,21 @@
 								
 								</form>
 							</div>
-							<div class="modal-divider"><span>Or login via</span></div>
+							<!-- <div class="modal-divider"><span>Or login via</span></div>
 							<div class="social-login mb-3">
 								<ul>
 									<li><a href="#" class="btn connect-fb"><i class="ti-facebook"></i>Facebook</a></li>
 									<li><a href="#" class="btn connect-google"><i class="ti-google"></i>Google+</a></li>
 								</ul>
-							</div>
+							</div> -->
 							<div class="text-center">
-								<p class="mt-5"><a href="#" class="link">Forgot password?</a></p>
-							</div>
+								@if (Route::has('password.request'))
+                                    <a class="link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+								<!-- <p class="mt-5"><a href="#" class="link">Forgot password?</a></p> -->
+							</div> 
 						</div>
 					</div>
 				</div>
