@@ -114,51 +114,51 @@
                                         @if($data->feature != '' && $data->feature != null && $data->feature != 'null' && $data->feature != NULL && is_array(json_decode($data->feature)))
                                    									
 											<li>
-												<input id="a-1" class="checkbox-custom " {{ in_array("AC", json_decode($data->feature)) ? 'checked' : '' }} value="AC" name="features[]" type="checkbox">
+												<input id="a-1" class="checkbox-custom " {{ in_array("AC", json_decode($data->feature)) ? 'checked' : 'disabled' }} value="AC" name="features[]" type="checkbox">
 												<label for="a-1" class="checkbox-custom-label">Air Condition</label>
 											</li>
 											<li>
-												<input id="a-3" class="checkbox-custom" {{ in_array("Heating", json_decode($data->feature)) ? 'checked' : '' }} value="Heating" name="features[]" type="checkbox">
+												<input id="a-3" class="checkbox-custom" {{ in_array("Heating", json_decode($data->feature)) ? 'checked' : 'disabled' }} value="Heating" name="features[]" type="checkbox">
 												<label for="a-3" class="checkbox-custom-label">Heating</label>
 											</li>
 											<li>
-												<input id="a-4" class="checkbox-custom" {{ in_array("Internet", json_decode($data->feature))  ? 'checked' : '' }} value="Internet" name="features[]" type="checkbox">
+												<input id="a-4" class="checkbox-custom" {{ in_array("Internet", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Internet" name="features[]" type="checkbox">
 												<label for="a-4" class="checkbox-custom-label">Internet</label>
 											</li>
 											<li>
-												<input id="a-5" class="checkbox-custom" {{ in_array("Microwave", json_decode($data->feature))  ? 'checked' : '' }} value="Microwave" name="features[]" type="checkbox">
+												<input id="a-5" class="checkbox-custom" {{ in_array("Microwave", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Microwave" name="features[]" type="checkbox">
 												<label for="a-5" class="checkbox-custom-label">Microwave</label>
 											</li>
 											<li>
-												<input id="a-6" class="checkbox-custom" {{ in_array("Smoking", json_decode($data->feature))  ? 'checked' : '' }} value="Smoking" name="features[]" type="checkbox">
+												<input id="a-6" class="checkbox-custom" {{ in_array("Smoking", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Smoking" name="features[]" type="checkbox">
 												<label for="a-6" class="checkbox-custom-label">Smoking Allow</label>
 											</li>
 											<li>
-												<input id="a-7" class="checkbox-custom" {{ in_array("Terrace", json_decode($data->feature))  ? 'checked' : '' }} value="Terrace" name="features[]" type="checkbox">
+												<input id="a-7" class="checkbox-custom" {{ in_array("Terrace", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Terrace" name="features[]" type="checkbox">
 												<label for="a-7" class="checkbox-custom-label">Terrace</label>
 											</li>
 											<li>
-												<input id="a-11" class="checkbox-custom" {{ in_array("Beach", json_decode($data->feature))  ? 'checked' : '' }} value="Beach" name="features[]"" type="checkbox">
+												<input id="a-11" class="checkbox-custom" {{ in_array("Beach", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Beach" name="features[]"" type="checkbox">
 												<label for="a-11" class="checkbox-custom-label">Beach</label>
 											</li>
 											<li>
-												<input id="a-9" class="checkbox-custom" {{ in_array("Bedding", json_decode($data->feature))  ? 'checked' : '' }} value="Bedding" name="features[]" type="checkbox">
+												<input id="a-9" class="checkbox-custom" {{ in_array("Bedding", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Bedding" name="features[]" type="checkbox">
 												<label for="a-9" class="checkbox-custom-label">Bedding</label>
 											</li>
 											<li>
-												<input id="a-14" class="checkbox-custom"  {{ in_array("Balcony", json_decode($data->feature))  ? 'checked' : '' }}value="Balcony" name="features[]" type="checkbox">
+												<input id="a-14" class="checkbox-custom"  {{ in_array("Balcony", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Balcony" name="features[]" type="checkbox">
 												<label for="a-14" class="checkbox-custom-label">Balcony</label>
 											</li>
 											<li>
-												<input id="a-15" class="checkbox-custom" {{ in_array("Icon", json_decode($data->feature))  ? 'checked' : '' }} value="Icon" name="features[]" type="checkbox">
+												<input id="a-15" class="checkbox-custom" {{ in_array("Icon", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Icon" name="features[]" type="checkbox">
 												<label for="a-15" class="checkbox-custom-label">Icon</label>
 											</li>
 											<li>
-												<input id="1a-6" class="checkbox-custom"  {{ in_array("Parking", json_decode($data->feature))  ? 'checked' : '' }}value="Parking" name="features[]" type="checkbox">
+												<input id="1a-6" class="checkbox-custom"  {{ in_array("Parking", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Parking" name="features[]" type="checkbox">
 												<label for="1a-6" class="checkbox-custom-label">Parking</label>
 											</li>
 											<li>
-												<input id="a-10" class="checkbox-custom" {{ in_array("Wi-Fi", json_decode($data->feature))  ? 'checked' : '' }} value="Wi-Fi" name="features[]"" type="checkbox">
+												<input id="a-10" class="checkbox-custom" {{ in_array("Wi-Fi", json_decode($data->feature))  ? 'checked' : 'disabled' }} value="Wi-Fi" name="features[]"" type="checkbox">
 												<label for="a-10" class="checkbox-custom-label">Wi-Fi</label>
 											</li>
                                             
@@ -312,292 +312,7 @@
 								
 							</div>
 							
-							<!-- All over Review -->
-							<div class="rating-overview">
-								<div class="rating-overview-box">
-									<span class="rating-overview-box-total">4.2</span>
-									<span class="rating-overview-box-percent">out of 5.0</span>
-									<div class="star-rating" data-rating="5"><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i><i class="ti-star"></i>
-									</div>
-								</div>
-
-								<div class="rating-bars">
-										<div class="rating-bars-item">
-											<span class="rating-bars-name">Service</span>
-											<span class="rating-bars-inner">
-												<span class="rating-bars-rating high" data-rating="4.7">
-													<span class="rating-bars-rating-inner" style="width: 85%;"></span>
-												</span>
-												<strong>4.7</strong>
-											</span>
-										</div>
-										<div class="rating-bars-item">
-											<span class="rating-bars-name">Value for Money</span>
-											<span class="rating-bars-inner">
-												<span class="rating-bars-rating good" data-rating="3.9">
-													<span class="rating-bars-rating-inner" style="width: 75%;"></span>
-												</span>
-												<strong>3.9</strong>
-											</span>
-										</div>
-										<div class="rating-bars-item">
-											<span class="rating-bars-name">Location</span>
-											<span class="rating-bars-inner">
-												<span class="rating-bars-rating mid" data-rating="3.2">
-													<span class="rating-bars-rating-inner" style="width: 52.2%;"></span>
-												</span>
-												<strong>3.2</strong>
-											</span>
-										</div>
-										<div class="rating-bars-item">
-											<span class="rating-bars-name">Cleanliness</span>
-											<span class="rating-bars-inner">
-												<span class="rating-bars-rating poor" data-rating="2.0">
-													<span class="rating-bars-rating-inner" style="width:20%;"></span>
-												</span>
-												<strong>2.0</strong>
-											</span>
-										</div>
-								</div>
-							</div>
-							<!-- All over Review -->
 							
-							<!-- Single Reviews Block -->
-							<div class="property_block_wrap style-2">
-								
-								<div class="property_block_wrap_header">
-									<a data-bs-toggle="collapse" data-parent="#rev"  data-bs-target="#clEight" aria-controls="clEight" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">102 Reviews</h4></a>
-								</div>
-								
-								<div id="clEight" class="panel-collapse collapse show">
-									<div class="block-body">
-										<div class="author-review">
-											<div class="comment-list">
-												<ul>
-													<li class="article_comments_wrap">
-														<article>
-															<div class="article_comments_thumb">
-																<img src="assets/img/user-1.jpg" alt="">
-															</div>
-															<div class="comment-details">
-																<div class="comment-meta">
-																	<div class="comment-left-meta">
-																		<h4 class="author-name">Rosalina Kelian</h4>
-																		<div class="comment-date">19th May 2018</div>
-																	</div>
-																</div>
-																<div class="comment-text">
-																	<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim laborumab.
-																		perspiciatis unde omnis iste natus error.</p>
-																</div>
-															</div>
-														</article>
-													</li>
-													<li class="article_comments_wrap">
-														<article>
-															<div class="article_comments_thumb">
-																<img src="assets/img/user-5.jpg" alt="">
-															</div>
-															<div class="comment-details">
-																<div class="comment-meta">
-																	<div class="comment-left-meta">
-																		<h4 class="author-name">Rosalina Kelian</h4>
-																		<div class="comment-date">19th May 2018</div>
-																	</div>
-																</div>
-																<div class="comment-text">
-																	<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim laborumab.
-																		perspiciatis unde omnis iste natus error.</p>
-																</div>
-															</div>
-														</article>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<a href="#" class="reviews-checked theme-cl"><i class="fas fa-arrow-alt-circle-down mr-2"></i>See More Reviews</a>
-									</div>
-								</div>
-								
-							</div>
-							
-							<!-- Single Block Wrap -->
-							<div class="property_block_wrap style-2">
-								
-								<div class="property_block_wrap_header">
-									<a data-bs-toggle="collapse" data-parent="#nearby" data-bs-target="#clNine" aria-controls="clNine" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Nearby</h4></a>
-								</div>
-								
-								<div id="clNine" class="panel-collapse collapse show">
-									<div class="block-body">
-										
-										<!-- Schools -->
-										<div class="nearby-wrap">
-											<div class="nearby_header">
-												<div class="nearby_header_first">
-													<h5>Schools Around</h5>
-												</div>
-												<div class="nearby_header_last">
-													<div class="nearby_powerd">
-														Powerd by <img src="assets/img/edu.png" class="img-fluid" alt="" />
-													</div>
-												</div>
-											</div>
-											<div class="neary_section_list">
-											
-												<div class="neary_section">
-													<div class="neary_section_first">
-														<h4 class="nearby_place_title">Green Iseland School<small>(3.52 mi)</small></h4>
-													</div>
-													<div class="neary_section_last">
-														<div class="nearby_place_rate">
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star"></i>														
-														</div>
-														<small class="reviews-count">(421 Reviews)</small>
-													</div>
-												</div>
-												
-												<div class="neary_section">
-													<div class="neary_section_first">
-														<h4 class="nearby_place_title">Ragni Intermediate College<small>(0.52 mi)</small></h4>
-													</div>
-													<div class="neary_section_last">
-														<div class="nearby_place_rate">
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star-half filled"></i>														
-														</div>
-														<small class="reviews-count">(470 Reviews)</small>
-													</div>
-												</div>
-												
-												<div class="neary_section">
-													<div class="neary_section_first">
-														<h4 class="nearby_place_title">Rose Wood Primary Scool<small>(0.47 mi)</small></h4>
-													</div>
-													<div class="neary_section_last">
-														<div class="nearby_place_rate">
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star"></i>														
-														</div>
-														<small class="reviews-count">(204 Reviews)</small>
-													</div>
-												</div>
-												
-											</div>
-										</div>
-										
-										<!-- Hotel & Restaurant -->
-										<div class="nearby-wrap">
-											<div class="nearby_header">
-												<div class="nearby_header_first">
-													<h5>Food Around</h5>
-												</div>
-												<div class="nearby_header_last">
-													<div class="nearby_powerd">
-														Powerd by <img src="assets/img/food.png" class="img-fluid" alt="" />
-													</div>
-												</div>
-											</div>
-											<div class="neary_section_list">
-											
-												<div class="neary_section">
-													<div class="neary_section_first">
-														<h4 class="nearby_place_title">The Rise hotel<small>(2.42 mi)</small></h4>
-													</div>
-													<div class="neary_section_last">
-														<div class="nearby_place_rate">
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>														
-														</div>
-														<small class="reviews-count">(105 Reviews)</small>
-													</div>
-												</div>
-												
-												<div class="neary_section">
-													<div class="neary_section_first">
-														<h4 class="nearby_place_title">Blue Ocean Bar & Restaurant<small>(1.52 mi)</small></h4>
-													</div>
-													<div class="neary_section_last">
-														<div class="nearby_place_rate">
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star filled"></i>
-															<i class="fa fa-star"></i>														
-														</div>
-														<small class="reviews-count">(40 Reviews)</small>
-													</div>
-												</div>
-												
-											</div>
-										</div>
-										
-									</div>
-								</div>
-								
-							</div>
-							
-							<!-- Single Write a Review -->
-							<div class="property_block_wrap style-2">
-								
-								<div class="property_block_wrap_header">
-									<a data-bs-toggle="collapse" data-parent="#comment" data-bs-target="#clTen" aria-controls="clTen" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Write a Review</h4></a>
-								</div>
-								
-								<div id="clTen" class="panel-collapse collapse show">
-									<div class="block-body">
-										<form class="simple-form">
-											<div class="row">
-												
-												<div class="col-lg-12 col-md-12 col-sm-12">
-													<div class="form-group">
-														<textarea class="form-control ht-80" placeholder="Messages"></textarea>
-													</div>
-												</div>
-												
-												<div class="col-lg-12 col-md-12 col-sm-12">
-													<div class="form-group">
-														<input type="text" class="form-control" placeholder="Property Title">
-													</div>
-												</div>
-												
-												<div class="col-lg-6 col-md-6 col-sm-12">
-													<div class="form-group">
-														<input type="text" class="form-control" placeholder="Your Name">
-													</div>
-												</div>
-												
-												<div class="col-lg-6 col-md-6 col-sm-12">
-													<div class="form-group">
-														<input type="email" class="form-control" placeholder="Your Email">
-													</div>
-												</div>
-												
-												<div class="col-lg-12 col-md-12 col-sm-12">
-													<div class="form-group">
-														<button class="btn btn-theme-light-2 rounded" type="submit">Submit Review</button>
-													</div>
-												</div>
-												
-											</div>
-										</form>
-									</div>
-								</div>
-								
-							</div>
 							
 						</div>
 						

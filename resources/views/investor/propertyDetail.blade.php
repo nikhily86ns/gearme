@@ -319,7 +319,7 @@
 							</div>
 							
 							<!-- All over Review -->
-							<div class="rating-overview">
+							<!-- <div class="rating-overview">
 								<div class="rating-overview-box">
 									<span class="rating-overview-box-total">4.2</span>
 									<span class="rating-overview-box-percent">out of 5.0</span>
@@ -365,11 +365,11 @@
 											</span>
 										</div>
 								</div>
-							</div>
+							</div> -->
 							<!-- All over Review -->
 							
 							<!-- Single Reviews Block -->
-							<div class="property_block_wrap style-2">
+							<!-- <div class="property_block_wrap style-2">
 								
 								<div class="property_block_wrap_header">
 									<a data-bs-toggle="collapse" data-parent="#rev"  data-bs-target="#clEight" aria-controls="clEight" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">102 Reviews</h4></a>
@@ -425,10 +425,10 @@
 									</div>
 								</div>
 								
-							</div>
+							</div> -->
 							
 							<!-- Single Block Wrap -->
-							<div class="property_block_wrap style-2">
+							<!-- <div class="property_block_wrap style-2">
 								
 								<div class="property_block_wrap_header">
 									<a data-bs-toggle="collapse" data-parent="#nearby" data-bs-target="#clNine" aria-controls="clNine" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Nearby</h4></a>
@@ -437,7 +437,7 @@
 								<div id="clNine" class="panel-collapse collapse show">
 									<div class="block-body">
 										
-										<!-- Schools -->
+										
 										<div class="nearby-wrap">
 											<div class="nearby_header">
 												<div class="nearby_header_first">
@@ -502,7 +502,7 @@
 											</div>
 										</div>
 										
-										<!-- Hotel & Restaurant -->
+										
 										<div class="nearby-wrap">
 											<div class="nearby_header">
 												<div class="nearby_header_first">
@@ -554,10 +554,10 @@
 									</div>
 								</div>
 								
-							</div>
+							</div> -->
 							
 							<!-- Single Write a Review -->
-							<div class="property_block_wrap style-2">
+							<!-- <div class="property_block_wrap style-2">
 								
 								<div class="property_block_wrap_header">
 									<a data-bs-toggle="collapse" data-parent="#comment" data-bs-target="#clTen" aria-controls="clTen" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Write a Review</h4></a>
@@ -603,7 +603,7 @@
 									</div>
 								</div>
 								
-							</div>
+							</div> -->
 							
 						</div>
 						
