@@ -18,7 +18,7 @@
 
 					<!-- ============================ Hero Banner  Start================================== -->
 					<div class="featured_slick_gallery gray mb-3">
-						@if($data->image != '')
+						@if(count($data->image) > 0 )
 						<div class="featured_slick_gallery-slide">
 							@foreach(json_decode($data->image) as $key=>$res)
 								@if($key < 1)
