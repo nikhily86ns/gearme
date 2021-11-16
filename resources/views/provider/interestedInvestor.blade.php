@@ -42,7 +42,7 @@
 													Valid Till :- {{ $row->validto }}
 												</div>
 												<div class="user_dashboard_listed">
-													Investor Name :- <a href="/investorDetail/{{ $row->notify_id }}">{{ $row->name }}</a>
+													Investor Name :- <a href="/investor-detail/{{ $row->notify_id }}">{{ $row->name }}</a>
 												</div>
 												<!-- <div class="action">
 														<a href="/investorDetail/{{ $row->notify_id }}"><i class="ti-pencil"></i></a>

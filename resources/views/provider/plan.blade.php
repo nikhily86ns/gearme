@@ -47,7 +47,7 @@
 												<div class="action">
 													<form method="POST" action="{{ route('provider.deletePlan', $row->id) }}">
 														@csrf
-														<a href="/updatePlans/{{ $row->id }}"><i class="ti-pencil"></i></a>
+														<a href="/update-plans/{{ $row->id }}"><i class="ti-pencil"></i></a>
 														<a href="" class="show_confirm"><i class="ti-close"></i></a>
 													</form>
 													<!-- <a href="/deleteProperty/{{$row->id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Property" class="delete show_confirm"><i class="ti-close"></i> -->

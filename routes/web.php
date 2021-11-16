@@ -118,20 +118,20 @@ Route::post('/search-Properties',  [App\Http\Controllers\HomeController::class, 
 
     Route::middleware(['isProvider'])->group(function () {
 
-        Route::get('/dashboardProvider', [App\Http\Controllers\HomeController::class, 'providerLogin'])->name('provider.dashboard');
+        Route::get('/dashboard-provider', [App\Http\Controllers\HomeController::class, 'providerLogin'])->name('provider.dashboard');
         Route::post('/postPlan', [App\Http\Controllers\ProviderController::class, 'postPlan'])->name('provider.postPlan');
-        Route::get('/updatePlans/{id}', [App\Http\Controllers\ProviderController::class, 'updatePlan'])->name('provider.updatePlans');
+        Route::get('/update-plans/{id}', [App\Http\Controllers\ProviderController::class, 'updatePlan'])->name('provider.updatePlans');
         Route::post('/editPlan', [App\Http\Controllers\ProviderController::class, 'editPlan'])->name('provider.editPlan');
         Route::post('/deletePlan/{id}', [App\Http\Controllers\ProviderController::class, 'deletePlan'])->name('provider.deletePlan');
-        Route::get('/interestedInvetors', [App\Http\Controllers\ProviderController::class, 'interestedInvetors'])->name('provider.interestedInvetors');
-        Route::get('/potentialInvetors', [App\Http\Controllers\ProviderController::class, 'potentialInvetors'])->name('provider.potentialInvetors');
-        Route::get('/investorDetail/{id}', [App\Http\Controllers\ProviderController::class, 'investorDetail'])->name('provider.investorDetail');
-        Route::get('/providerProfile', [App\Http\Controllers\ProviderController::class, 'providerProfile'])->name('provider.profile');
+        Route::get('/interested-invetors', [App\Http\Controllers\ProviderController::class, 'interestedInvetors'])->name('provider.interestedInvetors');
+        Route::get('/potential-invetors', [App\Http\Controllers\ProviderController::class, 'potentialInvetors'])->name('provider.potentialInvetors');
+        Route::get('/investor-detail/{id}', [App\Http\Controllers\ProviderController::class, 'investorDetail'])->name('provider.investorDetail');
+        Route::get('/provider-profile', [App\Http\Controllers\ProviderController::class, 'providerProfile'])->name('provider.profile');
         Route::post('/updateProviderProfile', [App\Http\Controllers\ProviderController::class, 'updateProviderProfile'])->name('provider.updateProfile');
-        Route::get('/providerPlan', [App\Http\Controllers\ProviderController::class, 'providerPlan'])->name('provider.plan');
+        Route::get('/provider-plan', [App\Http\Controllers\ProviderController::class, 'providerPlan'])->name('provider.plan');
         
 
-        Route::get('/changeProviderPassword', [App\Http\Controllers\ProviderController::class, 'changeProviderPassword'])->name('provider.changeProviderPassword');
+        Route::get('/change-provider-password', [App\Http\Controllers\ProviderController::class, 'changeProviderPassword'])->name('provider.changeProviderPassword');
         Route::post('/resetProviderPassword', [App\Http\Controllers\ProviderController::class, 'resetProviderPassword'])->name('provider.resetProviderPassword');
 
     });

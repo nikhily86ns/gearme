@@ -30,7 +30,7 @@
 											<div class="sd-list-right">
 												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Amount :-  &#8377; {{ $row->amount }}</a></h4>
 												<div class="user_dashboard_listed">
-													Investor Name :- <a href="/investorDetail/{{ $row->notify_id }}">{{ $row->name }}</a>
+													Investor Name :- <a href="/investor-detail/{{ $row->notify_id }}">{{ $row->name }}</a>
 												</div>
 												<!-- <div class="action">
 														<a href="/investorDetail/{{ $row->notify_id }}"><i class="ti-pencil"></i></a>
