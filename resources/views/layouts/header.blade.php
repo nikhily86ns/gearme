@@ -32,34 +32,14 @@
 								<!-- <li class="active"><a href="/dashboard">Home<span class="submenu-indicator"></span></a>
 								</li> -->
 								
-								<li class="{{ Request::is('about-us') ? 'active' : '' }}"><a href="/about-us">About Us<span class="submenu-indicator"></span></a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="JavaScript:Void(0);">List Layout<span class="submenu-indicator"></span></a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="list-layout-with-sidebar.html">With Sadebar</a></li>                                    
-												<li><a href="list-layout-with-map.html">With Map</a></li>                                    
-												<li><a href="list-layout-full.html">Full Width</a></li>
-											</ul>
-										</li>
-										<li><a href="JavaScript:Void(0);">Grid Layout<span class="submenu-indicator"></span></a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="grid-layout-with-sidebar.html">With Sidebar</a></li>                                    
-												<li><a href="classical-layout-with-sidebar.html">Classical With Sidebar</a></li>                                    
-												<li><a href="grid-layout-with-map.html">With Map</a></li>                                    
-												<li><a href="grid.html">Full Width</a></li>
-												<li><a href="classical-property.html">Classical Full Width</a></li>	 
-											</ul>
-										</li>
-										<li><a href="JavaScript:Void(0);">With Map Property<span class="submenu-indicator"></span></a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="list-layout-with-map.html">List With Map</a></li>                                    
-												<li><a href="grid-layout-with-map.html">Grid With Map</a></li>                                    
-												<li><a href="classical-layout-with-map.html">Classical With Map</a></li>                                    
-												<li><a href="half-map.html">Half Map Search</a></li> 
-											</ul>
-										</li>
-									</ul>
+								<li class="{{ Request::is('about-us') ? 'active' : '' }}"><a href="{{ route('aboutus') }}">About Us<span class="submenu-indicator"></span></a>
 								</li>
+
+								<li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a href="{{ route('contactus') }}">Contact Us<span class="submenu-indicator"></span></a>
+								</li>
+
+
+								
 								
 								<!-- <li><a href="JavaScript:Void(0);">Features<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">

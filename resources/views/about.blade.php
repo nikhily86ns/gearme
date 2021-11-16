@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-	Result 
+	About Us 
 @endsection
  
 @section('extra-css')

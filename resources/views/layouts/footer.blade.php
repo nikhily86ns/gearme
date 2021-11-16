@@ -18,11 +18,11 @@
 								<div class="footer-widget">
 									<h4 class="widget-title">Navigations</h4>
 									<ul class="footer-menu">
-										<li><a href="about-us.html">About Us</a></li>
-										<li><a href="faq.html">FAQs Page</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="blog.html">Blog</a></li>
+										<li><a href="{{ route('aboutus') }}">About Us</a></li>
+										<li><a href="#">FAQs Page</a></li>
+										<li><a href="#">Checkout</a></li>
+										<li><a href="{{ route('contactus') }}">Contact</a></li>
+										<li><a href="#">Blog</a></li>
 									</ul>
 								</div>
 							</div>

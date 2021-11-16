@@ -61,6 +61,12 @@
 								<li class="active"><a href="/">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@endif
+
+								<li class="{{ Request::is('about-us') ? 'active' : '' }}"><a href="{{ route('aboutus') }}">About Us<span class="submenu-indicator"></span></a>
+								</li>
+
+								<li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a href="{{ route('contactus') }}">Contact Us<span class="submenu-indicator"></span></a>
+								</li>
 								<!-- <li class="active"><a href="/dashboard">Home<span class="submenu-indicator"></span></a>
 								</li> -->
 								
@@ -172,6 +178,8 @@
                                             {{ Auth::user()->name }}
                                         </a>
 
+										
+
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 											@if(Auth::check() && Auth::user()->roles == '1')
 												<a href="{{ route('owner.profile') }}" class="dropdown-item">Profile</a>
@@ -193,6 +201,11 @@
                                             </form>
                                         </div> -->
                                     </li>
+									<ul class="nav-menu nav-menu-social align-to-right">
+										<li>
+											<a href="{{ route('owner.submitProperty') }}" class="text-success"><img src="{{ asset('/img/submit.svg') }}" width="20" alt="" class="mr-2" />Add Property</a>
+										</li>
+									</ul>
                                 @endguest
                             </ul>   
 						</div>
