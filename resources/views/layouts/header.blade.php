@@ -17,22 +17,22 @@
 						<div class="nav-menus-wrapper" style="transition-property: none;">
 							<ul class="nav-menu">
 								@if(Auth::check() && Auth::user()->roles == '1')
-								<li class="active"><a href="/dashboardOwner">Home<span class="submenu-indicator"></span></a>
+								<li class="{{ Request::is('dashboard-owner') ? 'active' : '' }}"><a href="/dashboard-owner">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@elseif(Auth::check() && Auth::user()->roles == '2')
-								<li class="active"><a href="/dashboardProvider">Home<span class="submenu-indicator"></span></a>
+								<li class="{{ Request::is('dashboard-provider') ? 'active' : '' }}"><a href="/dashboard-provider">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@elseif(Auth::check() && Auth::user()->roles == '3')
-								<li class="active"><a href="/dashboardInvestor">Home<span class="submenu-indicator"></span></a>
+								<li class="{{ Request::is('dashboard-investor') ? 'active' : '' }}"><a href="/dashboard-investor">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@else
-								<li class="active"><a href="/">Home<span class="submenu-indicator"></span></a>
+								<li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@endif
 								<!-- <li class="active"><a href="/dashboard">Home<span class="submenu-indicator"></span></a>
 								</li> -->
 								
-								<!-- <li><a href="JavaScript:Void(0);">Listings<span class="submenu-indicator"></span></a>
+								<li class="{{ Request::is('about-us') ? 'active' : '' }}"><a href="/about-us">About Us<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">
 										<li><a href="JavaScript:Void(0);">List Layout<span class="submenu-indicator"></span></a>
 											<ul class="nav-dropdown nav-submenu">
@@ -59,7 +59,7 @@
 											</ul>
 										</li>
 									</ul>
-								</li> -->
+								</li>
 								
 								<!-- <li><a href="JavaScript:Void(0);">Features<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">
@@ -109,7 +109,7 @@
 								<li>
 								@guest
 									@if (Route::has('register'))
-									<li><a href="{{ route('register') }}">Sign Up</a></li>
+									<li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ route('register') }}">Sign Up</a></li>
                                     @endif
 
                                     @if (Route::has('login'))

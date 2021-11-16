@@ -35,6 +35,7 @@ Route::get('/registerInvestorPage', [App\Http\Controllers\UserController::class,
 Route::post('/register-Investor',  [App\Http\Controllers\UserController::class, 'registerInvestor'])->name('registerInvestor');
 
 Route::post('/search-Properties',  [App\Http\Controllers\HomeController::class, 'welcomeSearch'])->name('search-Properties');
+Route::get('/about-us',  [App\Http\Controllers\HomeController::class, 'about'])->name('aboutus');
 
 
 

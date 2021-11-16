@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => 'welcomeSearch']);
+        $this->middleware('auth', ['except' => ['welcomeSearch','about']]);
     }
 
     /**
@@ -216,6 +216,13 @@ class HomeController extends Controller
             return view('allProperties',compact('data','property'));
         }
         
+    }
+
+// Function to View About Us Page
+
+    public function about()
+    {
+        return view('about');
     }
 
 
