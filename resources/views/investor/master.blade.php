@@ -50,13 +50,13 @@
 						<div class="nav-menus-wrapper" style="transition-property: none;">
 							<ul class="nav-menu">
 								@if(Auth::check() && Auth::user()->roles == '1')
-								<li class="active"><a href="/dashboardOwner">Home<span class="submenu-indicator"></span></a>
+								<li class="active"><a href="/dashboard-owner">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@elseif(Auth::check() && Auth::user()->roles == '2')
-								<li class="active"><a href="/dashboardProvider">Home<span class="submenu-indicator"></span></a>
+								<li class="active"><a href="/dashboard-provider">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@elseif(Auth::check() && Auth::user()->roles == '3')
-								<li class="active"><a href="/dashboardInvestor">Home<span class="submenu-indicator"></span></a>
+								<li class="active"><a href="/dashboard-investor">Home<span class="submenu-indicator"></span></a>
 								</li>
 								@else
 								<li class="active"><a href="/">Home<span class="submenu-indicator"></span></a>
