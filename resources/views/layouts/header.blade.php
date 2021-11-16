@@ -137,14 +137,17 @@
                             <ul class="navbar-nav ml-auto pt-3" style="float:right;"> -->
                                 <!-- Authentication Links -->
 								<ul class="nav-menu nav-menu-social align-to-right">
-								
-								<li>
-									<a href="{{ route('owner.submitProperty') }}" class="text-success"><img src="{{ asset('/img/submit.svg') }}" width="20" alt="" class="mr-2" />Add Property</a>
-								</li>
-								<!-- <li class="add-listing blue">
-									<a href="JavaScript:Void(0);" data-bs-toggle="modal" data-bs-target="#login"><img src="{{ asset('/img/user-light.svg') }}" width="12" alt="" class="mr-2" />Sign In</a>
-								</li> -->
-							</ul>
+									@if(!Auth::check())
+									<li>
+										<a href="{{ route('owner.submitProperty') }}" class="text-success"><img src="{{ asset('/img/submit.svg') }}" width="20" alt="" class="mr-2" />Add Property</a>
+									</li>
+									@elseif(Auth::check() && Auth::user()->roles == '1')
+									<li>
+										<a href="{{ route('owner.submitProperty') }}" class="text-success"><img src="{{ asset('/img/submit.svg') }}" width="20" alt="" class="mr-2" />Add Property</a>
+									</li>
+									@else
+									@endif
+								</ul>
                                
                             </ul>   
 						</div>

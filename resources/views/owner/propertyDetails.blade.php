@@ -40,7 +40,7 @@
 								<div class="prt-detail-title-desc">
 									<span class="prt-types sale">For {{ $data->propertyFor }}</span>
 									<h3>{{ $data->title }} </h3>
-									<span><i class="lni-map-marker"></i>  {{ $data->state }} ,{{ $data->city }}</span>
+									<span><i class="lni-map-marker"></i>  {{ $data->country }} ,{{ $data->city }}</span>
 									<h3 class="prt-price-fix">&#8377; {{ $data->price }}</sub></h3>
 									<div class="list-fx-features">
 										<div class="listing-card-info-icon">
