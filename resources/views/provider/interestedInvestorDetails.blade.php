@@ -21,7 +21,7 @@
                                 <div class="col-md-12 col-sm-12 col-md-12">
                                     <div class="singles-dashboard-list">
                                         <div class="sd-list-right">
-                                            <h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Email :- {{ $data->email }}</a></h4>
+                                            <h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Email :- {{ $data->email }}</a></h4> 
                                             <div class="user_dashboard_listed">
                                                 Investor Name :- {{ $data->investor_name }}
                                             </div>
@@ -34,9 +34,9 @@
                                             <div class="user_dashboard_listed">
                                                 Interested In :- {{ $data->provider_name }}
                                             </div>
-                                            <!-- <div class="action">
-                                                    <a href=""><i class="ti-pencil"></i></a>
-                                            </div> -->
+                                            <div class="action">
+                                                <a class="chat" title="chat" href="/provider-chat/{{$data->id}}"><i class="far fa-comment"></i></a>
+											</div>
                                         </div>
                                     </div>
                                 </div>

@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Country;
 use App\Models\Property;
 use App\Models\Plan;
+use App\Models\Chat;
 use App\Models\Notification;
 use App\Models\PropertyNotification;
 use DB;
@@ -303,6 +304,43 @@ class ProviderController extends Controller
     {
         $data = Plan::where('providerId','=',Auth::id())->get();
         return view('provider.plan',compact('data'));
+    }
+
+// Funciton to View Chat Page
+
+    public function providerChat($id)
+    {
+        // $data = DB::table('users')
+        // ->join('notifications', 'users.id','=', 'notifications.investorId')
+        // ->join('plans', 'plans.id','=', 'notifications.planId')
+        // ->where('notifications.investorId','=',$id)
+        // ->select('plans.id as plan_id','users.*')
+        // ->get();
+        // dd($data);
+        $data = User::where('id','=',$id)->first();
+        return view('provider.investorChat',compact('data'));
+    }
+
+// Function to save message to Database 
+
+    public function sendChat(Request $request)
+    {
+        $chat = new Chat();
+        $chat->user_id = $request->user_id;
+        $chat->receiver_id = $request->receiver_id;
+        $chat->message = $request->message;
+        $chat->save();
+
+        $chats = Chat::latest()->first();
+        return response()->json(['success'=>'Data is successfully added','chat'=>$chats]);
+
+    }
+
+// Function to get message from database
+
+    public function getChat()
+    {
+        
     }
     
 

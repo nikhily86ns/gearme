@@ -109,6 +109,8 @@ Route::get('/contact-us',  [App\Http\Controllers\HomeController::class, 'contact
         Route::get('/investor-profile', [App\Http\Controllers\UserController::class, 'investorProfile'])->name('investor.profile');
         Route::post('/updateInvestorProfile', [App\Http\Controllers\UserController::class, 'updateInvestorProfile'])->name('investor.updateProfile');
 
+       
+
         Route::get('/view-all-property', [App\Http\Controllers\UserController::class, 'viewAllProperty'])->name('investor.viewAllProperty');
         Route::get('/view-requested-property', [App\Http\Controllers\UserController::class, 'viewRequestedProperty'])->name('investor.viewRequestedProperty');
         Route::get('/view-finance', [App\Http\Controllers\UserController::class, 'viewFinance'])->name('investor.viewFinance');
@@ -131,6 +133,10 @@ Route::get('/contact-us',  [App\Http\Controllers\HomeController::class, 'contact
         Route::get('/provider-profile', [App\Http\Controllers\ProviderController::class, 'providerProfile'])->name('provider.profile');
         Route::post('/updateProviderProfile', [App\Http\Controllers\ProviderController::class, 'updateProviderProfile'])->name('provider.updateProfile');
         Route::get('/provider-plan', [App\Http\Controllers\ProviderController::class, 'providerPlan'])->name('provider.plan');
+
+        Route::get('/provider-chat/{id}', [App\Http\Controllers\ProviderController::class, 'providerChat'])->name('provider.providerChat');
+        Route::post('/send-chat', [App\Http\Controllers\ProviderController::class, 'sendChat'])->name('provider.sendChat');
+        Route::get('/get-chat', [App\Http\Controllers\ProviderController::class, 'getChat'])->name('provider.getChat');
         
 
         Route::get('/change-provider-password', [App\Http\Controllers\ProviderController::class, 'changeProviderPassword'])->name('provider.changeProviderPassword');
