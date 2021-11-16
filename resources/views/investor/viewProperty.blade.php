@@ -34,7 +34,7 @@
 						<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
 					</div>
 					<div class="sd-list-right">
-						<h4 class="listing_dashboard_title"><a href="/propertyDetail/{{ $row->id }}" class="theme-cl">{{ $row->title }}</a></h4>
+						<h4 class="listing_dashboard_title"><a href="/property-detail/{{ $row->id }}" class="theme-cl">{{ $row->title }}</a></h4>
 						<div class="user_dashboard_listed">
 							Price: from &#8377; {{ $row->price }}
 						</div>
@@ -48,7 +48,7 @@
 							Status: <a href="javascript:void(0);" class="theme-cl">{{ $row->status }}</a> 
 						</div>
 						<div class="action">
-								<a href="/propertyDetail/{{ $row->id }}" ><i class="ti-eye"></i></a>
+								<a href="/property-detail/{{ $row->id }}" ><i class="ti-eye"></i></a>
 								<a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Make Featured" class="delete"><i class="ti-star"></i></a>
 							</a>
 						</div>

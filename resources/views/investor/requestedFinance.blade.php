@@ -22,14 +22,26 @@
 									<!-- Single Property -->
 									<div class="col-md-12 col-sm-12 col-md-12">
 										<div class="singles-dashboard-list">
-                                            <div class="sd-list-left">
-												@if($row->profileimage != '')
-												    <img class="img-fluid"  src="{{ asset('profile/'. $row->profileimage) }}"/>
-												@endif
-												<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
-											</div>
-											<div class="sd-list-right">
-												<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Plan Amount :- &#8377; {{ $row->amount }}</a></h4>
+												<div class="sd-list-left">
+													@if($row->profileimage != '')
+														<img class="img-fluid"  src="{{ asset('profile/'. $row->profileimage) }}"/>
+													@endif
+													<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
+												</div>
+												<div class="sd-list-right">
+													<h4 class="listing_dashboard_title"><a href="#" class="theme-cl">Plan Amount :- &#8377; {{ $row->amount }}</a></h4>
+														<div class="user_dashboard_listed">
+													Duration: <a href="javascript:void(0);" class="theme-cl"></a> <a href="javascript:void(0);" class="theme-cl"></a>{{ $row->duration }}
+												</div>
+												<div class="user_dashboard_listed">
+												Interest : <a href="javascript:void(0);" class="theme-cl"></a>{{ $row->interest_min }}% -  {{ $row->interest_max }}%
+												</div>
+												<div class="user_dashboard_listed">
+													Processing Fee : <a href="javascript:void(0);" class="theme-cl"></a>&#8377; {{ $row->processing_fee }} 
+												</div>
+												<div class="user_dashboard_listed">
+													Valid Till : <a href="javascript:void(0);" class="theme-cl"></a> {{ $row->validto }}
+												</div>
 												<div class="user_dashboard_listed">
 													Provider Name :- {{ $row->name }}
 												</div>

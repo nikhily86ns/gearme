@@ -50,10 +50,10 @@
                                                 $today_time = strtotime($today_date);
                                             @endphp	
                                             @if($valid_time >= $today_time)
-                                                <a href="/selectPlans/{{ $res->id }}"><i class="far fa-hand-pointer"></i></a>			
+                                                <a href="/select-plans/{{ $res->id }}"><i class="far fa-hand-pointer"></i></a>			
                                             @else	
                                             @endif
-                                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Make Featured" class="delete"><i class="ti-star"></i></a>
+                                                <!-- <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Make Featured" class="delete"><i class="ti-star"></i></a> -->
                                                 <a href="/generatepdf/{{ $res->id }}"><i class="ti-download"></i></a>
                                             </a>
                                         </div>

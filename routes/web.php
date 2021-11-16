@@ -96,23 +96,23 @@ Route::post('/search-Properties',  [App\Http\Controllers\HomeController::class, 
 
     Route::middleware(['isInvestor'])->group(function () {
 
-        Route::get('/dashboardInvestor', [App\Http\Controllers\HomeController::class, 'investorLogin'])->name('investor.dashboard');
-        Route::get('/propertyDetail/{id}', [App\Http\Controllers\UserController::class, 'propertyDetail'])->name('investor.propertyDetail');
+        Route::get('/dashboard-investor', [App\Http\Controllers\HomeController::class, 'investorLogin'])->name('investor.dashboard');
+        Route::get('/property-detail/{id}', [App\Http\Controllers\UserController::class, 'propertyDetail'])->name('investor.propertyDetail');
         Route::post('/search',  [App\Http\Controllers\UserController::class, 'search'])->name('investor.search');
         Route::post('/filter',  [App\Http\Controllers\UserController::class, 'filter'])->name('investor.filter');
-        Route::get('/selectPlans/{id}', [App\Http\Controllers\UserController::class, 'selectPlan'])->name('investor.selectPlan');
+        Route::get('/select-plans/{id}', [App\Http\Controllers\UserController::class, 'selectPlan'])->name('investor.selectPlan');
         Route::get('generatepdf/{id}', [App\Http\Controllers\UserController::class, 'generatePDF'])->name('investor.generatePDF');
         Route::post('/requestProvider', [App\Http\Controllers\UserController::class, 'requestProvider'])->name('investor.requestProvider');
         Route::post('/requestOwner', [App\Http\Controllers\UserController::class, 'requestOwner'])->name('investor.requestOwner');
-        Route::get('/investorProfile', [App\Http\Controllers\UserController::class, 'investorProfile'])->name('investor.profile');
+        Route::get('/investor-profile', [App\Http\Controllers\UserController::class, 'investorProfile'])->name('investor.profile');
         Route::post('/updateInvestorProfile', [App\Http\Controllers\UserController::class, 'updateInvestorProfile'])->name('investor.updateProfile');
 
-        Route::get('/viewAllProperty', [App\Http\Controllers\UserController::class, 'viewAllProperty'])->name('investor.viewAllProperty');
-        Route::get('/viewRequestedProperty', [App\Http\Controllers\UserController::class, 'viewRequestedProperty'])->name('investor.viewRequestedProperty');
-        Route::get('/viewFinance', [App\Http\Controllers\UserController::class, 'viewFinance'])->name('investor.viewFinance');
-        Route::get('/viewRequestedFinance', [App\Http\Controllers\UserController::class, 'viewRequestedFinance'])->name('investor.viewRequestedFinance');
+        Route::get('/view-all-property', [App\Http\Controllers\UserController::class, 'viewAllProperty'])->name('investor.viewAllProperty');
+        Route::get('/view-requested-property', [App\Http\Controllers\UserController::class, 'viewRequestedProperty'])->name('investor.viewRequestedProperty');
+        Route::get('/view-finance', [App\Http\Controllers\UserController::class, 'viewFinance'])->name('investor.viewFinance');
+        Route::get('/view-requested-finance', [App\Http\Controllers\UserController::class, 'viewRequestedFinance'])->name('investor.viewRequestedFinance');
 
-        Route::get('/changeInvestorPassword', [App\Http\Controllers\UserController::class, 'changeInvestorPassword'])->name('investor.changeInvestorPassword');
+        Route::get('/change-investor-password', [App\Http\Controllers\UserController::class, 'changeInvestorPassword'])->name('investor.changeInvestorPassword');
         Route::post('/resetInvestorPassword', [App\Http\Controllers\UserController::class, 'resetInvestorPassword'])->name('investor.resetInvestorPassword');
     });
 
