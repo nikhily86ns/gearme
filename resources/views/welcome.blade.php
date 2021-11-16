@@ -121,7 +121,7 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 									<div class="listing-short-detail-wrap">
 										<div class="listing-short-detail">
 											<span class="property-type">For {{ $row->propertyFor }}</span>
-											<h4 class="listing-name verified"><a href="/propertyDetail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
+											<h4 class="listing-name verified"><a href="/property-detail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
 										</div>
 										<div class="listing-short-detail-flex">
 											<h6 class="listing-card-info-price">&#8377; {{ $row->price }}</h6>
@@ -148,7 +148,7 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->country }}, {{ $row->city }} </div>
 									</div>
 									<div class="footer-flex">
-										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
+										<a href="/property-detail/{{ $row->id }}" class="prt-view">View</a>
 									</div>
 								</div>
 							</div>
@@ -183,13 +183,13 @@ $data = Property::where('status','=','Approved')->orderBy('created_at', 'desc')-
 										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto accusantium.</p>
 									</div>
 									<div class="btn-box clearfix mt-5">
-										<a href="index.html" class="download-btn play-store">
+										<a href="#" class="download-btn play-store">
 											<i class="fab fa-google-play"></i>
 											<span>Download on</span>
 											<h3>Google Play</h3>
 										</a>
 										
-										<a href="index.html" class="download-btn app-store">
+										<a href="#" class="download-btn app-store">
 											<i class="fab fa-apple"></i>
 											<span>Download on</span>
 											<h3>App Store</h3>

@@ -116,7 +116,7 @@
 									<div class="listing-short-detail-wrap">
 										<div class="listing-short-detail">
 											<span class="property-type">For {{ $row->propertyFor }}</span>
-											<h4 class="listing-name verified"><a href="/propertyDetail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
+											<h4 class="listing-name verified"><a href="/property-detail/{{ $row->id }}" class="prt-link-detail">{{ $row->title }}</a></h4>
 										</div>
 										<div class="listing-short-detail-flex">
 											<h6 class="listing-card-info-price">&#8377; {{ $row->price }}</h6>
@@ -143,7 +143,7 @@
 										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->country }}, {{ $row->city }} </div>
 									</div>
 									<div class="footer-flex">
-										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
+										<a href="/property-detail/{{ $row->id }}" class="prt-view">View</a>
 									</div>
 								</div>
 							</div>
