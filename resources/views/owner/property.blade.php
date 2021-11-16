@@ -31,7 +31,7 @@
 												<!-- <img src="assets/img/p-3.jpg" class="img-fluid" alt="" /> -->
 											</div>
 											<div class="sd-list-right">
-												<h4 class="listing_dashboard_title"><a href="/propertyDetail-Owner/{{ $row->id }}" class="theme-cl">{{ $row->title }}</a></h4>
+												<h4 class="listing_dashboard_title"><a href="/property-detail-owner/{{ $row->id }}" class="theme-cl">{{ $row->title }}</a></h4>
 												<div class="user_dashboard_listed">
 													Price: from &#8377; {{ $row->price }}
 												</div>
@@ -47,8 +47,8 @@
 												<div class="action">
 													<form method="POST" action="{{ route('owner.deleteProperty', $row->id) }}">
 														@csrf
-														<a href="/update-Property/{{ $row->id }}"><i class="ti-pencil"></i></a>
-														<a href="/propertyDetail-Owner/{{ $row->id }}" ><i class="ti-eye"></i></a>
+														<a href="/update-property/{{ $row->id }}"><i class="ti-pencil"></i></a>
+														<a href="/property-detail-owner/{{ $row->id }}" ><i class="ti-eye"></i></a>
 														<a href="" class="show_confirm"><i class="ti-close"></i></a>
 													</form>
 													<!-- <a href="/deleteProperty/{{$row->id}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Property" class="delete show_confirm"><i class="ti-close"></i> -->

@@ -256,15 +256,15 @@
 										
 										<div class="d-navigation">
 											<ul>
-												<li class="{{ Request::is('dashboard-Owner') ? 'active' : '' }}"><a href="{{ route('owner.dashboard') }}"><i class="ti-dashboard"></i>Dashboard</a></li>
-												<li class="{{ Request::is('owner-Profile') ? 'active' : '' }}"><a href="{{ route('owner.profile') }}"><i class="ti-user"></i>My Profile</a></li>
+												<li class="{{ Request::is('dashboard-owner') ? 'active' : '' }}"><a href="{{ route('owner.dashboard') }}"><i class="ti-dashboard"></i>Dashboard</a></li>
+												<li class="{{ Request::is('owner-profile') ? 'active' : '' }}"><a href="{{ route('owner.profile') }}"><i class="ti-user"></i>My Profile</a></li>
 												<!-- s<li><a href="bookmark-list.html"><i class="ti-bookmark"></i>Bookmarked Listings</a></li> -->
-												<li class="{{ Request::is('view-OwnerProperty*') ? 'active' : '' }}"><a href="/view-OwnerProperty/{{ Auth::user()->id }}"><i class="ti-layers"></i>My Properties</a></li>
+												<li class="{{ Request::is('view-owner-property*') ? 'active' : '' }}"><a href="/view-owner-property/{{ Auth::user()->id }}"><i class="ti-layers"></i>My Properties</a></li>
 												<!-- <li><a href="submit-property-dashboard.html"><i class="ti-pencil-alt"></i>Submit New Property</a></li> -->
-												<li class="{{ Request::is('submit-Property') ? 'active' : '' }}"><a href="{{ route('owner.submitProperty') }}"><i class="ti-pencil-alt"></i>Submit New Property</a></li>
+												<li class="{{ Request::is('submit-property') ? 'active' : '' }}"><a href="{{ route('owner.submitProperty') }}"><i class="ti-pencil-alt"></i>Submit New Property</a></li>
 												<!-- <li class="{{ Request::is('propertyInterestedInvetors') ? 'active' : '' }}"><a href="{{ route('owner.propertyInterestedInvetors') }}"><i class="ti-pencil-alt"></i>Interested Investors</a></li> -->
 												
-												<li class="{{ Request::is('change-OwnerPassword') ? 'active' : '' }}"><a href="{{ route('owner.changeOwnerPassword') }}"><i class="ti-unlock"></i>Change Password</a></li>
+												<li class="{{ Request::is('change-owner-password') ? 'active' : '' }}"><a href="{{ route('owner.changeOwnerPassword') }}"><i class="ti-unlock"></i>Change Password</a></li>
 												<!-- <li><a href="#"><i class="ti-power-off"></i>Log Out</a></li> -->
 											</ul>
 										</div>
