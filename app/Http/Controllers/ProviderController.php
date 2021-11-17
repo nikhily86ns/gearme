@@ -10,6 +10,7 @@ use App\Models\Property;
 use App\Models\Plan;
 use App\Models\Chat;
 use App\Models\Notification;
+use App\Models\ChatNotification;
 use App\Models\PropertyNotification;
 use DB;
 use PDF;
@@ -333,6 +334,13 @@ class ProviderController extends Controller
         $chat->save();
 
         $chats = Chat::latest()->first();
+
+        $notification = new ChatNotification();
+        $notification->investor_id = $request->receiver_id;
+        $notification->provider_id = $request->user_id;
+        $notification->chat_id = $chats->id;
+        $notification->save();
+
         $user = Auth::user();
         
         return response()->json(['success'=>'Data is successfully added','chat'=>$chats,'user'=> $user]);

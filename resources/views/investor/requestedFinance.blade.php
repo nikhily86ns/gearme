@@ -5,6 +5,31 @@
 @endsection
 
 @section('extra-css')
+<style>
+.chat {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  /* padding: 15px 26px; */
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.chat:hover {
+  background: red;
+}
+
+.chat .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
+</style>
 @endsection
 
 @section('content')
@@ -46,8 +71,17 @@
 													Provider Name :- {{ $row->name }}
 												</div>
 												<div class="action">
-													<a class="chat" title="chat" href="/investor-chat/{{$row->id}}"><i class="far fa-comment"></i></a>
+													@if(count($unseen) > 0)
+														<a class="chat" title="chat" href="/investor-chat/{{$row->id}}"><i class="far fa-comment"></i>
+															<span class="badge">{{ $row->id == $unseen[0]->user_id ? count($unseen) : '' }}</span>
+														</a>
+													@else
+														<a class="chat" title="chat" href="/investor-chat/{{$row->id}}"><i class="far fa-comment"></i>
+															Not Accepted
+														</a>
+													@endif
 												</div>
+											
 											</div>
 										</div>
 									</div>
@@ -64,4 +98,25 @@
 @endsection
 
 @section('extra-script')
+<!-- <script>
+	$( document ).ready(function() {
+		setInterval(function()
+    	{
+        var provider_id = $('#provider_id').val();
+        $.ajax({
+            url: '{{route('investor.getCounts')}}',
+            type: 'POST',
+            data: {
+            "_token": "{{ csrf_token() }}",
+            "provider_id": provider_id,
+           },
+            success:function(data)
+            {
+                $('.badge').text(data.count);
+                console.log(data);
+            }
+        });
+    	}, 3000);
+	});
+</script> -->
 @endsection

@@ -68,7 +68,8 @@
 
 								<li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a href="{{ route('contactus') }}">Contact Us<span class="submenu-indicator"></span></a>
 								</li>
-								<!-- <li class="active"><a href="/dashboard">Home<span class="submenu-indicator"></span></a>
+
+								<!-- <li class="{{ Request::is('contact-us') ? 'active' : '' }}"><a href="/view-investor-chats">Chats<span class="submenu-indicator"></span></a>
 								</li> -->
 								
 								<!-- <li><a href="JavaScript:Void(0);">Listings<span class="submenu-indicator"></span></a>

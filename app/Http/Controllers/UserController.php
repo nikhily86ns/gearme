@@ -10,6 +10,7 @@ use App\Models\Property;
 use App\Models\Plan;
 use App\Models\Notification;
 use App\Models\Chat;
+use App\Models\ChatNotification;
 use App\Models\PropertyNotification;
 use DB;
 use PDF;
@@ -241,9 +242,6 @@ class UserController extends Controller
     }
 
 
-
-
-
 // Function to view Property Detail on Investor Dashboard 
 
     public function propertyDetail($id)
@@ -360,12 +358,39 @@ class UserController extends Controller
             ->where('notifications.investorId','=', Auth::user()->id)
             ->select('plans.*','users.*', 'users.name as provider_name','notifications.id as notify_id')
             ->get();
-
-        return view('investor.requestedFinance', compact('data'));
+        $unseen = DB::table('chat_notifications')
+            ->join('chats', function ($join) {
+                $join->on('chats.receiver_id', '=','chat_notifications.investor_id' )
+                ->where('chats.is_seen', '=', NULL);
+            })
+            ->join('users', 'users.id','=', 'chats.receiver_id')
+            ->where('chat_notifications.investor_id','=', Auth::user()->id)
+            ->select('chats.*')->distinct()
+            ->get();
+            //  dd($unseen[0]->user_id);
+        return view('investor.requestedFinance', compact('data','unseen'));
     }
 
+// Function to get Counts of unseen message
 
+    // public function getCounts(Request $request)
+    // {
+    //     $count = DB::table('chat_notifications')
+    //         ->join('chats', function ($join) {
+    //             $join->on('chats.receiver_id', '=','chat_notifications.investor_id' )
+    //             ->where('chats.is_seen', '=', NULL);
+    //         })
+    //         ->join('users', function ($join) {
+    //             $join->on('users.id', '=','chats.receiver_id' )
+    //             ->where('users.id', '=', $request->provider_id);
+    //         })
+    //         // ->join('users', 'users.id','=', 'chats.receiver_id')
+    //         ->where('chat_notifications.investor_id','=', Auth::user()->id)
+    //         ->select('chats.*')->distinct()
+    //         ->get();
 
+    //     return response()->json(['count'=>$count]);
+    // }
 
 // Function to Download PDF 
 
@@ -447,6 +472,15 @@ class UserController extends Controller
 
     public function investorChat($id)
     {
+        // $data = DB::table('chat_notifications')
+        //     ->join('users', 'users.id','=', 'chat_notifications.investor_id')
+        //     ->join('chats', 'chats.id','=', 'chat_notifications.chat_id')
+        //     ->where('chat_notifications.investor_id','=', Auth::user()->id)
+        //     ->select('chats.*','users.*', 'users.name as provider_name','chat_notifications.*')
+        //     ->get();
+
+        Chat::where('user_id',$id)->update(['is_seen' => 1]);
+
         $data = User::where('id','=',$id)->first();
         return view('investor.providerChat',compact('data'));
     }
