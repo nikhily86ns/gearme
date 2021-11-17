@@ -15,7 +15,6 @@ use DB;
 use PDF;
 use Auth;
 use Redirect;
-use JavaScript;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

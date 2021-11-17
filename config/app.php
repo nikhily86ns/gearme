@@ -163,7 +163,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
 
         /*
          * Package Service Providers...
