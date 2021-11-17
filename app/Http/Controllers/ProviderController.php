@@ -15,9 +15,11 @@ use DB;
 use PDF;
 use Auth;
 use Redirect;
+use JavaScript;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 
 class ProviderController extends Controller
@@ -332,15 +334,79 @@ class ProviderController extends Controller
         $chat->save();
 
         $chats = Chat::latest()->first();
-        return response()->json(['success'=>'Data is successfully added','chat'=>$chats]);
+        $user = Auth::user();
+        
+        return response()->json(['success'=>'Data is successfully added','chat'=>$chats,'user'=> $user]);
 
     }
 
 // Function to get message from database
 
-    public function getChat()
+    public function getChat(Request $request)
     {
-        
+        $user_id = $request->user_id;
+        $receiver_id = $request->receiver_id;    
+
+            $chats = Chat::where(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id','=', $user_id)
+                            ->where('receiver_id','=', $receiver_id);
+                    })->orWhere(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id', $receiver_id)
+                            ->where('receiver_id', $user_id);
+                    })->get();
+            
+             $msg = '';
+
+             foreach($chats as $chat) {
+                 $profile =  asset('profile/'. Auth::user()->profileimage);
+                 $profiler = asset('profile/'. User::find($chat->user_id)->profileimage);
+                if($chat->user_id == Auth::user()->id) {
+                    $name = Auth::user()->name;
+                    $time = explode(" ",User::find($chat->user_id)->created_at);
+                    $msg = $msg.'<div class="msg right-msg" id="mymsg">
+                    <div
+                    class="msg-img" id="sendimg"
+                    style="background-image: url('.$profile.');"
+                    ></div>
+
+                    <div class="msg-bubble" id="msgs">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time[1].'</div>
+                        </div>
+
+                        <div class="msg-text sent" id="sent">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                } 
+                else {
+                    $name = User::find($chat->user_id)->name;
+                    $time = User::find($chat->user_id)->created_at->format('H:i:s');
+                    $msg = $msg.'<div class="msg left-msg">
+                    <div
+                    class="msg-img" id="getimg
+                    "
+                    style="background-image: url('.$profiler.');"
+                    ></div>
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time.'</div>
+                        </div>
+
+                        <div class="msg-text">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                }
+             }
+
+             return response()->json(['success'=>'Data is successfully added','msg'=>$msg]);
+
     }
     
 

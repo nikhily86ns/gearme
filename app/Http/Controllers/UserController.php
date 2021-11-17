@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\Property;
 use App\Models\Plan;
 use App\Models\Notification;
+use App\Models\Chat;
 use App\Models\PropertyNotification;
 use DB;
 use PDF;
@@ -439,6 +440,101 @@ class UserController extends Controller
 
             return redirect()->route('investor.viewAllProperty');
         }
+    }
+
+
+// Funciton to View Chat Page
+
+    public function investorChat($id)
+    {
+        $data = User::where('id','=',$id)->first();
+        return view('investor.providerChat',compact('data'));
+    }
+
+// Function to save message to Database 
+
+    public function sendChats(Request $request)
+    {
+        $chat = new Chat();
+        $chat->user_id = $request->user_id;
+        $chat->receiver_id = $request->receiver_id;
+        $chat->message = $request->message;
+        $chat->save();
+
+        $chats = Chat::latest()->first();
+        $user = Auth::user();
+        
+        return response()->json(['success'=>'Data is successfully added','chat'=>$chats,'user'=> $user]);
+
+    }
+
+// Function to get message from database
+
+    public function getChats(Request $request)
+    {
+        $user_id = $request->user_id;
+        $receiver_id = $request->receiver_id;    
+
+            $chats = Chat::where(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id','=', $user_id)
+                            ->where('receiver_id','=', $receiver_id);
+                    })->orWhere(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id', $receiver_id)
+                            ->where('receiver_id', $user_id);
+                    })->get();
+            
+             $msg = '';
+
+             foreach($chats as $chat) {
+                 $profile =  asset('profile/'. Auth::user()->profileimage);
+                 $profiler = asset('profile/'. User::find($chat->user_id)->profileimage);
+                if($chat->user_id == Auth::user()->id) {
+                    $name = Auth::user()->name;
+                    $time = explode(" ",User::find($chat->user_id)->created_at);
+                    $msg = $msg.'<div class="msg right-msg" id="mymsg">
+                    <div
+                    class="msg-img" id="sendimg"
+                    style="background-image: url('.$profile.');"
+                    ></div>
+
+                    <div class="msg-bubble" id="msgs">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time[1].'</div>
+                        </div>
+
+                        <div class="msg-text sent" id="sent">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                } 
+                else {
+                    $name = User::find($chat->user_id)->name;
+                    $time = User::find($chat->user_id)->created_at->format('H:i:s');
+                    $msg = $msg.'<div class="msg left-msg">
+                    <div
+                    class="msg-img" id="getimg
+                    "
+                    style="background-image: url('.$profiler.');"
+                    ></div>
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time.'</div>
+                        </div>
+
+                        <div class="msg-text">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                }
+             }
+
+             return response()->json(['success'=>'Data is successfully added','msg'=>$msg]);
+
     }
 
 

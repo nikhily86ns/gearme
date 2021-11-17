@@ -46,7 +46,7 @@
 													Provider Name :- {{ $row->name }}
 												</div>
 												<div class="action">
-														<!-- <a href="/investorDetail/{{ $row->notify_id }}"><i class="ti-pencil"></i></a> -->
+													<a class="chat" title="chat" href="/investor-chat/{{$row->id}}"><i class="far fa-comment"></i></a>
 												</div>
 											</div>
 										</div>

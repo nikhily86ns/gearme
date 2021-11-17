@@ -1,4 +1,4 @@
-@extends('provider.master')
+@extends('investor.master')
 
 @section('title')
 	Chat
@@ -171,7 +171,7 @@
 
         <div class="dashboard-wraper">
             <div class="form-submit">	
-                <h4>Chat With Investor</h4>
+                <h4>Chat With Provider</h4>
             </div>
             <div class="d-flex justify-content-center">
               
@@ -214,7 +214,7 @@ $( document ).ready(function() {
         var user_id = $('#user_id').val();
         var receiver_id = $('#receiver_id').val();
         $.ajax({
-            url: '{{route('provider.getChat')}}',
+            url: '{{route('investor.getChats')}}',
             type: 'POST',
             data: {
             "_token": "{{ csrf_token() }}",
@@ -237,7 +237,7 @@ $( document ).ready(function() {
         var receiver_id = $('#receiver_id').val();
 
         $.ajax({
-         url: '{{route('provider.sendChat')}}',
+         url: '{{route('investor.sendChats')}}',
          type: 'POST',
          data: {
             "_token": "{{ csrf_token() }}",
