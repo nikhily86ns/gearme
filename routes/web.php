@@ -112,6 +112,11 @@ Route::get('/contact-us',  [App\Http\Controllers\HomeController::class, 'contact
         Route::get('/investor-chat/{id}', [App\Http\Controllers\UserController::class, 'investorChat'])->name('investor.investorChat');
         Route::post('/send-chats', [App\Http\Controllers\UserController::class, 'sendChats'])->name('investor.sendChats');
         Route::post('/get-chats', [App\Http\Controllers\UserController::class, 'getChats'])->name('investor.getChats');
+
+        Route::get('/owner-chat/{id}', [App\Http\Controllers\UserController::class, 'ownerChat'])->name('investor.ownerChat');
+        Route::post('/send-owner-chats', [App\Http\Controllers\UserController::class, 'sendOwnerChats'])->name('investor.sendOwnerChats');
+        Route::post('/get-owner-chats', [App\Http\Controllers\UserController::class, 'getOwnerChats'])->name('investor.getOwnerChats');
+        Route::get('/investor-inbox', [App\Http\Controllers\UserController::class, 'inbox'])->name('investor.inbox');
         // Route::post('/get-counts', [App\Http\Controllers\UserController::class, 'getCounts'])->name('investor.getCounts');
 
         Route::get('/view-all-property', [App\Http\Controllers\UserController::class, 'viewAllProperty'])->name('investor.viewAllProperty');

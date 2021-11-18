@@ -175,7 +175,7 @@
             </div>
             <div class="d-flex justify-content-center">
               
-                    <section class="msger">
+                    <section class="msger" id="maincontent">
                         <header class="msger-header">
                             <div class="msger-header-title">
                             <i class="fas fa-comment-alt"></i> {{ $data->name }}
@@ -207,12 +207,23 @@
 @section('extra-script')
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
+   $( document ).ready(function() {
+    
+    });
+</script>
+<script>
 $( document ).ready(function() {
+
+    setTimeout(function(){
+        var chatHistory = document.getElementById("mainchat");
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }, 2000);
 
     setInterval(function()
     {
         var user_id = $('#user_id').val();
         var receiver_id = $('#receiver_id').val();
+       
         $.ajax({
             url: '{{route('provider.getChat')}}',
             type: 'POST',
@@ -223,12 +234,11 @@ $( document ).ready(function() {
            },
             success:function(data)
             {
-                $('#mainchat').html(data.msg);
-                //console.log the response
-                console.log(data);
+                $('#mainchat').html(data.msg); 
+                // console.log(data);
             }
         });
-    }, 2000);
+    }, 1000);
 
     $('#ajaxSubmit').click(function(e){
         e.preventDefault();
@@ -247,6 +257,8 @@ $( document ).ready(function() {
          },
          success: function(result){
                      $('#message').val('');
+                     var chatHistory = document.getElementById("mainchat");
+                    chatHistory.scrollTop = chatHistory.scrollHeight;
          }        
                     
         });

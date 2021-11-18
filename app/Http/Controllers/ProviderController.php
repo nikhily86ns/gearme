@@ -208,7 +208,16 @@ class ProviderController extends Controller
             ->where('notifications.id','=',$id)
             ->select('a.name as provider_name','users.name as investor_name','users.*')
             ->first();
-        return view('provider.interestedInvestorDetails', compact('data'));
+        $unseen = DB::table('chat_notifications')
+            ->join('chats', function ($join) {
+                $join->on('chats.user_id', '=','chat_notifications.investor_id' )
+                ->where('chats.is_seen', '=', NULL);
+            })
+            ->join('users', 'users.id','=', 'chats.user_id')
+            ->where('chat_notifications.provider_id','=', Auth::user()->id)
+            ->select('chats.*')->distinct()
+            ->get();
+        return view('provider.interestedInvestorDetails', compact('data','unseen'));
     }
 
 // Function To View Provider Profile
@@ -319,6 +328,8 @@ class ProviderController extends Controller
         // ->select('plans.id as plan_id','users.*')
         // ->get();
         // dd($data);
+        Chat::where('user_id',$id)->update(['is_seen' => 1]);
+        
         $data = User::where('id','=',$id)->first();
         return view('provider.investorChat',compact('data'));
     }

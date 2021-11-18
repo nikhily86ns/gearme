@@ -5,6 +5,31 @@
 @endsection
 
 @section('extra-css')
+<style>
+    .chat {
+    background-color: #555;
+    color: white;
+    text-decoration: none;
+    /* padding: 15px 26px; */
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+    }
+
+    .chat:hover {
+    background: red;
+    }
+
+    .chat .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    }
+</style>
 @endsection
 
 @section('content')
@@ -35,8 +60,18 @@
                                                 Interested In :- {{ $data->provider_name }}
                                             </div>
                                             <div class="action">
+                                                @if(count($unseen) > 0)
+                                                    <a class="chat" title="chat" href="/provider-chat/{{$data->id}}"><i class="far fa-comment"></i>
+                                                        <span class="badge">{{ $data->id == $unseen[0]->user_id ? count($unseen) : '' }}</span>
+                                                    </a>
+                                                @else
+                                                    <a class="chat" title="chat" href="/provider-chat/{{$data->id}}"><i class="far fa-comment"></i>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <!-- <div class="action">
                                                 <a class="chat" title="chat" href="/provider-chat/{{$data->id}}"><i class="far fa-comment"></i></a>
-											</div>
+											</div> -->
                                         </div>
                                     </div>
                                 </div>

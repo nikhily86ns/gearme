@@ -242,6 +242,8 @@
 											<ul>
 												<li class="{{ Request::is('dashboard-investor') ? 'active' : '' }}"><a href="{{ route('investor.dashboard') }}"><i class="ti-dashboard"></i>Dashboard</a></li>
 												<li class="{{ Request::is('investor-profile') ? 'active' : '' }}"><a href="{{ route('investor.profile') }}"><i class="ti-user"></i>My Profile</a></li>
+												<li class="{{ Request::is('investor-inbox') ? 'active' : '' }}"><a href="{{ route('investor.inbox') }}"><i class="ti-comment-alt"></i>Proposals</a></li>
+
 												<li class="{{ Request::is('view-all-property') ? 'active' : '' }}"><a href="/view-all-property"><i class="ti-layers"></i>All Properties</a></li>
 												<li class="{{ Request::is('view-requested-property') ? 'active' : '' }}"><a href="/view-requested-property"><i class="ti-layers"></i>Requested Properties</a></li>
 												<li class="{{ Request::is('view-fsinance') ? 'active' : '' }}"><a href="/view-finance"><i class="ti-layers"></i>All Finance Options</a></li>
@@ -311,7 +313,7 @@
 							<div class="col-lg-2 col-md-2">
 								<div class="footer-widget">
 									<h4 class="widget-title">Navigations</h4>
-									<<ul class="footer-menu">
+									<ul class="footer-menu">
 										<li><a href="{{ route('aboutus') }}">About Us</a></li>
 										<li><a href="#">FAQs Page</a></li>
 										<li><a href="#">Checkout</a></li>
