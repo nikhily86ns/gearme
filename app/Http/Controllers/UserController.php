@@ -10,6 +10,7 @@ use App\Models\Property;
 use App\Models\Plan;
 use App\Models\Notification;
 use App\Models\Chat;
+use App\Models\Proposal;
 use App\Models\ChatNotification;
 use App\Models\PropertyNotification;
 use DB;
@@ -569,6 +570,12 @@ class UserController extends Controller
 
              return response()->json(['success'=>'Data is successfully added','msg'=>$msg]);
 
+    }
+
+    public function inbox()
+    {
+        $data = Proposal::where('investor_id','=',Auth::user()->id)->get();
+        return view('investor.inbox',compact('data'));
     }
 
 

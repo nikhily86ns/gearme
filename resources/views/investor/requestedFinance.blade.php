@@ -98,25 +98,5 @@
 @endsection
 
 @section('extra-script')
-<!-- <script>
-	$( document ).ready(function() {
-		setInterval(function()
-    	{
-        var provider_id = $('#provider_id').val();
-        $.ajax({
-            url: '{{route('investor.getCounts')}}',
-            type: 'POST',
-            data: {
-            "_token": "{{ csrf_token() }}",
-            "provider_id": provider_id,
-           },
-            success:function(data)
-            {
-                $('.badge').text(data.count);
-                console.log(data);
-            }
-        });
-    	}, 3000);
-	});
-</script> -->
+
 @endsection
