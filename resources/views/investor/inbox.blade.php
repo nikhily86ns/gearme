@@ -265,22 +265,20 @@
 						
 						<div class="table-responsive">
 							<table class="table">
-								<tbody><tr>
-									<td class="name"><a href="#">Larry Gardner</a></td>
-									<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-									<td class="time">08:30 PM</td>
-								</tr>
-								<tr>
-									<td class="name"><a href="#">Larry Gardner</a></td>
-									<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-									<td class="time">08:30 PM</td>
-								</tr>
-								<tr>
-									<td class="name"><a href="#">Larry Gardner</a></td>
-									<td class="subject"><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed </a></td>
-									<td class="time">08:30 PM</td>  
-								</tr>
-							</tbody></table>
+								<tbody>
+                                    @if(count($data) > 0)
+                                    @foreach($data as $row)
+                                    <tr>
+                                        <td class="name"><a href="#">{{ $row->name }}</a></td>
+                                        <td class="subject"><a href="#">{{ $row->message }} </a></td>
+                                        <td class="time">{{ $row->created_at }}</td>
+                                    </tr>
+                                    @endforeach
+                                    @else
+                                    No Proposala yet...!!!!
+                                    @endif
+							    </tbody>
+                            </table>
 						</div>
 
 						<ul class="pagination">

@@ -574,7 +574,13 @@ class UserController extends Controller
 
     public function inbox()
     {
-        $data = Proposal::where('investor_id','=',Auth::user()->id)->get();
+        // $data = Proposal::where('investor_id','=',Auth::user()->id)->get();
+        $data = DB::table('proposals')
+                ->join('users', 'proposals.user_id','=','users.id')
+                ->where('proposals.receiver_id','=',Auth::user()->id)
+                ->select('proposals.*','users.name')
+                ->get();
+                // dd($data);
         return view('investor.inbox',compact('data'));
     }
 

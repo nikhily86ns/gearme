@@ -16,11 +16,11 @@ class CreateProposalsTable extends Migration
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
             $table->string('is_seen');
-            $table->integer('provider_id');
-            $table->integer('investor_id');
+            $table->integer('user_id');
+            $table->integer('receiver_id');
             $table->string('file')->nullable();
             $table->string('file_type')->nullable();
-            $table->string('message'); 
+            $table->string('message');
             $table->timestamps();
         });
     }
