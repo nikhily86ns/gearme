@@ -39,7 +39,7 @@
 							
                             <!-- Bookmark Property -->
                             <div class="form-submit">	
-                                <h4>Interested Investor</h4>
+                                <h4>Investor Detail</h4>
                             </div>
                             
                             <div class="row">

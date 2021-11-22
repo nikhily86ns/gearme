@@ -145,6 +145,10 @@ Route::get('/contact-us',  [App\Http\Controllers\HomeController::class, 'contact
         Route::get('/provider-chat/{id}', [App\Http\Controllers\ProviderController::class, 'providerChat'])->name('provider.providerChat');
         Route::post('/send-chat', [App\Http\Controllers\ProviderController::class, 'sendChat'])->name('provider.sendChat');
         Route::post('/get-chat', [App\Http\Controllers\ProviderController::class, 'getChat'])->name('provider.getChat');
+
+        Route::get('/provider-proposal/{id}', [App\Http\Controllers\ProviderController::class, 'proposalChat'])->name('provider.proposalChat');
+        Route::post('/send-proposal', [App\Http\Controllers\ProviderController::class, 'sendProposal'])->name('provider.sendProposal');
+        Route::post('/get-proposal', [App\Http\Controllers\ProviderController::class, 'getProposal'])->name('provider.getProposal');
         
 
         Route::get('/change-provider-password', [App\Http\Controllers\ProviderController::class, 'changeProviderPassword'])->name('provider.changeProviderPassword');

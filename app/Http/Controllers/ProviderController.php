@@ -9,8 +9,10 @@ use App\Models\Country;
 use App\Models\Property;
 use App\Models\Plan;
 use App\Models\Chat;
+use App\Models\Proposal;
 use App\Models\Notification;
 use App\Models\ChatNotification;
+use App\Models\ProposalNotification;
 use App\Models\PropertyNotification;
 use DB;
 use PDF;
@@ -425,6 +427,107 @@ class ProviderController extends Controller
 
              return response()->json(['success'=>'Data is successfully added','msg'=>$msg]);
 
+    }
+
+// Function to View Proposal Chat Page
+
+    public function proposalChat($id)
+    {
+        Chat::where('user_id',$id)->update(['is_seen' => 1]);
+        
+        $data = User::where('id','=',$id)->first();
+        return view('provider.proposalChat',compact('data'));
+    }
+
+// Function to Save Proposal to Database And Send it to User
+
+    public function sendProposal(Request $request)
+    {
+        $proposal = new Proposal();
+        $proposal->user_id = $request->user_id;
+        $proposal->receiver_id = $request->receiver_id;
+        $proposal->message = $request->message;
+        $proposal->save();
+
+        $proposals = Proposal::latest()->first();
+
+        $notification = new ProposalNotification();
+        $notification->investor_id = $request->receiver_id;
+        $notification->provider_id = $request->user_id;
+        $notification->proposal_id = $proposals->id;
+        $notification->save();
+
+        $user = Auth::user();
+        
+        return response()->json(['success'=>'Data is successfully added','proposal'=>$proposals,'user'=> $user]);
+    }
+
+// Function to Get Proposal Respopnse
+
+    public function getProposal(Request $request)
+    {
+        $user_id = $request->user_id;
+        $receiver_id = $request->receiver_id;    
+
+            $chats = Proposal::where(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id','=', $user_id)
+                            ->where('receiver_id','=', $receiver_id);
+                    })->orWhere(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id', $receiver_id)
+                            ->where('receiver_id', $user_id);
+                    })->get();
+            
+             $msg = '';
+
+             foreach($chats as $chat) {
+                 $profile =  asset('profile/'. Auth::user()->profileimage);
+                 $profiler = asset('profile/'. User::find($chat->user_id)->profileimage);
+                if($chat->user_id == Auth::user()->id) {
+                    $name = Auth::user()->name;
+                    $time = explode(" ",User::find($chat->user_id)->created_at);
+                    $msg = $msg.'<div class="msg right-msg" id="mymsg">
+                    <div
+                    class="msg-img" id="sendimg"
+                    style="background-image: url('.$profile.');"
+                    ></div>
+
+                    <div class="msg-bubble" id="msgs">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time[1].'</div>
+                        </div>
+
+                        <div class="msg-text sent" id="sent">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                } 
+                else {
+                    $name = User::find($chat->user_id)->name;
+                    $time = User::find($chat->user_id)->created_at->format('H:i:s');
+                    $msg = $msg.'<div class="msg left-msg">
+                    <div
+                    class="msg-img" id="getimg
+                    "
+                    style="background-image: url('.$profiler.');"
+                    ></div>
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time.'</div>
+                        </div>
+
+                        <div class="msg-text">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                }
+             }
+
+             return response()->json(['success'=>'Data is successfully added','msg'=>$msg]);
     }
     
 
