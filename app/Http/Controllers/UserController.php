@@ -12,6 +12,7 @@ use App\Models\Notification;
 use App\Models\Chat;
 use App\Models\Proposal;
 use App\Models\ChatNotification;
+use App\Models\ProposalNotification;
 use App\Models\PropertyNotification;
 use DB;
 use PDF;
@@ -572,16 +573,162 @@ class UserController extends Controller
 
     }
 
+// Function to View Proposals
+
     public function inbox()
     {
         // $data = Proposal::where('investor_id','=',Auth::user()->id)->get();
+        
+        // $user = User::where('roles','2')->get();
+        // dd($user); 
+        // $data = [];
+        // foreach($user as $key => $value)
+        // {
+
+        //     $data[] = Proposal::where('user_id',$value->id)->get();
+            // if(count($data) > 0)
+            // {
+            //     $user[$key] = $value;
+            //     $user[$key]->data = $data;
+            // }
+        // }
+        // print_r($data);
+        // $data = DB::table('proposals')
+        //         ->join('users', 'users.id','=', 'proposals.user_id')
+        //         ->where('proposals.receiver_id','=',Auth::user()->id)
+        //         ->select('proposals.*', 'users.name','users.id as user_id')->get();
+        // dd($data);
+        // $data = DB::table('proposals')
+        //         ->join('users', 'proposals.user_id','=','users.id')
+        //         ->where('proposals.receiver_id','=',Auth::user()->id)
+        //         ->select('proposals.*','users.name','users.id as user_id')
+        //         ->distinct() 
+        //         ->get();
+        //          dd($data);
+        // die;
+        // Proposal::where('receiver_id',Auth::user()->id)
+        // $data = DB::table('proposals')
+        //             ->join('users', 'proposals.user_id','=','users.id')
+        //             ->where('receiver_id',Auth::user()->id)
+        //             ->orderBy('proposals.created_at', 'DESC')
+        //             ->get()
+        //             ->unique('proposals.user_id')
+        //             ->values()
+        //             ->all();
+
         $data = DB::table('proposals')
-                ->join('users', 'proposals.user_id','=','users.id')
-                ->where('proposals.receiver_id','=',Auth::user()->id)
-                ->select('proposals.*','users.name')
-                ->get();
-                // dd($data);
+                   ->join('users', 'proposals.user_id','=','users.id')
+                    ->whereIn('proposals.id', function($query) {
+                    $query->selectRaw('max(`id`)')
+                    ->from('proposals')
+                    ->where('proposals.receiver_id', '=', Auth::user()->id)
+                    ->groupBy('proposals.user_id');
+                    })->select('users.id as user_id', 'proposals.message','users.name' ,'proposals.created_at')
+                    ->orderBy('proposals.created_at', 'desc')
+                    ->get();
+              //   dd($data);
         return view('investor.inbox',compact('data'));
+    }
+
+// Function To Open Proposal Chat
+
+    public function proposalChat($id)
+    {
+        Proposal::where('user_id',$id)->update(['is_seen' => 1]);
+
+        $data = User::where('id','=',$id)->first();
+        return view('investor.proposalChat',compact('data'));
+    }
+
+// Function to Send Reply To Proposals
+
+    public function sendProposals(Request $request)
+    {
+        $proposal = new Proposal();
+        $proposal->user_id = $request->user_id;
+        $proposal->receiver_id = $request->receiver_id;
+        $proposal->message = $request->message;
+        $proposal->save();
+
+        $proposals = Proposal::latest()->first();
+
+        $notification = new ProposalNotification();
+        $notification->investor_id = $request->receiver_id;
+        $notification->provider_id = $request->user_id;
+        $notification->proposal_id = $proposals->id;
+        $notification->save();
+
+        $user = Auth::user();
+        
+        return response()->json(['success'=>'Data is successfully added','proposal'=>$proposals,'user'=> $user]);
+    }
+
+// Function to Get Proposals in Chat
+
+    public function getProposals(Request $request)
+    {
+        $user_id = $request->user_id;
+        $receiver_id = $request->receiver_id;    
+
+            $chats = Proposal::where(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id','=', $user_id)
+                            ->where('receiver_id','=', $receiver_id);
+                    })->orWhere(function ($query) use($user_id, $receiver_id) {
+                        $query->where('user_id', $receiver_id)
+                            ->where('receiver_id', $user_id);
+                    })->get();
+            
+             $msg = '';
+
+             foreach($chats as $chat) {
+                 $profile =  asset('profile/'. Auth::user()->profileimage);
+                 $profiler = asset('profile/'. User::find($chat->user_id)->profileimage);
+                if($chat->user_id == Auth::user()->id) {
+                    $name = Auth::user()->name;
+                    $time = explode(" ",User::find($chat->user_id)->created_at);
+                    $msg = $msg.'<div class="msg right-msg" id="mymsg">
+                    <div
+                    class="msg-img" id="sendimg"
+                    style="background-image: url('.$profile.');"
+                    ></div>
+
+                    <div class="msg-bubble" id="msgs">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time[1].'</div>
+                        </div>
+
+                        <div class="msg-text sent" id="sent">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                } 
+                else {
+                    $name = User::find($chat->user_id)->name;
+                    $time = User::find($chat->user_id)->created_at->format('H:i:s');
+                    $msg = $msg.'<div class="msg left-msg">
+                    <div
+                    class="msg-img" id="getimg
+                    "
+                    style="background-image: url('.$profiler.');"
+                    ></div>
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                        <div class="msg-info-name">'.$name.'</div>
+                        <div class="msg-info-time">'.$time.'</div>
+                        </div>
+
+                        <div class="msg-text">
+                        '.$chat->message.'
+                        </div>
+                    </div>
+                </div>';
+                }
+             }
+
+             return response()->json(['success'=>'Data is successfully added','msg'=>$msg]);
     }
 
 

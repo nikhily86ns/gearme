@@ -270,7 +270,7 @@
                                     @foreach($data as $row)
                                     <tr>
                                         <td class="name"><a href="#">{{ $row->name }}</a></td>
-                                        <td class="subject"><a href="#">{{ $row->message }} </a></td>
+                                        <td class="subject"><a href="/proposal-chat/{{ $row->user_id }}">{{ $row->message }} </a></td>
                                         <td class="time">{{ $row->created_at }}</td>
                                     </tr>
                                     @endforeach
