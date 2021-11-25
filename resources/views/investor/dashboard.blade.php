@@ -157,7 +157,7 @@
 										<div class="foot-location"><img src="{{ asset('img/pin.svg') }}" width="18" alt="" />{{ $row->country }}, {{ $row->city }} </div>
 									</div>
 									<div class="footer-flex">
-										<a href="/propertyDetail/{{ $row->id }}" class="prt-view">View</a>
+										<a href="/property-detail/{{ $row->id }}" class="prt-view">View</a>
 									</div>
 								</div>
 								<!-- <hr> -->
