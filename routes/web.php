@@ -113,6 +113,10 @@ Route::get('/contact-us',  [App\Http\Controllers\HomeController::class, 'contact
         Route::post('/send-chats', [App\Http\Controllers\UserController::class, 'sendChats'])->name('investor.sendChats');
         Route::post('/get-chats', [App\Http\Controllers\UserController::class, 'getChats'])->name('investor.getChats');
 
+        Route::get('/proposal-chat/{id}', [App\Http\Controllers\UserController::class, 'proposalChat'])->name('investor.proposalChat');
+        Route::post('/send-proposals', [App\Http\Controllers\UserController::class, 'sendProposals'])->name('investor.sendProposals');
+        Route::post('/get-proposals', [App\Http\Controllers\UserController::class, 'getProposals'])->name('investor.getProposals');
+
         Route::get('/owner-chat/{id}', [App\Http\Controllers\UserController::class, 'ownerChat'])->name('investor.ownerChat');
         Route::post('/send-owner-chats', [App\Http\Controllers\UserController::class, 'sendOwnerChats'])->name('investor.sendOwnerChats');
         Route::post('/get-owner-chats', [App\Http\Controllers\UserController::class, 'getOwnerChats'])->name('investor.getOwnerChats');
